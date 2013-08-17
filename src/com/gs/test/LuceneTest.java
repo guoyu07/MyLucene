@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import org.junit.Test;
 
 import com.gs.Lucene.Indexer;
+import com.gs.Lucene.Searcher;
 
 public class LuceneTest {
 
@@ -18,6 +19,11 @@ public class LuceneTest {
 		indexer.index();
 	}
 
+	@Test
+	public void testSeracher(){
+		Searcher searcher = new Searcher();
+		searcher.search();
+	}
 	public void search(){
 		try {
 			BufferedReader br=new BufferedReader(new InputStreamReader(System.in));

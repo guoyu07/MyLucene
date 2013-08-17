@@ -9,12 +9,15 @@ import org.apache.lucene.queryParser.ParseException;
 import org.apache.lucene.queryParser.QueryParser;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
+import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.store.IndexInput;
 import org.apache.lucene.store.IndexOutput;
 import org.apache.lucene.util.Version;
+import org.apache.lucene.document.Document;
+
 
 public class Searcher {
 	public void search(){
@@ -38,6 +41,11 @@ public class Searcher {
 			QueryParser query = new QueryParser(Version.LUCENE_35, "content", new StandardAnalyzer(Version.LUCENE_35));
 			Query q = query.parse("ϰ");
 			TopDocs td  = seacher.search(q, 10);
+			ScoreDoc[] sds = td.scoreDocs;
+			for(ScoreDoc sd:sds){
+				Document d = seacher.doc(sd.doc);
+				System.out.println(d.get("path")+d.get("content"));
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
