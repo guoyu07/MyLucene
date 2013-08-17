@@ -17,7 +17,7 @@ import org.apache.lucene.util.Version;
 
 
 public class Indexer {
-	
+
 	public void index() {
 		try {
 			//´´½¨Directory
@@ -51,6 +51,18 @@ public class Indexer {
 			e.printStackTrace();
 		}
 		
+		
+	}
+	
+	
+	
+	
+	/**
+	 * @param s
+	 * @return
+	 */
+	public String tesy(String s){
+		return s;
 		
 	}
 
