@@ -24,4 +24,9 @@ public class LuceneTest {
 		Searcher searcher = new Searcher();
 		searcher.search();
 	}
+	
+	@Test
+	public void testio() {
+		
+	}
 }
