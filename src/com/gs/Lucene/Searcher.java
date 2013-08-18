@@ -19,8 +19,14 @@ import org.apache.lucene.util.Version;
 import org.apache.lucene.document.Document;
 
 
+/**
+ * @author GaoShen
+ * @packageName com.gs.Lucene
+ */
 public class Searcher {
-	public void search(){
+	
+	private String indexField="D:\\Lucene\\indexes\\newsIndexes";
+	public void search(String s){
 		/*
 		 *创建Directory
 		 *创建IndexReader
@@ -34,17 +40,18 @@ public class Searcher {
 		 */
 		
 		try {
-			File path = new File("D:\\Lucene\\indexes");
+			File path = new File(indexField);
 			Directory directory  = FSDirectory.open(path);
 			IndexReader reader = IndexReader.open(directory);
 			IndexSearcher seacher  =new IndexSearcher(reader);
 			QueryParser query = new QueryParser(Version.LUCENE_35, "content", new StandardAnalyzer(Version.LUCENE_35));
-			Query q = query.parse("习");
+			Query q = query.parse(s);
 			TopDocs td  = seacher.search(q, 10);
 			ScoreDoc[] sds = td.scoreDocs;
 			for(ScoreDoc sd:sds){
 				Document d = seacher.doc(sd.doc);
-				System.out.println(d.get("path")+d.get("content"));
+				System.out.println("PATH:\n"+d.get("path")+"\n\n"+"CONTENT:\n"+d.get("content")+"\n");
+				System.out.println("==============");
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

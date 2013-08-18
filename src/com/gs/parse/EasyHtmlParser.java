@@ -42,6 +42,10 @@ import com.gs.parse.TableColumnValid;
 import com.gs.parse.TableValid;
  
 
+/**
+ * @author GaoShen
+ * @packageName com.gs.parse
+ */
 public class EasyHtmlParser implements Parsable {
 	
 	 protected static final String lineSign = System.getProperty(
@@ -56,6 +60,10 @@ public class EasyHtmlParser implements Parsable {
 	private String title ;
 	
 	
+	/**
+	 * @auth GaoShen
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		EasyHtmlParser eParser = new EasyHtmlParser(new File("D:\\Study\\Program\\Docs\\J2SE Docs\\api\\java\\Class.html")) ;
 		System.out.println("html content : "+eParser.getContent()) ;

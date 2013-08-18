@@ -14,7 +14,7 @@ import com.gs.Lucene.Searcher;
 public class LuceneTest {
 
 	@Test
-	public void test() {
+	public void testindex() {
 		Indexer indexer = new Indexer();
 		indexer.index();
 	}
@@ -22,7 +22,7 @@ public class LuceneTest {
 	@Test
 	public void testSeracher(){
 		Searcher searcher = new Searcher();
-		searcher.search();
+		searcher.search("from");
 	}
 	
 	@Test
