@@ -35,7 +35,6 @@ public class Indexer {
 				doc.add(new Field("path",file.getAbsolutePath(),Field.Store.YES,Field.Index.NOT_ANALYZED));
 				doc.add(new Field("filename",file.getName(),Field.Store.YES,Field.Index.NOT_ANALYZED));
 				writer.addDocument(doc);
-				
 			}
 			writer.close();
 			//为Document添加Filed对象

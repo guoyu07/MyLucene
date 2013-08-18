@@ -11,7 +11,7 @@ public class MyCrawler {
 	 *            种子URL
 	 */
 	
-	private int NumO2Crawl = 200;//抓取数量
+	private static int NumO2Crawl = 200;//抓取数量
 	private void initCrawlerWithSeeds(String[] seeds) {
 		for (int i = 0; i < seeds.length; i++)
 			LinkQueue.addUnvisitedUrl(seeds[i]);
@@ -27,7 +27,7 @@ public class MyCrawler {
 											// 开头的链接
 		LinkFilter filter = new LinkFilter() {
 			public boolean accept(String url) {
-				if (url.startsWith("http://news.qq.com"))
+				if (url.startsWith("http://news"))
 					return true;
 				else
 					return false;
@@ -59,7 +59,12 @@ public class MyCrawler {
 	// main 方法入口
 	public static void main(String[] args) {
 		MyCrawler crawler = new MyCrawler();
-		crawler.crawling(new String[] { "http://news.qq.com" });
+		NumO2Crawl = Integer.parseInt(args[0]);
+		String[] seeds = new String[args.length];
+		for(int i=1;i<args.length;i++){
+			seeds[i-1] = args[i];
+		}
+		crawler.crawling(seeds);
 		System.out.println("Finished!");
 	}
 }

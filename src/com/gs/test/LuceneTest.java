@@ -24,15 +24,4 @@ public class LuceneTest {
 		Searcher searcher = new Searcher();
 		searcher.search();
 	}
-	public void search(){
-		try {
-			BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-			System.out.println("«Î ‰»ÎA:"); 
-			String a=br.readLine();
-			System.out.println(a);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 }
