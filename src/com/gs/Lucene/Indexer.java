@@ -1,23 +1,20 @@
 package com.gs.Lucene;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.monitor.FileEntry;
-import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
-import org.apache.lucene.index.IndexReader.FieldOption;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.store.LockObtainFailedException;
 import org.apache.lucene.util.Version;
 
+import com.chenlb.mmseg4j.analysis.MMSegAnalyzer;
 
 /**
  * @author GaoShen
@@ -25,32 +22,38 @@ import org.apache.lucene.util.Version;
  */
 public class Indexer {
 
-	private String indexField="D:\\Lucene\\indexes\\newsIndexes";
-	private String docsField="D:\\Lucene\\docs\\news";
+	private String indexField = "D:\\Lucene\\indexes\\chineseIndexes";
+	private String docsField = "D:\\Lucene\\docs\\chineneDocs";
+
 	/**
 	 * @auth GaoShen
 	 */
 	public void index() {
 		try {
-			//创建Directory
+			// 閿熸枻鎷烽敓鏂ゆ嫹Directory
 			Directory directory = FSDirectory.open(new File(indexField));
-			//创建IndexWriter
-			IndexWriterConfig conf = new IndexWriterConfig(Version.LUCENE_35, new StandardAnalyzer(Version.LUCENE_35));
+			// 閿熸枻鎷烽敓鏂ゆ嫹IndexWriter
+			IndexWriterConfig conf = new IndexWriterConfig(Version.LUCENE_35,
+					new MMSegAnalyzer(new File(
+							"D:\\Tools\\mmseg4j-all-1.8.5-with-dic\\data")));
 			IndexWriter writer = new IndexWriter(directory, conf);
-			//创建Document对象
+			// 閿熸枻鎷烽敓鏂ゆ嫹Document閿熸枻鎷烽敓鏂ゆ嫹
 			File f = new File(docsField);
 			Document doc;
-			for(File file:f.listFiles()){
+			for (File file : f.listFiles()) {
 				System.out.println(file.getName());
 				doc = new Document();
-				doc.add(new Field("content",new FileUtils().readFileToString(file, "UTF-8"),Field.Store.YES,Field.Index.ANALYZED));
-				doc.add(new Field("path",file.getAbsolutePath(),Field.Store.YES,Field.Index.NOT_ANALYZED));
-				doc.add(new Field("filename",file.getName(),Field.Store.YES,Field.Index.NOT_ANALYZED));
+				doc.add(new Field("content", new FileUtils().readFileToString(
+						file, "UTF-8"), Field.Store.NO, Field.Index.ANALYZED));
+				doc.add(new Field("path", file.getAbsolutePath(),
+						Field.Store.YES, Field.Index.NOT_ANALYZED));
+				doc.add(new Field("filename", file.getName(), Field.Store.YES,
+						Field.Index.NOT_ANALYZED));
 				writer.addDocument(doc);
 			}
 			writer.close();
-			//为Document添加Filed对象
-			//通过IndexWriter添加文档到索引
+			// 涓篋ocument閿熸枻鎷烽敓绱絠led閿熸枻鎷烽敓鏂ゆ嫹
+			// 閫氶敓鏂ゆ嫹IndexWriter閿熸枻鎷烽敓鏂ゆ嫹鐗￠敓鏂ゆ嫹閿熸枻鎷烽敓鏂ゆ嫹閿燂拷
 		} catch (CorruptIndexException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,20 +64,7 @@ public class Indexer {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-	}
-	
-	
-	
-	
-	/**
-	 * @param s
-	 * @return
-	 */
-	public String tesy(String s){
-		return s;
-		
+
 	}
 
 }
