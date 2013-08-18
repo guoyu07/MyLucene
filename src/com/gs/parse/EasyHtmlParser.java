@@ -57,7 +57,7 @@ public class EasyHtmlParser implements Parsable {
 	
 	
 	public static void main(String[] args) {
-		EasyHtmlParser eParser = new EasyHtmlParser(new File("E:\\EclipseStudyWorkspace\\LuceneParse\\fileSource\\www.htm")) ;
+		EasyHtmlParser eParser = new EasyHtmlParser(new File("D:\\Study\\Program\\Docs\\J2SE Docs\\api\\java\\Class.html")) ;
 		System.out.println("html content : "+eParser.getContent()) ;
 	}
 	
