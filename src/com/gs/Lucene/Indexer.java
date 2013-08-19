@@ -13,8 +13,7 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.store.LockObtainFailedException;
 import org.apache.lucene.util.Version;
-
-import com.chenlb.mmseg4j.analysis.MMSegAnalyzer;
+import org.wltea.analyzer.lucene.IKAnalyzer;
 
 /**
  * @author GaoShen
@@ -24,6 +23,7 @@ public class Indexer {
 
 	private String indexField = "D:\\Lucene\\indexes\\chineseIndexes";
 	private String docsField = "D:\\Lucene\\docs\\chineneDocs";
+	private String encoding = "GB2312";
 
 	/**
 	 * @auth GaoShen
@@ -33,18 +33,17 @@ public class Indexer {
 			// 锟斤拷锟斤拷Directory
 			Directory directory = FSDirectory.open(new File(indexField));
 			// 锟斤拷锟斤拷IndexWriter
-			IndexWriterConfig conf = new IndexWriterConfig(Version.LUCENE_35,
-					new MMSegAnalyzer(new File(
-							"D:\\Tools\\mmseg4j-all-1.8.5-with-dic\\data")));
+			IndexWriterConfig conf = new IndexWriterConfig(Version.LUCENE_35,new IKAnalyzer());
 			IndexWriter writer = new IndexWriter(directory, conf);
 			// 锟斤拷锟斤拷Document锟斤拷锟斤拷
 			File f = new File(docsField);
+			
 			Document doc;
 			for (File file : f.listFiles()) {
 				System.out.println(file.getName());
 				doc = new Document();
 				doc.add(new Field("content", new FileUtils().readFileToString(
-						file, "UTF-8"), Field.Store.NO, Field.Index.ANALYZED));
+						file, encoding), Field.Store.NO, Field.Index.ANALYZED));
 				doc.add(new Field("path", file.getAbsolutePath(),
 						Field.Store.YES, Field.Index.NOT_ANALYZED));
 				doc.add(new Field("filename", file.getName(), Field.Store.YES,

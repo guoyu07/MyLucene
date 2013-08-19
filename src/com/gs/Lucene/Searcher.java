@@ -16,6 +16,7 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 import org.apache.lucene.document.Document;
+import org.wltea.analyzer.lucene.IKAnalyzer;
 
 
 /**
@@ -25,6 +26,7 @@ import org.apache.lucene.document.Document;
 public class Searcher {
 	
 	private String indexField="D:\\Lucene\\indexes\\chineseIndexes";
+	private String encoding = "GB2312";
 
 	/**
 	 * @param queryString
@@ -48,7 +50,7 @@ public class Searcher {
 			Directory directory  = FSDirectory.open(path);
 			IndexReader reader = IndexReader.open(directory);
 			IndexSearcher seacher  =new IndexSearcher(reader);
-			QueryParser query = new QueryParser(Version.LUCENE_35, "content", new StandardAnalyzer(Version.LUCENE_35));
+			QueryParser query = new QueryParser(Version.LUCENE_35, "content", new IKAnalyzer());
 			Query q = query.parse(queryString);
 			TopDocs td  = seacher.search(q, 10);
 			ScoreDoc[] sds = td.scoreDocs;
@@ -58,7 +60,7 @@ public class Searcher {
 				System.out.println("PATH:\n"+d.get("path")+"\n\n"+"CONTENT:\n");
 				File f= new File(d.get("path"));
 				//fu.readFileToString(f, "YTF-8");
-				System.out.println(fu.readFileToString(f, "UTF-8"));
+				System.out.println(fu.readFileToString(f, encoding));
 				System.out.println("\n==============");
 			}
 		} catch (IOException e) {

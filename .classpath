@@ -7,6 +7,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/HtmlParser"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/CommonsIO"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Lucene3.5"/>
-	<classpathentry kind="lib" path="D:/Tools/mmseg4j-all-1.8.5-with-dic/mmseg4j-all-1.8.5-with-dic.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/IkAnalyzer"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
