@@ -8,7 +8,11 @@ import static org.junit.Assert.*;
 import org.htmlparser.parserapplications.LinkExtractor;
 import org.junit.Test;
 
+import sun.org.mozilla.javascript.internal.ast.NewExpression;
+
+import com.gs.extractor.MyLinkExtractor;
 import com.gs.extractor.SubLink;
+import com.gs.extractor.TitleExtractor;
 
 /**
  * @author GaoShen
@@ -35,6 +39,25 @@ public class TestGtmlParser {
 		System.out.println("<a href=\"http://mail.qq.com\" target=\"_blank\">");
 		String s = "<a href=\"http://mail.qq.com\" target=\"_blank\">";
 		System.out.println(s.substring(0, 13));
+	}
+	
+	@Test
+	public void testExt(){
+		MyLinkExtractor m = new MyLinkExtractor();
+		m.extractor("http://news.qq.com");
+	}
+	
+	@Test
+	public void testTileExt(){
+		TitleExtractor t = new TitleExtractor();
+		t.extractor("http://news.qq.com/a/20130821/006472.htm");
+	}
+	
+	@Test
+	public void testAll(){
+		MyLinkExtractor linkEx = new MyLinkExtractor();
+		TitleExtractor titleEx = new TitleExtractor();
+		
 	}
 	
 }
