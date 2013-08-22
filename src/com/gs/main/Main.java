@@ -23,7 +23,7 @@ public class Main {
 			long start = d.getTime();
 			Crawler c = new Crawler();
 			// c.crawl("http://localhost:8080/webpage");
-			c.crawl("http://news.qq.com", 999999, 999999);
+			c.crawl("http://news.qq.com", 10, 50);
 			long end = d.getTime();
 			use = end - start;
 		} catch (Exception e) {
