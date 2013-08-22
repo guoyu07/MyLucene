@@ -68,8 +68,8 @@ public class TestGtmlParser {
 	@Test
 	public void testCrawler() {
 		Crawler c = new Crawler();
-		//c.crawl("http://localhost:8080/webpage");
-		c.crawl("http://news.qq.com",999999,999999);
+		c.crawl("http://localhost:8080/webpage",9,9);
+		//c.crawl("http://news.qq.com",999999,999999);
 	}
 
 	@Test

@@ -56,10 +56,10 @@ public class BloomFilter {
 		return randomsum;
 	}
 
-	public void add(String key) {
+	public boolean add(String key) {
 		if (exist(key)) {
 			System.out.println("已经包含(" + key + ")");
-			return;
+			return false;
 		}
 		System.out.println("未包含(" + key + ")");
 		int keyCode[] = lrandom(key);
@@ -71,6 +71,7 @@ public class BloomFilter {
 		bits.set(keyCode[5]);
 		bits.set(keyCode[6]);
 		bits.set(keyCode[7]);
+		return true;
 	}
 
 	public boolean exist(String key) {
@@ -149,8 +150,8 @@ public class BloomFilter {
 	}
 */
 	public void con() {
-		//String fileName = "D:\\Test\\BloomFilter.txt";
-		String fileName = "/home/master/test/BloomFilter.txt";
+		String fileName = "D:\\Test\\BloomFilter.txt";
+		//String fileName = "/home/master/test/BloomFilter.txt";
 		BloomFilter bf = new BloomFilter();
 		BitSet bitSet = bf.readBit(fileName);
 		bf.setBits(bitSet);
