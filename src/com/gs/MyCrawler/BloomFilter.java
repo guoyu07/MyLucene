@@ -150,8 +150,8 @@ public class BloomFilter {
 	}
 */
 	public void con() {
-		String fileName = "D:\\Test\\BloomFilter.txt";
-		//String fileName = "/home/master/test/BloomFilter.txt";
+		//String fileName = "D:\\Test\\BloomFilter.txt";
+		String fileName = "/home/master/test/BloomFilter.txt";
 		BloomFilter bf = new BloomFilter();
 		BitSet bitSet = bf.readBit(fileName);
 		bf.setBits(bitSet);

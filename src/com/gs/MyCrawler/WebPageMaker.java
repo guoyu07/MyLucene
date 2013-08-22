@@ -11,8 +11,8 @@ public class WebPageMaker {
 
 	public static void make(String title,String content) throws IOException {
 		try {
-			File file = new File("D:\\Test\\WebPages\\"+title+".htm");
-			//File file = new File("/home/master/test/WebPages/"+title+".txt");
+			//File file = new File("D:\\Test\\WebPages\\"+title+".htm");
+			File file = new File("/home/master/test/WebPages/"+title+".txt");
 			FileWriter fw = new FileWriter(file);
 			fw.write(content);
 			fw.close();
