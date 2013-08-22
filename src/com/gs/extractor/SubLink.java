@@ -10,7 +10,7 @@ package com.gs.extractor;
 public class SubLink {
 	public static String sub(String html) {
 		char[] c = html.toCharArray();
-		if (c.length < 12)
+		if (c.length <= 13)
 			return null;
 		String result = "";
 		if (html.substring(0, 13).equals("<a href=\"http"))

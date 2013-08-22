@@ -14,7 +14,15 @@ import com.gs.extractor.MyLinkExtractor;
  */
 public class Crawler {
 	private int deepth = 3;
-	public void crawl(String url){
+	private int topN = 2;
+	/**
+	 * @param url
+	 * @param deepth
+	 * @param topN
+	 */
+	public void crawl(String url,int deepth,int topN){
+		this.deepth = deepth;
+		this.topN = topN;
 		Queue q = new Queue();
 		URL starturl = new URL();
 		starturl.level = 1;
@@ -24,7 +32,7 @@ public class Crawler {
 		while(!q.empty()){
 			u = q.deQueue();
 			if(u.level<deepth){
-				List<URL> list = MyLinkExtractor.extractor(u);
+				List<URL> list = MyLinkExtractor.extractor(u,topN);
 				Iterator<URL> iterator = list.iterator();
 				while(iterator.hasNext()){
 					q.enQueue(iterator.next());

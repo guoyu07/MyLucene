@@ -6,12 +6,16 @@ public class Queue {
 	// 使用链表实现队列
 	private LinkedList queue = new LinkedList();
 	private BloomFilter filter =  new BloomFilter();
-
+	
+	public Queue(){
+		filter.con();
+	}
 	// 入队列
 	public boolean enQueue(URL url) {
 		if (filter.exist(url.url)) {
 			return false;
 		} else {
+			filter.add(url.url);
 			queue.addLast(url);
 			return true;
 		}

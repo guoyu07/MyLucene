@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.gs.MyCrawler;
 
 import java.io.File;
@@ -12,35 +9,29 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.BitSet;
 
-/**
- * @author GaoShen
- * @packageName com.gs.util
- */
 public class BloomFilter {
 	private int defaultSize = 5000 << 10000;
 	private int basic = defaultSize - 1;
 	private String key = null;
 	private BitSet bits = new BitSet(defaultSize);
-	private String fileName;
 
-	/**
-	 * @param fileName
-	 */
-	public BloomFilter() {
-		fileName = "D:\\Test\\BloomFilter.txt";
-		BitSet bitSet = readBit(fileName);
-		setBits(bitSet);
-	}
-
-	private BitSet getBits() {
+	public BitSet getBits() {
 		return bits;
 	}
 
-	private void setBits(BitSet bits) {
+	public void setBits(BitSet bits) {
 		this.bits = bits;
 	}
 
-	private BloomFilter(String key) {
+	public BloomFilter() {
+		/*
+		 * String fileName="D:\\Test\\BloomFilter.txt"; String
+		 * url="http://www.agrssdddd.com/"; BloomFilter bf=new BloomFilter();
+		 * BitSet bitSet=bf.readBit(fileName); bf.setBits(bitSet);
+		 */
+	}
+
+	public BloomFilter(String key) {
 		this.key = key;
 	}
 
@@ -65,11 +56,12 @@ public class BloomFilter {
 		return randomsum;
 	}
 
-	private void add(String key) {
+	public void add(String key) {
 		if (exist(key)) {
 			System.out.println("已经包含(" + key + ")");
 			return;
 		}
+		System.out.println("未包含(" + key + ")");
 		int keyCode[] = lrandom(key);
 		bits.set(keyCode[0]);
 		bits.set(keyCode[1]);
@@ -107,7 +99,7 @@ public class BloomFilter {
 		return basic & h;
 	}
 
-	private void saveBit(String filename) {
+	public void saveBit(String filename) {
 
 		try {
 			File file = new File(filename);
@@ -123,7 +115,7 @@ public class BloomFilter {
 		}
 	}
 
-	private BitSet readBit(String filename) {
+	public BitSet readBit(String filename) {
 		BitSet bits = new BitSet(defaultSize);
 		File file = new File(filename);
 		if (!file.exists()) {
@@ -145,16 +137,26 @@ public class BloomFilter {
 		return bits;
 	}
 
-	/*public static void main(String[] args) {
 
-		String fileName = "D:\\test\\BloomFilter.txt";
-		String url = "http://www.fsghfhdd.com/";
+	/*public boolean exsit(String u) {
+		
+		  String fileName="D:\\Test\\BloomFilter.txt"; String url=u;
+		  BloomFilter bf=new BloomFilter(); BitSet bitSet=bf.readBit(fileName);
+		  bf.setBits(bitSet); //bf.add(url);
+		 //System.out.println(bf.exist(url)); bf.saveBit(fileName);
+		 
+		return this.exist(u);
+	}
+*/
+	public void con() {
+		//String fileName = "D:\\Test\\BloomFilter.txt";
+		String fileName = "/home/master/test/BloomFilter.txt";
 		BloomFilter bf = new BloomFilter();
 		BitSet bitSet = bf.readBit(fileName);
 		bf.setBits(bitSet);
-		//bf.add(url);
-		System.out.println(bf.exist(url));
-		//bf.saveBit(fileName);
+		// bf.add(url);
+		// System.out.println(bf.exist(url));
+		bf.saveBit(fileName);
 	}
-*/
+
 }

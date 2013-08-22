@@ -31,7 +31,6 @@ public class TitleExtractor {
 			list = parser.extractAllNodesThatMatch(filter);
 			for (int i = 0; i < list.size(); i++) {
 				title = SubTitle.sub(list.elementAt(i).toHtml());
-				System.out.println(title);
 			}
 		} catch (ParserException e) {
 			System.out.println("Some Error");

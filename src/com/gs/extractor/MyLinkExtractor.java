@@ -30,27 +30,25 @@ public class MyLinkExtractor {
 	static NodeFilter filter;
 	static NodeList list;
 
-	public static List extractor(URL paurl) {
-		List<URL> urls = new LinkedList();
+	public static List extractor(URL paurl ,int topN) {
+		LinkedList<URL> urls = new LinkedList();
 		filter = new NodeClassFilter(LinkTag.class);
 		try {
 			parser = new Parser(paurl.url);
 			list = parser.extractAllNodesThatMatch(filter);
-			URL churl = new URL();
 			for (int i = 0; i < list.size(); i++) {
+				URL churl = new URL();
 				String lin = SubLink.sub(list.elementAt(i).toHtml());
-				if (lin == "" || lin == null)
+				if (lin == "" || lin == null||!(lin.endsWith(".htm")||lin.endsWith(".html")||lin.endsWith(".shtml")))
 					continue;
-				System.out.println("----------------");
-				System.out.println(lin);
 				churl.level = paurl.level+1;
 				churl.url = lin;
-				urls.add(churl);
+				urls.addFirst(churl);
+				if(i > topN-1) break;
 			}
 		} catch (EncodingChangeException e) {
 			System.out.println("Encoding Error!");
 		} catch (ParserException e) {
-			//e.printStackTrace();
 			System.out.println("Some Error");
 		}
 		return urls;
