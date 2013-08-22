@@ -20,20 +20,22 @@ import org.htmlparser.util.ParserException;
  */
 public class TitleExtractor {
 	String url;
-	Parser parser;
-	NodeFilter filter;
-	NodeList list;
-	public void extractor(String url){
+	static Parser parser;
+	static NodeFilter filter;
+	static NodeList list;
+	public   static String extractor(String url){
 		filter = new NodeClassFilter(TitleTag.class);
+		String title = null;
 		try {
 			parser = new Parser(url);
 			list = parser.extractAllNodesThatMatch(filter);
 			for (int i = 0; i < list.size(); i++) {
-				System.out.println(list.elementAt(i).toHtml());
+				title = SubTitle.sub(list.elementAt(i).toHtml());
+				System.out.println(title);
 			}
 		} catch (ParserException e) {
-			e.printStackTrace();
 			System.out.println("Some Error");
 		}
+		return title;
 	}
 }

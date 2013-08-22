@@ -5,11 +5,15 @@ package com.gs.test;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
+
 import org.htmlparser.parserapplications.LinkExtractor;
 import org.junit.Test;
 
 import sun.org.mozilla.javascript.internal.ast.NewExpression;
 
+import com.gs.MyCrawler.BloomFilter;
+import com.gs.MyCrawler.Crawler;
 import com.gs.extractor.MyLinkExtractor;
 import com.gs.extractor.SubLink;
 import com.gs.extractor.TitleExtractor;
@@ -41,11 +45,6 @@ public class TestGtmlParser {
 		System.out.println(s.substring(0, 13));
 	}
 	
-	@Test
-	public void testExt(){
-		MyLinkExtractor m = new MyLinkExtractor();
-		m.extractor("http://news.qq.com");
-	}
 	
 	@Test
 	public void testTileExt(){
@@ -58,6 +57,18 @@ public class TestGtmlParser {
 		MyLinkExtractor linkEx = new MyLinkExtractor();
 		TitleExtractor titleEx = new TitleExtractor();
 		
+	}
+	
+	@Test
+	public void testCrawler(){
+		Crawler c = new Crawler();
+		c.crawl("http://news.qq.com");
+	}
+	
+	@Test
+	public void testFilter(){
+		BloomFilter b = new BloomFilter();
+		System.out.println(b.exist("http://news.qq.com"));
 	}
 	
 }

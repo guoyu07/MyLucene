@@ -16,6 +16,7 @@ import org.htmlparser.util.EncodingChangeException;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
 
+import com.gs.MyCrawler.URL;
 import com.gs.util.Printer;
 
 /**
@@ -25,28 +26,26 @@ import com.gs.util.Printer;
 public class MyLinkExtractor {
 
 	String url;
-	Parser parser;
-	NodeFilter filter;
-	NodeList list;
+	static Parser parser;
+	static NodeFilter filter;
+	static NodeList list;
 
-	public List extractor(String url) {
-		List<String> urls = new LinkedList();
+	public static List extractor(URL paurl) {
+		List<URL> urls = new LinkedList();
 		filter = new NodeClassFilter(LinkTag.class);
 		try {
-			parser = new Parser(url);
+			parser = new Parser(paurl.url);
 			list = parser.extractAllNodesThatMatch(filter);
-			TitleExtractor te = new TitleExtractor();
-			Printer p = new Printer();
+			URL churl = new URL();
 			for (int i = 0; i < list.size(); i++) {
 				String lin = SubLink.sub(list.elementAt(i).toHtml());
-				// System.out.println("lin = "+lin);
 				if (lin == "" || lin == null)
 					continue;
-				p.print("----------------");
-				p.print(list.elementAt(i).toHtml());
-				te.extractor(lin);
-				p.print(lin);
-				urls.add(lin);
+				System.out.println("----------------");
+				System.out.println(lin);
+				churl.level = paurl.level+1;
+				churl.url = lin;
+				urls.add(churl);
 			}
 		} catch (EncodingChangeException e) {
 			System.out.println("Encoding Error!");
