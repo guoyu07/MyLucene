@@ -11,7 +11,7 @@ public class MyCrawler {
 	 *            种子URL
 	 */
 	
-	private static int NumO2Crawl = 200;//抓取数量
+	private static int NumO2Crawl = 10;//抓取数量
 	private void initCrawlerWithSeeds(String[] seeds) {
 		for (int i = 0; i < seeds.length; i++)
 			LinkQueue.addUnvisitedUrl(seeds[i]);
@@ -59,11 +59,13 @@ public class MyCrawler {
 	// main 方法入口
 	public static void main(String[] args) {
 		MyCrawler crawler = new MyCrawler();
-		NumO2Crawl = Integer.parseInt(args[0]);
-		String[] seeds = new String[args.length];
-		for(int i=1;i<args.length;i++){
+		NumO2Crawl = 9999999;
+		String[] seeds = new String[4];
+		/*for(int i=1;i<args.length;i++){
 			seeds[i-1] = args[i];
-		}
+		}*/
+		seeds[0] = "http://www.sina.com.cn/";
+		seeds[1] = "http://news.qq.com";
 		crawler.crawling(seeds);
 		System.out.println("Finished!");
 	}

@@ -76,7 +76,7 @@ public class DownLoadFile {
 			// 4.处理HTTP 响应内容
 			byte[] responseBody = getMethod.getResponseBody();// 读取为字节数组
 			// 根据网页url 生成保存时的文件名
-			filePath = "D:\\Lucene\\docs\\"
+			filePath = "/home/master/crawls/"
 					+ getFileNameByUrl(url,
 							getMethod.getResponseHeader("Content-Type")
 									.getValue());
