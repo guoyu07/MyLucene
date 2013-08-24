@@ -2,28 +2,48 @@ package com.gs.crawler;
 
 import java.util.LinkedList;
 
+/**
+ * @author GaoShen
+ * @packageName com.gs.crawler
+ */
 public class Queue {
 	// 使用链表实现队列
 	private LinkedList queue = new LinkedList();
+	private BloomFilter filter = new BloomFilter();
+
+	public Queue(String bloomfile) {
+		filter.con(bloomfile);
+	}
 
 	// 入队列
-	public void enQueue(Object t) {
-		queue.addLast(t);
+	/**
+	 * @param url
+	 * @return true-has not been crawl,false-has already been crawl
+	 */
+	public boolean enQueue(URL url) {
+		if (filter.add(url.url)) {
+			queue.addLast(url);
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 	// 出队列
-	public Object deQueue() {
-		return queue.removeFirst();
+	/**
+	 * @return the url on the top of the queue
+	 */
+	public URL deQueue() {
+		return (URL) queue.removeFirst();
 	}
 
 	// 判断队列是否为空
+	/**
+	 * @return true-empty false-not empty
+	 */
 	public boolean isQueueEmpty() {
 		return queue.isEmpty();
-	}
-
-	// 判断队列是否包含t
-	public boolean contians(Object t) {
-		return queue.contains(t);
 	}
 
 	public boolean empty() {

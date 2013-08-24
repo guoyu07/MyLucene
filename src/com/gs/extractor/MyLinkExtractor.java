@@ -16,8 +16,7 @@ import org.htmlparser.util.EncodingChangeException;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
 
-import com.gs.MyCrawler.URL;
-import com.gs.util.Printer;
+import com.gs.crawler.URL;
 
 /**
  * @author GaoShen
@@ -30,7 +29,14 @@ public class MyLinkExtractor {
 	static NodeFilter filter;
 	static NodeList list;
 
-	public static List extractor(URL paurl ,int topN) {
+	/**
+	 * @param paurl
+	 *            father page's url
+	 * @param topN
+	 *            the max of link to the page
+	 * @return all the links of the webpage
+	 */
+	public static List extractor(URL paurl, int topN) {
 		LinkedList<URL> urls = new LinkedList();
 		filter = new NodeClassFilter(LinkTag.class);
 		try {
@@ -38,13 +44,17 @@ public class MyLinkExtractor {
 			list = parser.extractAllNodesThatMatch(filter);
 			for (int i = 0; i < list.size(); i++) {
 				URL churl = new URL();
-				String lin = SubLink.sub(list.elementAt(i).toHtml());
-				if (lin == "" || lin == null||!(lin.endsWith(".htm")||lin.endsWith(".html")||lin.endsWith(".shtml")))
+				String lin = sub(list.elementAt(i).toHtml());
+				if (lin == ""
+						|| lin == null
+						|| !(lin.endsWith(".htm") || lin.endsWith(".html") || lin
+								.endsWith(".shtml")))
 					continue;
-				churl.level = paurl.level+1;
+				churl.level = paurl.level + 1;
 				churl.url = lin;
 				urls.addFirst(churl);
-				if(i > topN-1) break;
+				if (i > topN - 1)
+					break;
 			}
 		} catch (EncodingChangeException e) {
 			System.out.println("Encoding Error!");
@@ -52,5 +62,21 @@ public class MyLinkExtractor {
 			System.out.println("Some Error");
 		}
 		return urls;
+	}
+
+	private static String sub(String html) {
+		char[] c = html.toCharArray();
+		if (c.length <= 13)
+			return null;
+		String result = "";
+		if (html.substring(0, 13).equals("<a href=\"http"))
+			for (int i = 9; i < c.length && c[i] != '"'; i++) {
+				result += c[i];
+				if (c[i] == '<') {
+					result = "";
+					break;
+				}
+			}
+		return result;
 	}
 }

@@ -19,22 +19,40 @@ import org.htmlparser.util.ParserException;
  * @packageName com.gs.extractor
  */
 public class TitleExtractor {
-	String url;
-	static Parser parser;
-	static NodeFilter filter;
-	static NodeList list;
-	public   static String extractor(String url){
+	private String url;
+	private static Parser parser;
+	private static NodeFilter filter;
+	private static NodeList list;
+
+	/**
+	 * @param url the url which to be extract the title
+	 * @return title
+	 */
+	public static String extractor(String url) {
 		filter = new NodeClassFilter(TitleTag.class);
 		String title = null;
 		try {
 			parser = new Parser(url);
 			list = parser.extractAllNodesThatMatch(filter);
+			
 			for (int i = 0; i < list.size(); i++) {
-				title = SubTitle.sub(list.elementAt(i).toHtml());
+				title = sub(list.elementAt(i).toHtml());
 			}
 		} catch (ParserException e) {
-			System.out.println("Some Error");
+			System.out.println("Some Error ParserException");
 		}
 		return title;
+	}
+	
+	private static String sub(String html) {
+		char[] c = html.toCharArray();
+		if (c.length < 14)
+			return null;
+		String result = "";
+		if (html.substring(0, 7).equals("<title>"))
+			for (int i = 7; i < c.length && c[i] != '<'; i++) {
+				result += c[i];
+			}
+		return result;
 	}
 }

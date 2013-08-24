@@ -21,23 +21,25 @@ import org.wltea.analyzer.lucene.IKAnalyzer;
  */
 public class Indexer {
 
-	private String indexField = "D:\\Lucene\\indexes\\chineseIndexes";
-	private String docsField = "D:\\Lucene\\docs\\chineneDocs";
+	private String indexField;
+	private String docsField;
 	private String encoding = "GB2312";
 
+	
+	
 	/**
-	 * @auth GaoShen
+	 * @param indexField the path to save index file
+	 * @param docsField the path to take the txts which want to be indexed
 	 */
-	public void index() {
+	public void index(String indexField,String docsField) {
 		try {
-			// 锟斤拷锟斤拷Directory
+			this.indexField = indexField;
+			this.docsField = docsField;
 			Directory directory = FSDirectory.open(new File(indexField));
-			// 锟斤拷锟斤拷IndexWriter
 			IndexWriterConfig conf = new IndexWriterConfig(Version.LUCENE_35,new IKAnalyzer());
 			IndexWriter writer = new IndexWriter(directory, conf);
-			// 锟斤拷锟斤拷Document锟斤拷锟斤拷
 			File f = new File(docsField);
-			
+			System.out.println(f.getAbsolutePath());
 			Document doc;
 			for (File file : f.listFiles()) {
 				System.out.println(file.getName());
@@ -51,16 +53,11 @@ public class Indexer {
 				writer.addDocument(doc);
 			}
 			writer.close();
-			// 为Document锟斤拷锟紽iled锟斤拷锟斤拷
-			// 通锟斤拷IndexWriter锟斤拷锟斤拷牡锟斤拷锟斤拷锟斤拷锟�
 		} catch (CorruptIndexException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (LockObtainFailedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

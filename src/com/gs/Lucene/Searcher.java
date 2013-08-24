@@ -29,10 +29,10 @@ public class Searcher {
 	private String encoding = "GB2312";
 
 	/**
-	 * @param queryString
+	 * @param indexField the indexfile
+	 * @param queryString the queryString
 	 */
-	
-	public void search(String queryString){
+	public void search(String indexField,String queryString){
 		/*
 		 *创建Directory
 		 *创建IndexReader
@@ -46,6 +46,8 @@ public class Searcher {
 		 */
 		
 		try {
+			
+			this.indexField = indexField;
 			File path = new File(indexField);
 			Directory directory  = FSDirectory.open(path);
 			IndexReader reader = IndexReader.open(directory);
@@ -59,15 +61,12 @@ public class Searcher {
 				Document d = seacher.doc(sd.doc);
 				System.out.println("PATH:\n"+d.get("path")+"\n\n"+"CONTENT:\n");
 				File f= new File(d.get("path"));
-				//fu.readFileToString(f, "YTF-8");
 				System.out.println(fu.readFileToString(f, encoding));
 				System.out.println("\n==============");
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
