@@ -9,11 +9,7 @@ import java.util.LinkedList;
 public class Queue {
 	// 使用链表实现队列
 	private LinkedList queue = new LinkedList();
-	private BloomFilter filter = new BloomFilter();
-
-	public Queue(String bloomfile) {
-		filter.con(bloomfile);
-	}
+	private BloomFilter filter = new BloomFilter(0.1,99999);
 
 	// 入队列
 	/**
@@ -21,7 +17,8 @@ public class Queue {
 	 * @return true-has not been crawl,false-has already been crawl
 	 */
 	public boolean enQueue(URL url) {
-		if (filter.add(url.url)) {
+		if (!filter.contains(url.url)) {
+			filter.add(url.url);
 			queue.addLast(url);
 			return true;
 		} else {

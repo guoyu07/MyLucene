@@ -31,7 +31,7 @@ public class DownLoader {
 			String title = TitleExtractor.extractor(u.url);
 			String content = ContentExtractor.extractor(u.url);
 			if (make(title, content, path))
-				System.out.println("Down" + title);
+				System.out.println("Down   " + title);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -59,11 +59,11 @@ public class DownLoader {
 			return true;
 		} catch (FileNotFoundException e) {
 			System.out.println("Some Error with the title");
+			return false;
 		} catch (IOException e) {
 			System.out.println("Some IO Error");
-		} finally {
 			return false;
-		}
+		} 
 	}
 
 

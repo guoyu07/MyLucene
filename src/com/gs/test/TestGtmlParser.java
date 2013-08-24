@@ -59,12 +59,6 @@ public class TestGtmlParser {
 	}
 
 
-	@Test
-	public void testFilter() {
-		BloomFilter b = new BloomFilter();
-		System.out.println(b.exist("http://news.qq.com"));
-		// b.exsit("http://news.qq.com");
-	}
 	
 	@Test
 	public void tsetNewCrawl(){
@@ -76,6 +70,22 @@ public class TestGtmlParser {
 	@Test
 	public void testCrawlInWindows(){
 		Property p = new Property("http://news.qq.com", 3, 30, OS.Windows, "D://Test",true);
+		Crawler c = new Crawler();
+		c.crawl(p);
+	}
+	
+	@Test
+	public void testBloom(){
+		BloomFilter b = new BloomFilter(0.1,99999);
+		//b.add("test");
+		System.out.println(b.contains("test"));
+		System.out.println(b.contains("none"));
+	}
+	
+	@Test
+	public void testseeds(){
+		String[] seeds={"http://news.qq.com","http://www.sina.com.cn"};
+		Property p = new Property(seeds, 3, 30, OS.Windows, "D://Test",true);
 		Crawler c = new Crawler();
 		c.crawl(p);
 	}

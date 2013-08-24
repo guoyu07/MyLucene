@@ -22,7 +22,7 @@ public class Main {
 		long use = 0;
 		try {
 			long start = System.currentTimeMillis();
-			Property p = new Property("http://news.qq.com", 3, 30, OS.Linux, "D://Test",true);
+			Property p = new Property("http://news.qq.com", 3, 30, OS.Windows, "D://Test",true);
 			Crawler c = new Crawler();
 			c.crawl(p);
 			long end = System.currentTimeMillis();
