@@ -8,6 +8,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.gs.DAO.PageDAO;
+import com.gs.model.Page;
+
 /**
  * @author GaoShen
  * @packageName com.gs.io
@@ -20,21 +25,30 @@ public class ContentReader {
 			FileInputStream fis = new FileInputStream(file);
 			fis.skip(startoffset);
 			byte b;
-			byte[] b1 = new byte[(int) (endoffset - startoffset+3)];//In order to avoid stackoverflow
-			for(int i=0;(b=(byte) fis.read())!=-1;i++){
+			int size = (int) (endoffset - startoffset);
+			byte[] b1 = new byte[size+999];//In order to avoid stackoverflow
+			for(int i=0;(b=(byte) fis.read())!=-1&&i<size;i++){
 				b1[i] = b;
 			}
 			content = new String(b1);
 			
 			System.out.println(content);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return content;
+	}
+	public String read(int id,String mergepath){
+		String re = null;
+		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
+				"beans.xml");
+		PageDAO dao = (PageDAO) ctx.getBean("pageDAO");
+		Page p = dao.loadPage(id);
+		System.out.println(p);
+		re = read(mergepath,p.getStartoffset(),p.getEndoffset());
+		return re;
 		
 	}
 }

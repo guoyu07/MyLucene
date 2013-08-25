@@ -52,10 +52,8 @@ public class TestIO {
 			String re = new String(b3,"UTF-8");
 			System.out.println(re);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -72,10 +70,8 @@ public class TestIO {
 			String s = new String(b1,"UTF-8");
 			System.out.println(s);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -87,7 +83,7 @@ public class TestIO {
 		System.out.println(a);
 	}
 	
-	@Test
+	/*@Test
 	public void test4(){
 		ContentWriter cw = new ContentWriter();
 		cw.write("D://test.txt", "ÁË½âÄãÄØ");
@@ -96,7 +92,7 @@ public class TestIO {
 		System.out.println(st+"   "+en);
 		ContentReader cr = new ContentReader();
 		cr.read("D://test.txt", st, en);
-	}
+	}*/
 	
 	@Test
 	public void test5(){
@@ -112,12 +108,16 @@ public class TestIO {
 				"beans.xml");
 		PageDAO pd = (PageDAO) ctx.getBean("pageDAO");
 		Page p = new Page();
-		p.setContent("Àõ×Ó¼¦");
 		p.setEndoffset(123);
-		p.setPath("sasdad");
 		p.setStartoffset(21313);
 		p.setUrl("adaad");
 		pd.save(p);
+	}
+	
+	@Test
+	public void test7(){
+		ContentReader cr = new ContentReader();
+		System.out.println(cr.read(0, "D://Test//merge//merge.txt"));
 	}
 }
 

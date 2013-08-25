@@ -1,5 +1,6 @@
 package com.gs.crawler;
 
+import java.io.File;
 import java.util.Iterator;
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class Crawler {
 
 		this.deepth = property.deepth;
 		this.topN = property.topN;
+		Downloader downloader = new Downloader(property.docfile,property.mergefile);
 		Queue q = new Queue();
 		URL starturl = new URL();
 		for (String currentURL : property.seeds) {
@@ -44,15 +46,18 @@ public class Crawler {
 					while (iterator.hasNext()) {
 						q.enQueue(iterator.next());
 					}
-					DownLoader.down(u, property.docfile);
+					downloader.down(u);
 				} else {
-					DownLoader.down(u, property.docfile);
+					downloader.down(u);
 				}
 			}
 		}
+		downloader.close();
 		if (property.needsIndex) {
 			Indexer indexer = new Indexer();
 			indexer.index(property.Indexfile, property.docfile);
 		}
+		File docfile = new File(property.docfile);
+		docfile.delete();//TODO did not delete
 	}
 }

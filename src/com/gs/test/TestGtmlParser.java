@@ -91,7 +91,7 @@ public class TestGtmlParser {
 
 	@Test
 	public void testseedscrawl() {
-		Property property = new Property(3, 30, OS.Windows, "D://Test", true);
+		Property property = new Property(3, 50, OS.Windows, "D://Test", true);
 		Crawler c = new Crawler();
 		c.crawl(property);
 	}

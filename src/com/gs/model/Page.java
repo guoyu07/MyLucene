@@ -16,59 +16,28 @@ import javax.persistence.Table;
 @Table(name = "page")
 @org.hibernate.annotations.Proxy(lazy = false)
 public class Page {
-	private String content;
 	private long startoffset;
 	private long endoffset;
 	private String url;
-	private String path;
 	private int id;
 
 	/**
 	 * @return the id
 	 */
 	@Id
-	@GeneratedValue
 	public int getId() {
 		return id;
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	/**
-	 * @return the path
-	 */
-	public String getPath() {
-		return path;
-	}
-
-	/**
-	 * @param path
-	 *            the path to set
-	 */
-	public void setPath(String path) {
-		this.path = path;
-	}
-
-	/**
-	 * @return the content
-	 */
-	public String getContent() {
-		return content;
-	}
-
-	/**
-	 * @param content
-	 *            the content to set
-	 */
-	public void setContent(String content) {
-		this.content = content;
-	}
 
 	/**
 	 * @return the startoffset
@@ -114,4 +83,14 @@ public class Page {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "URL = "+url+" Start = "+startoffset+" End = "+endoffset+" Id = "+id;
+	}
+	
+	
 }

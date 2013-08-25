@@ -18,6 +18,7 @@ import org.htmlparser.util.ParserException;
  * @author GaoShen
  * @packageName com.gs.extractor
  */
+@Deprecated
 public class TitleExtractor {
 	private String url;
 	private static Parser parser;

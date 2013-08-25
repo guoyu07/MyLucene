@@ -11,26 +11,45 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
+ * <strong>Remember to close!<strong>
  * @author GaoShen
  * @packageName com.gs.io
  */
 public class ContentWriter {
 	public long startoffset;
 	public long endoffset;
-	public void write(String path,String content){
+	private File file;
+	private FileWriter fw;
+	private String path;
+	/**
+	 * @param path
+	 */
+	public ContentWriter(String path){
+		this.path = path;
+	}
+	/**
+	 * @param content
+	 */
+	public void write(String content){
 		try {
-			File file = new File(path);
+			file = new File(path+"merge.txt"); 
+			fw = new FileWriter(file,true);
 			startoffset = file.length();
-			FileWriter fw = new FileWriter(file,true);
 			fw.write(content);
 			fw.close();
 			endoffset = file.length();
+			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * <strong>Must Do It!<strong>
+	 */
+	public void close(){
+		
 	}
 }

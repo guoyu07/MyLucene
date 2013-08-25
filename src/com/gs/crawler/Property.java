@@ -17,6 +17,7 @@ public class Property {
 	public String path;
 	public String Indexfile;
 	public String docfile;
+	public String mergefile;
 	public boolean needsIndex;
 	public String[] seeds;
 
@@ -92,17 +93,23 @@ public class Property {
 		if (os == OS.Windows) {
 			this.docfile = path + "//docs//";
 			this.Indexfile = path + "//index//";
+			this.mergefile = path + "//merge//";
 		} else if (os == OS.Linux) {
 			this.docfile = path + "/docs/";
 			this.Indexfile = path + "/index/";
+			this.mergefile = path+"/merge/";
 		}
 		File doc = new File(docfile);
 		File ind = new File(Indexfile);
+		File mer = new File(mergefile);
 		if (!doc.exists()) {
 			doc.mkdir();
 		}
 		if (!ind.exists()) {
 			ind.mkdir();
+		}
+		if (!mer.exists()) {
+			mer.mkdir();
 		}
 	}
 
@@ -133,17 +140,23 @@ public class Property {
 		if (os == OS.Windows) {
 			this.docfile = path + "//docs//";
 			this.Indexfile = path + "//index//";
+			this.mergefile = path + "//merge//";
 		} else if (os == OS.Linux) {
 			this.docfile = path + "/docs/";
 			this.Indexfile = path + "/index/";
+			this.mergefile = path + "/merge/";
 		}
 		File doc = new File(docfile);
 		File ind = new File(Indexfile);
+		File mer = new File(mergefile);
 		if (!doc.exists()) {
 			doc.mkdir();
 		}
 		if (!ind.exists()) {
 			ind.mkdir();
+		}
+		if (!mer.exists()) {
+			mer.mkdir();
 		}
 	}
 
@@ -163,7 +176,6 @@ public class Property {
 				seeds[i] = (String) obj[i];
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return seeds;
