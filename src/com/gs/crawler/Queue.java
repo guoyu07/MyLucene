@@ -9,7 +9,7 @@ import java.util.LinkedList;
 public class Queue {
 	// 使用链表实现队列
 	private LinkedList queue = new LinkedList();
-	private BloomFilter filter = new BloomFilter(0.1,99999);
+	private BloomFilter filter = new BloomFilter(0.1, 99999);
 
 	// 入队列
 	/**

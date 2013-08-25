@@ -14,7 +14,6 @@ import java.util.List;
 import org.htmlparser.parserapplications.LinkExtractor;
 import org.junit.Test;
 
-
 import com.gs.crawler.BloomFilter;
 import com.gs.crawler.Crawler;
 import com.gs.crawler.OS;
@@ -37,7 +36,6 @@ public class TestGtmlParser {
 		LinkExtractor.main(s);
 	}
 
-
 	@Test
 	public void testString() {
 		System.out.println("<a href=\"http://mail.qq.com\" target=\"_blank\">");
@@ -58,36 +56,54 @@ public class TestGtmlParser {
 
 	}
 
+	@Test
+	public void tsetNewCrawl() {
+		Property p = new Property("http://news.qq.com", 3, 30, OS.Linux,
+				"/home/gaoshen/test", true);
+		Crawler c = new Crawler();
+		c.crawl(p);
+	}
 
-	
 	@Test
-	public void tsetNewCrawl(){
-		Property p = new Property("http://news.qq.com", 3, 30, OS.Linux, "/home/gaoshen/test",true);
+	public void testCrawlInWindows() {
+		@SuppressWarnings("deprecation")
+		Property p = new Property("http://news.qq.com", 3, 30, OS.Windows,
+				"D://Test", true);
 		Crawler c = new Crawler();
 		c.crawl(p);
 	}
-	
+
 	@Test
-	public void testCrawlInWindows(){
-		Property p = new Property("http://news.qq.com", 3, 30, OS.Windows, "D://Test",true);
-		Crawler c = new Crawler();
-		c.crawl(p);
-	}
-	
-	@Test
-	public void testBloom(){
-		BloomFilter b = new BloomFilter(0.1,99999);
-		//b.add("test");
+	public void testBloom() {
+		BloomFilter b = new BloomFilter(0.1, 99999);
+		// b.add("test");
 		System.out.println(b.contains("test"));
 		System.out.println(b.contains("none"));
 	}
-	
+
 	@Test
-	public void testseeds(){
-		String[] seeds={"http://news.qq.com","http://www.sina.com.cn"};
-		Property p = new Property(seeds, 3, 30, OS.Windows, "D://Test",true);
+	public void testseeds() {
+		String[] seeds = { "http://news.qq.com", "http://www.sina.com.cn" };
+		Property p = new Property(seeds, 3, 30, OS.Windows, "D://Test", true);
 		Crawler c = new Crawler();
 		c.crawl(p);
+	}
+
+	@Test
+	public void testseedscrawl() {
+		Property property = new Property(3, 30, OS.Windows, "D://Test", true);
+		Crawler c = new Crawler();
+		c.crawl(property);
+	}
+	
+	@Test
+	public void test1(){
+		String s = null;
+		change(s);
+		System.out.println(s);
+	}
+	public void change(String s){
+		s = "qwdwdqd";
 	}
 
 }

@@ -25,7 +25,8 @@ public class TitleExtractor {
 	private static NodeList list;
 
 	/**
-	 * @param url the url which to be extract the title
+	 * @param url
+	 *            the url which to be extract the title
 	 * @return title
 	 */
 	public static String extractor(String url) {
@@ -34,7 +35,7 @@ public class TitleExtractor {
 		try {
 			parser = new Parser(url);
 			list = parser.extractAllNodesThatMatch(filter);
-			
+
 			for (int i = 0; i < list.size(); i++) {
 				title = sub(list.elementAt(i).toHtml());
 			}
@@ -43,7 +44,7 @@ public class TitleExtractor {
 		}
 		return title;
 	}
-	
+
 	private static String sub(String html) {
 		char[] c = html.toCharArray();
 		if (c.length < 14)

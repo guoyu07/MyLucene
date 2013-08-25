@@ -12,9 +12,10 @@ import org.htmlparser.util.ParserException;
  * @packageName com.gs.extractor
  */
 public class ContentExtractor {
-	
+
 	/**
-	 * @param url which want to be extract the content
+	 * @param url
+	 *            which want to be extract the content
 	 * @return the main content of the webpage
 	 */
 	public static String extractor(String url) {

@@ -31,12 +31,12 @@ public class DownLoader {
 			String title = TitleExtractor.extractor(u.url);
 			String content = ContentExtractor.extractor(u.url);
 			if (make(title, content, path))
-				System.out.println("Down   " + title);
+				System.out.println("Downloading   " + title);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * @param title
 	 *            title of the file
@@ -51,7 +51,7 @@ public class DownLoader {
 			throws IOException {
 		try {
 			File file = new File(path + title + ".htm");
-			if (file.exists()||title == null||title == "")
+			if (file.exists() || title == null || title == "")
 				return false;
 			FileWriter fw = new FileWriter(file);
 			fw.write(content);
@@ -63,8 +63,7 @@ public class DownLoader {
 		} catch (IOException e) {
 			System.out.println("Some IO Error");
 			return false;
-		} 
+		}
 	}
-
 
 }
