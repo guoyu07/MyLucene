@@ -2,6 +2,8 @@ package com.gs.Lucene;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
@@ -16,7 +18,10 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 import org.apache.lucene.document.Document;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.wltea.analyzer.lucene.IKAnalyzer;
+
+import com.gs.DAO.PageDAO;
 
 /**
  * @author GaoShen
@@ -26,6 +31,7 @@ public class Searcher {
 
 	private String indexField = "D:\\Test\\index";
 	private String encoding = "GB2312";
+	private List<String> list;
 
 	/*
 	 * 创建Directory创建IndexReader根据IndexReader创建IndexSearcher创建搜索的Query
@@ -38,9 +44,14 @@ public class Searcher {
 	 *            the indexfile
 	 * @param queryString
 	 *            the queryString
+	 * @return list a list of url
 	 */
-	public void search(String indexField, String queryString) {
+	public List<String> search(String indexField, String queryString) {
 		try {
+			ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
+					"beans.xml");
+			PageDAO pd = (PageDAO) ctx.getBean("pageDAO");
+			list = new LinkedList();
 			this.indexField = indexField;
 			File path = new File(indexField);
 			Directory directory = FSDirectory.open(path);
@@ -54,17 +65,16 @@ public class Searcher {
 			FileUtils fu = new FileUtils();
 			for (ScoreDoc sd : sds) {
 				Document d = seacher.doc(sd.doc);
-				System.out.println("PATH:\n" + d.get("path") + "\n\n"
-						+ "CONTENT:\n");
-				File f = new File(d.get("path"));
-				System.out.println(fu.readFileToString(f, encoding));
-				System.out.println("\n==============");
+				list.add(pd.loadPage(Integer.parseInt(d.get("filename")))
+						.getUrl());
 			}
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		return list;
 	}
 
 }
