@@ -119,6 +119,14 @@ public class TestIO {
 		ContentReader cr = new ContentReader();
 		System.out.println(cr.read(0, "D://Test//merge//merge.txt"));
 	}
+	
+	@Test
+	public void test8(){
+		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
+				"beans.xml");
+		PageDAO pd = (PageDAO) ctx.getBean("pageDAO");
+		pd.clear();
+	}
 }
 
 

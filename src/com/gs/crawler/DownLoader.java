@@ -40,6 +40,7 @@ public class Downloader {
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
 				"beans.xml");
 		dao = (PageDAO) ctx.getBean("pageDAO");
+		dao.clear();
 	}
 	/**
 	 * @param u

@@ -60,5 +60,12 @@ public class PageDAO {
 		} else
 			return false;
 	}*/
+	
+	/**
+	 * <strong>Very Dangerous!<strong>
+	 */
+	public void clear(){
+		hibernateTemplate.getSessionFactory().openSession().createSQLQuery("drop table page").executeUpdate();
+	}
 
 }

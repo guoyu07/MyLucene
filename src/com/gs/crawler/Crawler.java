@@ -58,6 +58,9 @@ public class Crawler {
 			indexer.index(property.Indexfile, property.docfile);
 		}
 		File docfile = new File(property.docfile);
-		docfile.delete();//TODO did not delete
+		for(File f : docfile.listFiles()){
+			f.delete();
+		}
+		docfile.delete();
 	}
 }
