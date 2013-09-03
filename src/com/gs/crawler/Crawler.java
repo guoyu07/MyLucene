@@ -23,11 +23,12 @@ public class Crawler {
 	 * @param property
 	 *            some property of the crawler
 	 */
-	public void crawl(Property property) {
+	public int crawl(Property property) {
 
 		this.deepth = property.deepth;
 		this.topN = property.topN;
 		Downloader downloader = new Downloader(property.docfile,property.mergefile);
+		ConnectionTest tester = new ConnectionTest();
 		Queue q = new Queue();
 		URL starturl = new URL();
 		for (String currentURL : property.seeds) {
@@ -40,6 +41,9 @@ public class Crawler {
 			URL u;
 			while (!q.empty()) {
 				u = q.deQueue();
+				if (!tester.test(u.url, 10000)) { //
+					continue;
+				}
 				if (u.level < deepth) {
 					List<URL> list = MyLinkExtractor.extractor(u, topN);
 					Iterator<URL> iterator = list.iterator();
@@ -52,7 +56,6 @@ public class Crawler {
 				}
 			}
 		}
-		downloader.close();
 		if (property.needsIndex) {
 			Indexer indexer = new Indexer();
 			indexer.index(property.Indexfile, property.docfile);
@@ -62,5 +65,6 @@ public class Crawler {
 			f.delete();
 		}
 		docfile.delete();
+		return downloader.count;
 	}
 }

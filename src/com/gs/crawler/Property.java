@@ -136,15 +136,17 @@ public class Property {
 		this.os = os;
 		this.path = path;
 		this.needsIndex = needsIndex;
-		this.seeds = read(path + "//");
+		
 		if (os == OS.Windows) {
 			this.docfile = path + "//docs//";
 			this.Indexfile = path + "//index//";
 			this.mergefile = path + "//merge//";
+			this.seeds = read(path + "//");
 		} else if (os == OS.Linux) {
 			this.docfile = path + "/docs/";
 			this.Indexfile = path + "/index/";
 			this.mergefile = path + "/merge/";
+			this.seeds = read(path + "/");
 		}
 		File doc = new File(docfile);
 		File ind = new File(Indexfile);

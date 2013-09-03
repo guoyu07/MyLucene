@@ -5,12 +5,17 @@ package com.gs.test;
 
 import static org.junit.Assert.*;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpException;
+import org.apache.commons.httpclient.methods.GetMethod;
 import org.htmlparser.parserapplications.LinkExtractor;
 import org.junit.Test;
 
@@ -91,7 +96,7 @@ public class TestGtmlParser {
 
 	@Test
 	public void testseedscrawl() {
-		Property property = new Property(3, 50, OS.Windows, "D://Test", true);
+		Property property = new Property(2, 10, OS.Windows, "D://Test", true);
 		Crawler c = new Crawler();
 		c.crawl(property);
 	}
@@ -105,5 +110,26 @@ public class TestGtmlParser {
 	public void change(String s){
 		s = "qwdwdqd";
 	}
-
+	
+	@Test
+	public void test2(){
+		HttpClient hc = new HttpClient();
+		GetMethod get = new GetMethod("http://www.hebust.com.cn");
+		try {
+			int code = hc.executeMethod(get);
+			System.out.println("CODE "+code);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		get.releaseConnection();
+		
+	}
+	
+	@Test
+	public void testConnectTest(){
+		ConnectionTest test = new ConnectionTest();
+		System.out.println(test.test("http://news.qq.com",10000));
+		
+	}
 }

@@ -46,10 +46,5 @@ public class ContentWriter {
 		}
 	}
 	
-	/**
-	 * <strong>Must Do It!<strong>
-	 */
-	public void close(){
-		
-	}
+	
 }

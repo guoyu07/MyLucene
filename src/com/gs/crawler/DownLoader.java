@@ -24,7 +24,7 @@ import com.gs.model.Page;
  * @packageName com.gs.MyCrawler
  */
 public class Downloader {
-	private static int count = 0;
+	public static int count = 0;
 	private String path;
 	private ContentWriter cw; 
 	private PageDAO dao;
@@ -40,7 +40,7 @@ public class Downloader {
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
 				"beans.xml");
 		dao = (PageDAO) ctx.getBean("pageDAO");
-		dao.clear();
+		//dao.clear(); Can't do clear like this!
 	}
 	/**
 	 * @param u
@@ -52,6 +52,26 @@ public class Downloader {
 		try {
 			//String title = TitleExtractor.extractor(u.url);
 			String title = String.valueOf(count);
+			/*ContentExtractorThread thread = new ContentExtractorThread();
+			thread.setUrl(u.url);
+			thread.start();
+			int time = 10000;
+			long start = System.currentTimeMillis();
+			int use =0;
+			while(use < time ){
+				long now = System.currentTimeMillis();
+				use = (int) (now - start);
+				if (use%1000 == 0) {
+					System.out.println("USE TIME:" + use);
+				}
+				if(!thread.isAlive()){break;}
+			}
+			if (thread.isAlive()) {
+				thread.stop();
+				return;
+			}
+			thread.join();
+			String content = thread.getResult();*/
 			String content = ContentExtractor.extractor(u.url);
 			cw.write(content);
 			p.setEndoffset(cw.endoffset);
@@ -94,11 +114,6 @@ public class Downloader {
 		}
 	}
 	
-	/**
-	 * <strong>Must Do It!<strong>
-	 */
-	public void close(){
-		cw.close();
-	}
+	
 
 }
