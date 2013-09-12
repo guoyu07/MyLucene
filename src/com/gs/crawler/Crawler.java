@@ -29,7 +29,7 @@ public class Crawler {
 		this.topN = property.topN;
 		Downloader downloader = new Downloader(property.docfile,property.mergefile);
 		ConnectionTest tester = new ConnectionTest(); //It's a tester of url 
-		Queue q = new Queue();
+		FetchQueue q = new FetchQueue();
 		URL starturl = new URL();
 		for (String currentURL : property.seeds) { //currentURL is the initial url which is given by the user
 			if (!q.isQueueEmpty()) {
@@ -37,11 +37,11 @@ public class Crawler {
 			}
 			starturl.level = 1;
 			starturl.url = currentURL;
-			q.enQueue(starturl);
+			q.push(starturl);
 			URL u;
-			while (!q.empty()) { //the cycle of crawl
-				u = q.deQueue();
-				if (!tester.test(u.url, 10000)) { //In order to avoid bad links
+			while (!q.isQueueEmpty()) { //the cycle of crawl
+				u = q.pop();
+				if (!tester.test(u.url, 5000)) { //In order to avoid bad links
 					continue;
 				}
 				if (u.level < deepth) {
@@ -49,7 +49,7 @@ public class Crawler {
 					Iterator<URL> iterator = list.iterator();
 					while (iterator.hasNext()) {
 						if(u.url.length()>220) continue; //In order to avoid data too long exception
-						q.enQueue(iterator.next());
+						q.push(iterator.next());
 					}
 					downloader.down(u);
 				} else {

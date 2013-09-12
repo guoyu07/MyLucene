@@ -19,7 +19,7 @@ import com.gs.io.ContentWriter;
 import com.gs.model.Page;
 
 /**
- * the downloader has a counter of the number of download pages.So only init it once of a crawl.
+ * the downloader has a counter of download pages.So only init it once of a crawl.
  * @author GaoShen
  * @packageName com.gs.MyCrawler
  */
