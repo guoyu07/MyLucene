@@ -21,18 +21,13 @@ public class ContentWriter {
 	private File file;
 	private FileWriter fw;
 	private String path;
-	/**
-	 * @param path
-	 */
-	public ContentWriter(String path){
-		this.path = path;
-	}
+	
 	/**
 	 * @param content
 	 */
-	public void write(String content){
+	public void write(String content,String path){
 		try {
-			file = new File(path+"merge.txt"); 
+			file = new File(path); 
 			fw = new FileWriter(file,true);
 			startoffset = file.length();
 			fw.write(content);

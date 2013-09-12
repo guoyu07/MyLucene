@@ -21,21 +21,22 @@ import com.gs.crawler.Property;
 public class MainCrawler {
 
 	/**
+	 * args[0]=deepth args[1]=topN
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		long start = System.currentTimeMillis();
-		Property p = new Property(100,100,OS.Linux,"/root/Test", true);
+		//Property p = new Property(Integer.valueOf(args[0]),Integer.valueOf(args[1]),OS.Linux,"/root/Test", true);
+		Property p = new Property(3,40,OS.Windows,"D://Test",false);
 		Crawler c = new Crawler();
 		double count = c.crawl(p);
 		double use = (System.currentTimeMillis()-start)/1000;
 		double speed = count/use;
 		String report = "Start time is  "+new Date(start).toLocaleString()+"\nFinish time is  "+new Date(System.currentTimeMillis()).toLocaleString()+"\nTotal use  "+use+"s"+"\nSpeed  "+speed+" pages/s";
 		try {
-			FileUtils.writeStringToFile(new File(p.path+"/report.txt"), report);
+			FileUtils.writeStringToFile(new File(p.path+"//report.txt"), report);
 			System.out.println(report);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

@@ -19,7 +19,7 @@ import com.gs.io.ContentWriter;
 import com.gs.model.Page;
 
 /**
- * <strong>Remember to close!<strong>
+ * the downloader has a counter of the number of download pages.So only init it once of a crawl.
  * @author GaoShen
  * @packageName com.gs.MyCrawler
  */
@@ -29,18 +29,19 @@ public class Downloader {
 	private ContentWriter cw; 
 	private PageDAO dao;
 	private Page p = new Page();
+	private Schedular scheduler;
 	/**
 	 * @param path the file to store docs
 	 * @param mergefile to store merge doc
 	 */
 	public Downloader(String path,String mergefile){
 		this.path = path;
-		cw = new ContentWriter(mergefile);
-		
+		cw = new ContentWriter();
+		scheduler = new Schedular(mergefile);
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
 				"beans.xml");
 		dao = (PageDAO) ctx.getBean("pageDAO");
-		//dao.clear(); Can't do clear like this!
+		//dao.clear(); //Can't clear the database like this!
 	}
 	/**
 	 * @param u
@@ -50,34 +51,16 @@ public class Downloader {
 	 */
 	public void down(URL u) {
 		try {
-			//String title = TitleExtractor.extractor(u.url);
+			//String title = TitleExtractor.extractor(u.url); //the extractor of title
 			String title = String.valueOf(count);
-			/*ContentExtractorThread thread = new ContentExtractorThread();
-			thread.setUrl(u.url);
-			thread.start();
-			int time = 10000;
-			long start = System.currentTimeMillis();
-			int use =0;
-			while(use < time ){
-				long now = System.currentTimeMillis();
-				use = (int) (now - start);
-				if (use%1000 == 0) {
-					System.out.println("USE TIME:" + use);
-				}
-				if(!thread.isAlive()){break;}
-			}
-			if (thread.isAlive()) {
-				thread.stop();
-				return;
-			}
-			thread.join();
-			String content = thread.getResult();*/
 			String content = ContentExtractor.extractor(u.url);
-			cw.write(content);
+			String path = scheduler.getPath();
+			cw.write(content,path);
 			p.setEndoffset(cw.endoffset);
 			p.setId(count);
 			p.setStartoffset(cw.startoffset);
 			p.setUrl(u.url);
+			p.setPath(path);
 			dao.save(p);
 			if (make(title, content))
 				System.out.println("Downloading   " + title);

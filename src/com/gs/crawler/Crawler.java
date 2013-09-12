@@ -28,10 +28,10 @@ public class Crawler {
 		this.deepth = property.deepth;
 		this.topN = property.topN;
 		Downloader downloader = new Downloader(property.docfile,property.mergefile);
-		ConnectionTest tester = new ConnectionTest();
+		ConnectionTest tester = new ConnectionTest(); //It's a tester of url 
 		Queue q = new Queue();
 		URL starturl = new URL();
-		for (String currentURL : property.seeds) {
+		for (String currentURL : property.seeds) { //currentURL is the initial url which is given by the user
 			if (!q.isQueueEmpty()) {
 				q.empty();
 			}
@@ -39,15 +39,16 @@ public class Crawler {
 			starturl.url = currentURL;
 			q.enQueue(starturl);
 			URL u;
-			while (!q.empty()) {
+			while (!q.empty()) { //the cycle of crawl
 				u = q.deQueue();
-				if (!tester.test(u.url, 10000)) { //
+				if (!tester.test(u.url, 10000)) { //In order to avoid bad links
 					continue;
 				}
 				if (u.level < deepth) {
 					List<URL> list = MyLinkExtractor.extractor(u, topN);
 					Iterator<URL> iterator = list.iterator();
 					while (iterator.hasNext()) {
+						if(u.url.length()>220) continue; //In order to avoid data too long exception
 						q.enQueue(iterator.next());
 					}
 					downloader.down(u);
@@ -56,15 +57,15 @@ public class Crawler {
 				}
 			}
 		}
-		if (property.needsIndex) {
+		if (property.needsIndex) { //start index
 			Indexer indexer = new Indexer();
 			indexer.index(property.Indexfile, property.docfile);
 		}
 		File docfile = new File(property.docfile);
-		for(File f : docfile.listFiles()){
+		for(File f : docfile.listFiles()){ //delete the file of docs
 			f.delete();
 		}
-		docfile.delete();
-		return downloader.count;
+		docfile.delete();//delete the docfile directory 
+		return downloader.count; //total pages of down
 	}
 }

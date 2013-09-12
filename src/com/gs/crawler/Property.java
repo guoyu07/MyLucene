@@ -164,7 +164,6 @@ public class Property {
 
 	/**
 	 * get urls from file
-	 * 
 	 * @param path
 	 * @return
 	 */
