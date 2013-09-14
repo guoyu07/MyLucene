@@ -10,7 +10,6 @@ import java.io.IOException;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.gs.DAO.PageDAO;
 import com.gs.model.Page;
 
 /**
@@ -40,12 +39,14 @@ public class ContentReader {
 		}
 		return content;
 	}
-	public String read(int id,String mergepath){
+	public String read(int id,String mergepath){//TODO change to DAO
 		String re = null;
-		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
+		/*ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
 				"beans.xml");
 		PageDAO dao = (PageDAO) ctx.getBean("pageDAO");
-		Page p = dao.loadPage(id);
+		
+		Page p = dao.loadPage(id);*/
+		Page p = null;
 		System.out.println(p);
 		re = read(mergepath,p.getStartoffset(),p.getEndoffset());
 		return re;

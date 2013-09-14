@@ -1,4 +1,4 @@
-package com.gs.DAO;
+package com.gs.utils;
 
 import java.util.List;
 
@@ -18,9 +18,6 @@ public class PageDAO {
 
 	private HibernateTemplate hibernateTemplate;
 
-	public void delete(Page p) {
-		hibernateTemplate.delete(p);
-	}
 
 	public HibernateTemplate getHibernateTemplate() {
 		return hibernateTemplate;
@@ -41,25 +38,8 @@ public class PageDAO {
 		this.hibernateTemplate = hibernateTemplate;
 	}
 
-	public List<Page> search(String url) {
-		return (List<Page>) this.hibernateTemplate.find(
-				"from Page p where p.url=?", url);
-	}
 
 
-	/*public boolean checkElecWithDate(int date) {
-		Session s = hibernateTemplate.getSessionFactory().openSession();
-		s.beginTransaction();
-		long count = (Long) s
-				.createQuery(
-						"select count(*) from Elec elec where date = :date")
-				.setInteger("date", date).uniqueResult();
-		s.getTransaction().commit();
-		if (count > 0) {
-			return true;
-		} else
-			return false;
-	}*/
 	
 	/**
 	 * <strong>Very Dangerous!<strong>

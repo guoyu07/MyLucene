@@ -27,7 +27,7 @@ public class MainCrawler {
 	public static void main(String[] args) {
 		long start = System.currentTimeMillis();
 		//Property p = new Property(Integer.valueOf(args[0]),Integer.valueOf(args[1]),OS.Linux,"/root/Test", true);
-		Property p = new Property(3,40,OS.Windows,"D://Test",false);
+		Property p = new Property(5,50,OS.Windows,"D://Test",false);
 		Crawler c = new Crawler();
 		double count = c.crawl(p);
 		double use = (System.currentTimeMillis()-start)/1000;

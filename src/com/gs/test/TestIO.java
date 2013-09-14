@@ -14,7 +14,6 @@ import java.io.IOException;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.gs.DAO.PageDAO;
 import com.gs.io.ContentReader;
 import com.gs.io.ContentWriter;
 import com.gs.model.Page;
@@ -102,17 +101,6 @@ public class TestIO {
 		System.out.println(s.hashCode());
 	}
 	
-	@Test
-	public void test6(){
-		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
-				"beans.xml");
-		PageDAO pd = (PageDAO) ctx.getBean("pageDAO");
-		Page p = new Page();
-		p.setEndoffset(123);
-		p.setStartoffset(21313);
-		p.setUrl("adaad");
-		pd.save(p);
-	}
 	
 	@Test
 	public void test7(){
@@ -120,13 +108,7 @@ public class TestIO {
 		System.out.println(cr.read(0, "D://Test//merge//merge.txt"));
 	}
 	
-	@Test
-	public void test8(){
-		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
-				"beans.xml");
-		PageDAO pd = (PageDAO) ctx.getBean("pageDAO");
-		pd.clear();
-	}
+	
 }
 
 

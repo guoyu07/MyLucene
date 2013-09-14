@@ -8,5 +8,5 @@ package com.gs.downloader;
  * @packageName com.gs.downloader
  */
 public enum Status {
-	Proceeding,Done
+	Proceeding,Finished
 }

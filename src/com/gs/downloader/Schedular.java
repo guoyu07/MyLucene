@@ -13,7 +13,7 @@ import java.io.IOException;
 public class Schedular {
 	private String path;
 	private int count = 0;
-	private int limit = 104857600; // 100m
+	private int limit = 10485760; // 10m
 
 	/**
 	 * @param mergefile

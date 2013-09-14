@@ -42,4 +42,12 @@ public class Queue {
 	public void empty() {
 		queue.clear();
 	}
+	
+	public void remove(Object obj){
+		queue.remove(obj);
+	}
+	
+	public int size(){
+		return queue.size();
+	}
 }

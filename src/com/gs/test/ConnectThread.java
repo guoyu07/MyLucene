@@ -22,7 +22,6 @@ public class ConnectThread extends Thread{
 			int code = hc.executeMethod(get);
 			System.out.println("CODE "+code);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		get.releaseConnection();

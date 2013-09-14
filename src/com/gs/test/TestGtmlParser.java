@@ -96,7 +96,7 @@ public class TestGtmlParser {
 
 	@Test
 	public void testseedscrawl() {
-		Property property = new Property(3, 40, OS.Windows, "D://Test", false);
+		Property property = new Property(4, 50, OS.Windows, "D://Test", false);
 		Crawler c = new Crawler();
 		c.crawl(property);
 	}
@@ -119,7 +119,6 @@ public class TestGtmlParser {
 			int code = hc.executeMethod(get);
 			System.out.println("CODE "+code);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		get.releaseConnection();

@@ -32,7 +32,6 @@ public class ConnectThread extends Thread {
 				error = true;
 			System.out.println("CODE " + code);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		get.releaseConnection();

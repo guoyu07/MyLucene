@@ -21,7 +21,7 @@ import org.apache.lucene.document.Document;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.wltea.analyzer.lucene.IKAnalyzer;
 
-import com.gs.DAO.PageDAO;
+import com.gs.DAO.DAO;
 
 /**
  * @author GaoShen
@@ -50,7 +50,8 @@ public class Searcher {
 		try {
 			ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
 					"beans.xml");
-			PageDAO pd = (PageDAO) ctx.getBean("pageDAO");
+			/*PageDAO pd = (PageDAO) ctx.getBean("pageDAO");*/
+			DAO pd;//TODO change
 			list = new LinkedList();
 			this.indexField = indexField;
 			File path = new File(indexField);
@@ -65,8 +66,8 @@ public class Searcher {
 			FileUtils fu = new FileUtils();
 			for (ScoreDoc sd : sds) {
 				Document d = seacher.doc(sd.doc);
-				list.add(pd.loadPage(Integer.parseInt(d.get("filename")))
-						.getUrl());
+				/*list.add(pd.loadPage(Integer.parseInt(d.get("filename")))
+						.getUrl());*///TODO change to DAO
 			}
 
 		} catch (IOException e) {

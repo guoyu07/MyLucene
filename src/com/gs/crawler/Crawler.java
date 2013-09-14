@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.gs.Lucene.Indexer;
+import com.gs.downloader.DownloadManager;
 import com.gs.extractor.MyLinkExtractor;
 
 /**
@@ -27,10 +28,11 @@ public class Crawler {
 
 		this.deepth = property.deepth;
 		this.topN = property.topN;
-		Downloader downloader = new Downloader(property.docfile,property.mergefile);
 		ConnectionTest tester = new ConnectionTest(); //It's a tester of url 
+		DownloadManager downloadmanager = new DownloadManager(property.docfile,property.mergefile);
 		FetchQueue q = new FetchQueue();
 		URL starturl = new URL();
+		downloadmanager.start();
 		for (String currentURL : property.seeds) { //currentURL is the initial url which is given by the user
 			if (!q.isQueueEmpty()) {
 				q.empty();
@@ -51,21 +53,32 @@ public class Crawler {
 						if(u.url.length()>220) continue; //In order to avoid data too long exception
 						q.push(iterator.next());
 					}
-					downloader.down(u);
+					downloadmanager.add(u.url);
 				} else {
-					downloader.down(u);
+					downloadmanager.add(u.url);
 				}
 			}
 		}
+		downloadmanager.setFetchAllDone(true);
 		if (property.needsIndex) { //start index
 			Indexer indexer = new Indexer();
 			indexer.index(property.Indexfile, property.docfile);
 		}
-		File docfile = new File(property.docfile);
+		/*File docfile = new File(property.docfile);
 		for(File f : docfile.listFiles()){ //delete the file of docs
 			f.delete();
 		}
 		docfile.delete();//delete the docfile directory 
-		return downloader.count; //total pages of down
+*/		if(downloadmanager.isAlive()){
+				System.out.println("Download have not been done.        Wait!");
+				try {
+					Thread.sleep(60000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+		}
+		System.out.println("Proceeding Downloader : "+downloadmanager.proceedingNum());
+		
+		return downloadmanager.count; //total pages of down
 	}
 }

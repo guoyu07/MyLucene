@@ -9,8 +9,6 @@ import com.gs.utils.Queue;
  * @packageName com.gs.crawler
  */
 public class FetchQueue extends Queue{
-	// 使用链表实现队列
-	private LinkedList queue = new LinkedList();
 	private BloomFilter filter = new BloomFilter(0.1, 99999);
 
 	// 入队列
@@ -21,7 +19,7 @@ public class FetchQueue extends Queue{
 	public boolean push(URL url) {
 		if (!filter.contains(url.url)) {
 			filter.add(url.url);
-			queue.addLast(url);
+			super.push(url);
 			return true;
 		} else {
 			return false;
@@ -34,7 +32,7 @@ public class FetchQueue extends Queue{
 	 * @return the url on the top of the queue
 	 */
 	public URL pop() {
-		return (URL) queue.removeFirst();
+		return (URL) super.pop();
 	}
 
 }

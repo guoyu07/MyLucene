@@ -10,8 +10,7 @@ import java.io.IOException;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.gs.DAO.PageDAO;
-import com.gs.crawler.Schedular;
+import com.gs.DAO.DAO;
 import com.gs.extractor.ContentExtractor;
 import com.gs.io.ContentWriter;
 import com.gs.model.Page;
@@ -22,18 +21,17 @@ import com.gs.model.Page;
  */
 public class Downloader {
 	private ContentWriter cw;
-	private PageDAO dao;
+	private DAO dao = new DAO();
 	private Page p = new Page();
 	private String path;
 	private Status status;
+	private DownloaderFactory factory;
 
-	public Downloader(String path, String mergefile) {
+	public Downloader(String docpath, String mergefile,DownloaderFactory factory) {
+		
 		cw = new ContentWriter();
-		this.path = path;
-		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
-				"beans.xml");
-		dao = (PageDAO) ctx.getBean("pageDAO");
-		// dao.clear(); //Can't clear the database like this!
+		this.factory = factory;
+		this.path = docpath;
 	}
 
 	/**
@@ -60,7 +58,14 @@ public class Downloader {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		this.status = Status.Done;
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.status = Status.Finished;
+		report2Factory();
 		return true;
 	}
 
@@ -73,7 +78,7 @@ public class Downloader {
 
 	private boolean make(String title, String content) throws IOException {
 		try {
-			File file = new File(path + "//"+title);
+			File file = new File(path + "//" + title);
 			FileWriter fw = new FileWriter(file);
 			fw.write(content);
 			fw.close();
@@ -85,6 +90,36 @@ public class Downloader {
 			System.out.println("Some IO Error");
 			return false;
 		}
+	}
+
+	/**
+	 * @param proceeding
+	 */
+	private void setStatus(Status status) {
+		this.status = status;
+	}
+	
+	private void report2Factory(){
+		factory.releaseDownloader(this);
+	}
+	public void test(){
+		this.status = Status.Proceeding;
+		System.out.println("Downloading");
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Done");
+		this.status = Status.Finished;
+		report2Factory();
+	}
+
+	/**
+	 * @param conf
+	 */
+	public void down(DownConf conf) {
+		down(conf.url, conf.path, conf.count);
 	}
 
 }
