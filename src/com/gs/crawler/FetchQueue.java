@@ -2,6 +2,8 @@ package com.gs.crawler;
 
 import java.util.LinkedList;
 
+import org.apache.log4j.Logger;
+
 import com.gs.utils.Queue;
 
 /**
@@ -9,6 +11,7 @@ import com.gs.utils.Queue;
  * @packageName com.gs.crawler
  */
 public class FetchQueue extends Queue{
+	private Logger logger = Logger.getLogger(this.getClass());
 	private BloomFilter filter = new BloomFilter(0.1, 99999);
 
 	// »Î∂”¡–
@@ -19,6 +22,7 @@ public class FetchQueue extends Queue{
 	public boolean push(URL url) {
 		if (!filter.contains(url.url)) {
 			filter.add(url.url);
+			logger.debug("Already fetched! URL "+url.url);
 			super.push(url);
 			return true;
 		} else {

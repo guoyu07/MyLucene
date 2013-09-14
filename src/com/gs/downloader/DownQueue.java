@@ -3,13 +3,17 @@
  */
 package com.gs.downloader;
 
+import org.apache.log4j.Logger;
+
 import com.gs.utils.Queue;
 
 /**
+ * the url which to be down
  * @author GaoShen
  * @packageName com.gs.downloader
  */
 public class DownQueue extends Queue {
+	private Logger logger = Logger.getLogger(this.getClass());
 
 	/*
 	 * (non-Javadoc)

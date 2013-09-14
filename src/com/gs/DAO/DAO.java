@@ -6,9 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.apache.log4j.Logger;
+
 import com.gs.model.Page;
 
 public class DAO {
+	private Logger logger = Logger.getLogger(this.getClass());
 	// 创建静态全局变量
 	static Connection conn;//TODO 复用commect
 
@@ -37,17 +40,18 @@ public class DAO {
 
 			int count = st.executeUpdate(sql); // 执行插入操作的sql语句，并返回插入数据的个数
 
-			System.out.println("向staff表中插入 " + count + " 条数据"); // 输出插入操作的处理结果
+			logger.info("向page表中插入 " + count + " 条数据"); // 输出插入操作的处理结果
 
 			conn.close(); // 关闭数据库连接
 
 		} catch (SQLException e) {
-			System.out.println("插入数据失败" + e.getMessage());
+			logger.error("插入数据失败" + e.getMessage());
+			logger.error(e.getMessage());
 		}
 	}
 
 	/* 查询数据库，输出符合要求的记录的情况 */
-	public static void query() {
+	public  void query() {
 
 		conn = getConnection(); // 同样先要获取连接，即连接到数据库
 		try {
@@ -75,12 +79,13 @@ public class DAO {
 			conn.close(); // 关闭数据库连接
 
 		} catch (SQLException e) {
-			System.out.println("查询数据失败");
+			logger.error("查询数据失败");
+			logger.error(e.getMessage());
 		}
 	}
 
 	/* 获取数据库连接的函数 */
-	public static Connection getConnection() {
+	public  Connection getConnection() {
 		Connection con = null; // 创建用于连接数据库的Connection对象
 		try {
 			Class.forName("com.mysql.jdbc.Driver");// 加载Mysql数据驱动
@@ -89,7 +94,7 @@ public class DAO {
 					"jdbc:mysql://localhost:3306/page", "root", "940409");// 创建数据连接
 
 		} catch (Exception e) {
-			System.out.println("数据库连接失败" + e.getMessage());
+			logger.fatal("数据库连接失败" + e.getMessage());
 		}
 		return con; // 返回所建立的数据库连接
 	}
@@ -105,7 +110,7 @@ public class DAO {
 			conn.close(); // 关闭数据库连接
 
 		} catch (SQLException e) {
-			System.out.println("建表失败" + e.getMessage());
+			logger.fatal("建表失败" + e.getMessage());
 		}
 	}
 }

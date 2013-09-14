@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.gs.Lucene.Indexer;
 import com.gs.downloader.DownloadManager;
 import com.gs.extractor.MyLinkExtractor;
@@ -15,6 +17,7 @@ import com.gs.extractor.MyLinkExtractor;
 public class Crawler {
 	private int deepth = 3;
 	private int topN = 2;
+	private Logger logger = Logger.getLogger(this.getClass());
 
 	/**
 	 * default deepth is 3 and the topN is 2<br>
@@ -25,7 +28,7 @@ public class Crawler {
 	 *            some property of the crawler
 	 */
 	public int crawl(Property property) {
-
+		logger.info("Crawler Start");
 		this.deepth = property.deepth;
 		this.topN = property.topN;
 		ConnectionTest tester = new ConnectionTest(); //It's a tester of url 
@@ -70,14 +73,16 @@ public class Crawler {
 		}
 		docfile.delete();//delete the docfile directory 
 */		if(downloadmanager.isAlive()){
-				System.out.println("Download have not been done.        Wait!");
-				try {
-					Thread.sleep(60000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+				logger.info("Download have not been done.        Wait!");
+				while (downloadmanager.isAlive()) {
+					try {
+						Thread.sleep(5000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
 		}
-		System.out.println("Proceeding Downloader : "+downloadmanager.proceedingNum());
+		logger.info("Proceeding Downloader : "+downloadmanager.proceedingNum());
 		
 		return downloadmanager.count; //total pages of down
 	}

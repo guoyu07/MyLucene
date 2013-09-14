@@ -6,6 +6,7 @@ package com.gs.extractor;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.htmlparser.NodeFilter;
 import org.htmlparser.Parser;
 import org.htmlparser.filters.NodeClassFilter;
@@ -20,6 +21,7 @@ import org.htmlparser.util.ParserException;
  */
 @Deprecated
 public class TitleExtractor {
+	private Logger logger = Logger.getLogger(this.getClass());
 	private String url;
 	private static Parser parser;
 	private static NodeFilter filter;

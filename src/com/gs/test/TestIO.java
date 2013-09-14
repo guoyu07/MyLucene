@@ -108,7 +108,6 @@ public class TestIO {
 		System.out.println(cr.read(0, "D://Test//merge//merge.txt"));
 	}
 	
-	
 }
 
 

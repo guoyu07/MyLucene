@@ -4,12 +4,14 @@ import java.io.File;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
 
 /**
  * @author gaoshen
  * @package com.gs.crawler
  */
 public class Property {
+	private Logger logger = Logger.getLogger(this.getClass());
 	public String url;
 	public int deepth;
 	public int topN;

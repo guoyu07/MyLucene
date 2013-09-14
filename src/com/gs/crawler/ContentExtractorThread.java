@@ -3,6 +3,7 @@
  */
 package com.gs.crawler;
 
+import org.apache.log4j.Logger;
 import org.htmlparser.parserapplications.StringExtractor;
 import org.htmlparser.util.ParserException;
 
@@ -11,6 +12,7 @@ import org.htmlparser.util.ParserException;
  * @packageName com.gs.crawler
  */
 public class ContentExtractorThread extends Thread {
+	private Logger logger = Logger.getLogger(this.getClass());
 	private String url;
 	private String result = null;
 	public void run(){
@@ -23,6 +25,7 @@ public class ContentExtractorThread extends Thread {
 			re = se.extractStrings(links);
 		} catch (ParserException e) {
 			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 		result = re;
 	}

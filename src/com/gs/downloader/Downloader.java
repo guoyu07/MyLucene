@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.gs.DAO.DAO;
@@ -20,13 +21,19 @@ import com.gs.model.Page;
  * @packageName com.gs.downloader
  */
 public class Downloader {
+	private Logger logger = Logger.getLogger(this.getClass());
 	private ContentWriter cw;
 	private DAO dao = new DAO();
 	private Page p = new Page();
 	private String path;
-	private Status status;
+	private Status status; // the status of this downloader
 	private DownloaderFactory factory;
 
+	/**
+	 * @param docpath
+	 * @param mergefile
+	 * @param factory a connect to factory
+	 */
 	public Downloader(String docpath, String mergefile,DownloaderFactory factory) {
 		
 		cw = new ContentWriter();
@@ -37,7 +44,7 @@ public class Downloader {
 	/**
 	 * @param pop
 	 * @param path
-	 * @param count
+	 * @param count given by factory
 	 */
 	public boolean down(String url, String path, int count) {
 		try {
@@ -46,26 +53,26 @@ public class Downloader {
 			this.status = Status.Proceeding;
 			String title = String.valueOf(count);
 			String content = ContentExtractor.extractor(url);
-			cw.write(content, path);
+			cw.write(content, path); //merge
 			p.setEndoffset(cw.endoffset);
 			p.setId(count);
 			p.setStartoffset(cw.startoffset);
 			p.setUrl(url);
 			p.setPath(path);
 			dao.save(p);
-			if (make(title, content))
-				System.out.println("Downloading   " + title);
+			if (make(title, content)) //make docs
+				logger.info("Downloading   " + title);
 		} catch (IOException e) {
 			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
-		try {
+		/*try {
 			Thread.sleep(10000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/ //TODO what is it!?
 		this.status = Status.Finished;
-		report2Factory();
+		recycle();
 		return true;
 	}
 
@@ -76,6 +83,13 @@ public class Downloader {
 		return status;
 	}
 
+	/**
+	 * make docs
+	 * @param title
+	 * @param content
+	 * @return
+	 * @throws IOException
+	 */
 	private boolean make(String title, String content) throws IOException {
 		try {
 			File file = new File(path + "//" + title);
@@ -84,10 +98,12 @@ public class Downloader {
 			fw.close();
 			return true;
 		} catch (FileNotFoundException e) {
-			System.out.println("Some Error with the title");
+			logger.error("Some Error with the title");
+			logger.error(e.getMessage());
 			return false;
 		} catch (IOException e) {
-			System.out.println("Some IO Error");
+			logger.error("Some IO Error");
+			logger.error(e.getMessage());
 			return false;
 		}
 	}
@@ -99,26 +115,17 @@ public class Downloader {
 		this.status = status;
 	}
 	
-	private void report2Factory(){
+	/**
+	 * tell the factory to move this downloader into freequeue
+	 */
+	private void recycle(){
 		factory.releaseDownloader(this);
-	}
-	public void test(){
-		this.status = Status.Proceeding;
-		System.out.println("Downloading");
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		System.out.println("Done");
-		this.status = Status.Finished;
-		report2Factory();
 	}
 
 	/**
 	 * @param conf
 	 */
-	public void down(DownConf conf) {
+	public void down(DownConf conf) { //for dwon thread
 		down(conf.url, conf.path, conf.count);
 	}
 

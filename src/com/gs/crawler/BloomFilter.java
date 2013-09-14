@@ -22,6 +22,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.BitSet;
 import java.util.Collection;
 
+import org.apache.log4j.Logger;
+
 /**
  * Implementation of a Bloom-filter, as described here:
  * http://en.wikipedia.org/wiki/Bloom_filter
@@ -49,7 +51,7 @@ public class BloomFilter<E> implements Serializable {
 	private int numberOfAddedElements; // number of elements actually added to
 										// the Bloom filter
 	private int k; // number of hash functions
-
+	private Logger logger = Logger.getLogger(this.getClass());
 	static final Charset charset = Charset.forName("UTF-8"); // encoding used
 																// for storing
 																// hash values

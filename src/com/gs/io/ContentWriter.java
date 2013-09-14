@@ -10,12 +10,15 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
+
 /**
  * <strong>Remember to close!<strong>
  * @author GaoShen
  * @packageName com.gs.io
  */
 public class ContentWriter {
+	private Logger logger = Logger.getLogger(this.getClass());
 	public long startoffset;
 	public long endoffset;
 	private File file;

@@ -3,11 +3,14 @@
  */
 package com.gs.crawler;
 
+import org.apache.log4j.Logger;
+
 /**
  * @author GaoShen
  * @packageName com.gs.test
  */
 public class ConnectionTest {
+	private Logger logger = Logger.getLogger(this.getClass());
 	/**
 	 * @param url
 	 *            the url to be tested
@@ -31,7 +34,7 @@ public class ConnectionTest {
 				} // if the connect is good then stop the timer
 				if (thread.isError()) {
 					thread.stop();
-					System.out.println("Not 200! Bad Connection");
+					logger.error("Not 200! Bad Connection");
 					thread.releaseConnection(); // release the connection
 					return false;
 				}
@@ -39,7 +42,7 @@ public class ConnectionTest {
 			if (thread.isAlive()) {// if the connect is timeout stop the thread
 									// and give the information
 				thread.stop();
-				System.out.println("Interrupted! Bad Connection");
+				logger.error("Interrupted! Bad Connection");
 				thread.releaseConnection(); // release the connection
 				return false;
 			}
@@ -47,6 +50,7 @@ public class ConnectionTest {
 
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 		return true;
 	}

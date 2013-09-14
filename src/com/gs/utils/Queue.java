@@ -2,12 +2,15 @@ package com.gs.utils;
 
 import java.util.LinkedList;
 
+import org.apache.log4j.Logger;
+
 /**
  * @author GaoShen
  * @packageName com.gs.crawler
  */
 public class Queue {
 	// 使用链表实现队列
+	private Logger logger = Logger.getLogger(this.getClass());
 	private LinkedList queue = new LinkedList();
 
 	// 入队列

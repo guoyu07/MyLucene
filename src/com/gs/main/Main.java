@@ -5,6 +5,8 @@ package com.gs.main;
 
 import java.util.Date;
 
+import org.apache.log4j.Logger;
+
 import com.gs.crawler.Crawler;
 import com.gs.crawler.OS;
 import com.gs.crawler.Property;
@@ -14,7 +16,7 @@ import com.gs.crawler.Property;
  * @packageName com.gs.main
  */
 public class Main {
-
+	private Logger logger = Logger.getLogger(this.getClass());
 	/**
 	 * @param args
 	 */

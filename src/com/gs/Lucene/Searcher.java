@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.queryParser.ParseException;
@@ -28,7 +29,7 @@ import com.gs.DAO.DAO;
  * @packageName com.gs.Lucene
  */
 public class Searcher {
-
+	private Logger logger = Logger.getLogger(this.getClass());
 	private String indexField = "D:\\Test\\index";
 	private String encoding = "GB2312";
 	private List<String> list;

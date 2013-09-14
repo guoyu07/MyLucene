@@ -7,6 +7,7 @@ import java.net.ConnectException;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.htmlparser.NodeFilter;
 import org.htmlparser.Parser;
 import org.htmlparser.filters.NodeClassFilter;
@@ -23,6 +24,7 @@ import com.gs.crawler.URL;
  * @packageName com.gs.extractor
  */
 public class MyLinkExtractor {
+	private static Logger logger = Logger.getLogger(MyLinkExtractor.class);
 
 	String url;
 	static Parser parser;
@@ -57,9 +59,9 @@ public class MyLinkExtractor {
 					break;
 			}
 		} catch (EncodingChangeException e) {
-			System.out.println("Encoding Error!");
+			logger.error("Encoding Error!");
 		} catch (ParserException e) {
-			System.out.println("Some Error");
+			logger.error("Some Error");
 		}
 		return urls;
 	}

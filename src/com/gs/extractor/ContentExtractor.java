@@ -3,6 +3,7 @@
  */
 package com.gs.extractor;
 
+import org.apache.log4j.Logger;
 import org.htmlparser.beans.StringBean;
 import org.htmlparser.parserapplications.StringExtractor;
 import org.htmlparser.util.ParserException;
@@ -12,6 +13,7 @@ import org.htmlparser.util.ParserException;
  * @packageName com.gs.extractor
  */
 public class ContentExtractor {
+	private static Logger logger = Logger.getLogger(ContentExtractor.class);
 
 	/**
 	 * @param url
@@ -28,6 +30,7 @@ public class ContentExtractor {
 			re = se.extractStrings(links);
 		} catch (ParserException e) {
 			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 		return re;
 	}

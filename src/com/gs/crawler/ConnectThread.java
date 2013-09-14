@@ -7,12 +7,14 @@ import java.io.IOException;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.log4j.Logger;
 
 /**
  * @author GaoShen
  * @packageName com.gs.test
  */
 public class ConnectThread extends Thread {
+	private Logger logger = Logger.getLogger(this.getClass());
 	private String url;
 	public int code;
 	private GetMethod get;
@@ -30,9 +32,10 @@ public class ConnectThread extends Thread {
 			this.code = hc.executeMethod(get);
 			if (code != 200)
 				error = true;
-			System.out.println("CODE " + code);
+			logger.info("CODE " + code);
 		} catch (IOException e) {
 			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 		get.releaseConnection();
 	}
