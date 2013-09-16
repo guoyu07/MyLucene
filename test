@@ -1,903 +1,913 @@
+INFO - Deepth : 4
+TopN : 50
+OS : Linux
+Path : D://Test
+NeedsIndex : false
 INFO - Crawler Start
+INFO - Deepth : 4
+TopN : 50
+OS : Linux
+Path : D://Test
+NeedsIndex : false
 INFO - CODE 200
 INFO - ===========A new downloader is initialed!=============
+INFO - CODE 200
 INFO - Total initial : 1
 Free Downloader : 0
 Proceeding Downloader : 1
-INFO - CODE 200
-INFO - 向page表中插入 1 条数据
-INFO - Downloading   1
-INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 1
-Free Downloader : 0
-Proceeding Downloader : 1
-INFO - 向page表中插入 1 条数据
-INFO - Downloading   2
-INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - CODE 200
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 1
-Free Downloader : 0
-Proceeding Downloader : 1
-INFO - 向page表中插入 1 条数据
-INFO - Downloading   3
-INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - CODE 200
-ERROR - Encoding Error!
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 1
-Free Downloader : 0
-Proceeding Downloader : 1
-INFO - CODE 200
-INFO - 向page表中插入 1 条数据
-INFO - Downloading   4
-INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 1
-Free Downloader : 0
-Proceeding Downloader : 1
-INFO - CODE 200
 INFO - ===========A new downloader is initialed!=============
 INFO - Total initial : 2
 Free Downloader : 0
 Proceeding Downloader : 2
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
-INFO - ===========A new downloader is initialed!=============
-INFO - Total initial : 3
-Free Downloader : 0
-Proceeding Downloader : 3
+INFO - Downloading   1
+INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - 向page表中插入 1 条数据
-INFO - Downloading   6
+INFO - Downloading   2
+INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 2
+Free Downloader : 1
+Proceeding Downloader : 1
+INFO - CODE 200
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 2
+Free Downloader : 0
+Proceeding Downloader : 2
+INFO - CODE 200
+INFO - 向page表中插入 1 条数据
+INFO - Downloading   3
+INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - 向page表中插入 1 条数据
+INFO - Downloading   4
+INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 2
+Free Downloader : 1
+Proceeding Downloader : 1
+INFO - CODE 200
+INFO - 向page表中插入 1 条数据
 INFO - Downloading   5
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 2
+Free Downloader : 1
+Proceeding Downloader : 1
 INFO - CODE 200
+INFO - 向page表中插入 1 条数据
+INFO - Downloading   6
+INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 2
+Free Downloader : 1
+Proceeding Downloader : 1
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   7
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 3
-Free Downloader : 2
+INFO - Total initial : 2
+Free Downloader : 1
 Proceeding Downloader : 1
+INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   8
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-ERROR - http
-ERROR - Some Error
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 3
-Free Downloader : 2
+INFO - Total initial : 2
+Free Downloader : 1
 Proceeding Downloader : 1
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   9
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+ERROR - Encoding Error!
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 3
-Free Downloader : 2
+INFO - Total initial : 2
+Free Downloader : 1
 Proceeding Downloader : 1
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   10
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 3
-Free Downloader : 2
+INFO - Total initial : 2
+Free Downloader : 1
 Proceeding Downloader : 1
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   11
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 3
-Free Downloader : 2
+INFO - Total initial : 2
+Free Downloader : 1
 Proceeding Downloader : 1
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   12
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 3
-Free Downloader : 2
+INFO - Total initial : 2
+Free Downloader : 1
 Proceeding Downloader : 1
-INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   13
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 3
-Free Downloader : 2
+INFO - Total initial : 2
+Free Downloader : 1
 Proceeding Downloader : 1
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   14
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 3
-Free Downloader : 2
+INFO - Total initial : 2
+Free Downloader : 1
 Proceeding Downloader : 1
-INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   15
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 3
-Free Downloader : 2
-Proceeding Downloader : 1
 INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 3
+INFO - Total initial : 2
 Free Downloader : 1
-Proceeding Downloader : 2
-INFO - CODE 200
+Proceeding Downloader : 1
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   16
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 3
+INFO - Total initial : 2
 Free Downloader : 1
-Proceeding Downloader : 2
-INFO - CODE 200
-INFO - -----------Use Old Downloader!-------------
-INFO - 向page表中插入 1 条数据
-INFO - CODE 200
-INFO - Total initial : 3
-Free Downloader : 0
-Proceeding Downloader : 3
-INFO - ===========A new downloader is initialed!=============
-INFO - Total initial : 4
-Free Downloader : 0
-Proceeding Downloader : 4
-INFO - CODE 200
+Proceeding Downloader : 1
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   17
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 4
-Free Downloader : 0
-Proceeding Downloader : 4
 INFO - CODE 200
-INFO - 向page表中插入 1 条数据
-INFO - ===========A new downloader is initialed!=============
-INFO - Total initial : 5
-Free Downloader : 0
-Proceeding Downloader : 5
-INFO - 向page表中插入 1 条数据
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 2
+Free Downloader : 1
+Proceeding Downloader : 1
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   18
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - Downloading   21
-INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - Downloading   20
-INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - CODE 200
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 2
+Free Downloader : 1
+Proceeding Downloader : 1
+INFO - CODE 200
+INFO - 向page表中插入 1 条数据
 INFO - Downloading   19
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 2
+Free Downloader : 1
+Proceeding Downloader : 1
+INFO - 向page表中插入 1 条数据
+INFO - Downloading   20
+INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - CODE 200
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 2
+Free Downloader : 1
+Proceeding Downloader : 1
+INFO - CODE 200
+INFO - 向page表中插入 1 条数据
+INFO - Downloading   21
+INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 2
+Free Downloader : 1
+Proceeding Downloader : 1
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   22
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
+INFO - Total initial : 2
+Free Downloader : 1
 Proceeding Downloader : 1
 INFO - CODE 200
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   23
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 2
+Free Downloader : 1
+Proceeding Downloader : 1
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   24
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
+INFO - Total initial : 2
+Free Downloader : 1
 Proceeding Downloader : 1
-INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   25
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
-Proceeding Downloader : 1
+INFO - CODE 404
+ERROR - Not 200! Bad Connection
 INFO - CODE 200
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 2
+Free Downloader : 1
+Proceeding Downloader : 1
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   26
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
-Proceeding Downloader : 1
 INFO - CODE 200
-INFO - 向page表中插入 1 条数据
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
+INFO - Total initial : 2
+Free Downloader : 1
+Proceeding Downloader : 1
+INFO - 向page表中插入 1 条数据
 INFO - Downloading   27
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - CODE 200
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 2
+Free Downloader : 1
+Proceeding Downloader : 1
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   28
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
+INFO - Total initial : 2
+Free Downloader : 1
 Proceeding Downloader : 1
 INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
+INFO - Total initial : 2
+Free Downloader : 0
 Proceeding Downloader : 2
+INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   29
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
+INFO - Total initial : 2
+Free Downloader : 0
 Proceeding Downloader : 2
-INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   30
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   31
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
+INFO - Total initial : 2
+Free Downloader : 1
 Proceeding Downloader : 1
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   32
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
+INFO - Total initial : 2
+Free Downloader : 1
 Proceeding Downloader : 1
-INFO - CODE 200
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   33
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 2
+Free Downloader : 1
+Proceeding Downloader : 1
+INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   34
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
+INFO - Total initial : 2
+Free Downloader : 1
 Proceeding Downloader : 1
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   35
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
+INFO - Total initial : 2
+Free Downloader : 1
 Proceeding Downloader : 1
+INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   36
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
+INFO - Total initial : 2
+Free Downloader : 1
 Proceeding Downloader : 1
 INFO - CODE 200
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   37
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 2
+Free Downloader : 1
+Proceeding Downloader : 1
+INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   38
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
+INFO - Total initial : 2
+Free Downloader : 1
 Proceeding Downloader : 1
+INFO - CODE 200
 INFO - 向page表中插入 1 条数据
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 2
+Free Downloader : 0
+Proceeding Downloader : 2
 INFO - Downloading   39
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
-Proceeding Downloader : 1
+INFO - Total initial : 2
+Free Downloader : 0
+Proceeding Downloader : 2
+INFO - CODE 200
 INFO - 向page表中插入 1 条数据
+ERROR - Encoding Error!
+INFO - ===========A new downloader is initialed!=============
 INFO - Downloading   40
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - CODE 200
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
-Proceeding Downloader : 1
-INFO - CODE 200
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   41
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - CODE 200
+INFO - Total initial : 3
+Free Downloader : 2
+Proceeding Downloader : 1
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
+INFO - Total initial : 3
+Free Downloader : 1
 Proceeding Downloader : 2
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 3
+Free Downloader : 0
+Proceeding Downloader : 3
+INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   42
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - CODE 200
-INFO - 向page表中插入 1 条数据
-INFO - Downloading   43
-INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
-Proceeding Downloader : 1
+INFO - Total initial : 3
+Free Downloader : 0
+Proceeding Downloader : 3
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   44
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
-Proceeding Downloader : 1
-INFO - CODE 200
 INFO - 向page表中插入 1 条数据
+INFO - Downloading   43
+INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 3
+Free Downloader : 1
+Proceeding Downloader : 2
+INFO - 向page表中插入 1 条数据
+INFO - CODE 200
 INFO - Downloading   45
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
-Proceeding Downloader : 1
+INFO - Total initial : 3
+Free Downloader : 1
+Proceeding Downloader : 2
 INFO - CODE 200
+INFO - -----------Use Old Downloader!-------------
 INFO - 向page表中插入 1 条数据
+INFO - CODE 200
+INFO - Total initial : 3
+Free Downloader : 0
+Proceeding Downloader : 3
+INFO - ===========A new downloader is initialed!=============
+INFO - CODE 200
 INFO - Downloading   46
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
-Proceeding Downloader : 1
 INFO - CODE 200
+INFO - Total initial : 4
+Free Downloader : 1
+Proceeding Downloader : 3
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
+INFO - Total initial : 4
+Free Downloader : 0
+Proceeding Downloader : 4
+INFO - ===========A new downloader is initialed!=============
 INFO - CODE 200
-INFO - 向page表中插入 1 条数据
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   47
-INFO - Downloading   48
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - CODE 200
+INFO - Total initial : 5
+Free Downloader : 1
+Proceeding Downloader : 4
 INFO - -----------Use Old Downloader!-------------
 INFO - Total initial : 5
-Free Downloader : 4
-Proceeding Downloader : 1
+Free Downloader : 0
+Proceeding Downloader : 5
+INFO - 向page表中插入 1 条数据
+INFO - ===========A new downloader is initialed!=============
+INFO - Total initial : 6
+Free Downloader : 0
+Proceeding Downloader : 6
+INFO - Downloading   50
+INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
-INFO - Downloading   49
+INFO - Downloading   48
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
-Proceeding Downloader : 1
-INFO - CODE 200
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
-INFO - CODE 200
+INFO - Total initial : 6
+Free Downloader : 1
+Proceeding Downloader : 5
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   51
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
-INFO - CODE 200
 INFO - 向page表中插入 1 条数据
-INFO - Downloading   52
+INFO - Downloading   49
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   53
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
+INFO - Total initial : 6
 Free Downloader : 3
-Proceeding Downloader : 2
+Proceeding Downloader : 3
 INFO - CODE 200
+INFO - 向page表中插入 1 条数据
+INFO - Downloading   52
+INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   54
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
+INFO - Total initial : 6
+Free Downloader : 4
 Proceeding Downloader : 2
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   55
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
+INFO - Total initial : 6
+Free Downloader : 4
 Proceeding Downloader : 2
-INFO - CODE 200
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 2
-Proceeding Downloader : 3
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   56
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   57
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
 INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 2
-Proceeding Downloader : 3
-INFO - 向page表中插入 1 条数据
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
+INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   58
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - Downloading   59
-INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
 INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
+INFO - Total initial : 6
+Free Downloader : 4
 Proceeding Downloader : 2
-INFO - CODE 200
+INFO - 向page表中插入 1 条数据
+INFO - Downloading   59
+INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   60
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
-INFO - 向page表中插入 1 条数据
 INFO - CODE 200
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
+INFO - 向page表中插入 1 条数据
 INFO - Downloading   61
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
+INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   62
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
 INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
+INFO - Total initial : 6
+Free Downloader : 4
 Proceeding Downloader : 2
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   63
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - CODE 200
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   64
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
 INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
+INFO - Total initial : 6
+Free Downloader : 4
 Proceeding Downloader : 2
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   65
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   66
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
-INFO - CODE 200
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 2
-Proceeding Downloader : 3
-INFO - CODE 200
-INFO - 向page表中插入 1 条数据
-INFO - Downloading   68
-INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   67
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+ERROR - http
+ERROR - Some Error
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
-INFO - CODE 200
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 2
-Proceeding Downloader : 3
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
 INFO - 向page表中插入 1 条数据
 INFO - CODE 200
-INFO - Downloading   69
+INFO - Downloading   68
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 2
-Proceeding Downloader : 3
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
+INFO - 向page表中插入 1 条数据
+INFO - Downloading   69
+INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - CODE 200
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
+INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   70
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   71
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
 INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 2
-Proceeding Downloader : 3
+INFO - Total initial : 6
+Free Downloader : 4
+Proceeding Downloader : 2
+INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   72
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 6
+Free Downloader : 4
+Proceeding Downloader : 2
+INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   73
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - 向page表中插入 1 条数据
-INFO - Downloading   50
-INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - CODE 200
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
-Proceeding Downloader : 1
-INFO - CODE 200
-INFO - 向page表中插入 1 条数据
 INFO - Downloading   74
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
+INFO - Total initial : 6
+Free Downloader : 5
 Proceeding Downloader : 1
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   75
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
+INFO - Total initial : 6
+Free Downloader : 5
 Proceeding Downloader : 1
 INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
+INFO - Total initial : 6
+Free Downloader : 4
 Proceeding Downloader : 2
-INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   76
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   77
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
-Proceeding Downloader : 1
 INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
-INFO - 向page表中插入 1 条数据
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
+INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   78
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
+INFO - CODE 200
+INFO - 向page表中插入 1 条数据
 INFO - Downloading   79
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
+INFO - Total initial : 6
+Free Downloader : 5
 Proceeding Downloader : 1
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   80
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
+INFO - Total initial : 6
+Free Downloader : 5
 Proceeding Downloader : 1
 INFO - CODE 200
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   81
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
-INFO - CODE 200
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 2
-Proceeding Downloader : 3
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
-INFO - 向page表中插入 1 条数据
-INFO - 向page表中插入 1 条数据
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 1
-Proceeding Downloader : 4
-INFO - Downloading   84
-INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - Downloading   82
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
+INFO - CODE 200
+INFO - 向page表中插入 1 条数据
 INFO - Downloading   83
+INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
+INFO - CODE 200
+INFO - 向page表中插入 1 条数据
+INFO - Downloading   84
+INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
+INFO - 向page表中插入 1 条数据
+INFO - Downloading   85
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
-INFO - CODE 200
-INFO - 向page表中插入 1 条数据
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   86
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - Downloading   85
-INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
+INFO - Total initial : 6
+Free Downloader : 5
 Proceeding Downloader : 1
+INFO - CODE 200
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 6
+Free Downloader : 4
+Proceeding Downloader : 2
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   87
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
-Proceeding Downloader : 1
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   88
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
+INFO - Total initial : 6
+Free Downloader : 5
 Proceeding Downloader : 1
 INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
+INFO - Total initial : 6
+Free Downloader : 4
 Proceeding Downloader : 2
-INFO - CODE 200
-INFO - 向page表中插入 1 条数据
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   89
+INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - CODE 200
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 6
+Free Downloader : 4
+Proceeding Downloader : 2
+INFO - 向page表中插入 1 条数据
 INFO - Downloading   90
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
+INFO - Total initial : 6
 Free Downloader : 4
-Proceeding Downloader : 1
+Proceeding Downloader : 2
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   91
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - CODE 200
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
-Proceeding Downloader : 1
-INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   92
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
+INFO - Total initial : 6
+Free Downloader : 5
 Proceeding Downloader : 1
-INFO - CODE 200
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
-INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   93
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
 INFO - 向page表中插入 1 条数据
-INFO - 向page表中插入 1 条数据
-INFO - Downloading   95
 INFO - Downloading   94
-INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
+INFO - Total initial : 6
+Free Downloader : 5
 Proceeding Downloader : 1
 INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
+INFO - Total initial : 6
+Free Downloader : 4
 Proceeding Downloader : 2
 INFO - CODE 200
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 2
-Proceeding Downloader : 3
-INFO - 向page表中插入 1 条数据
-INFO - CODE 200
-INFO - Downloading   97
-INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   96
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
+INFO - Total initial : 6
+Free Downloader : 4
 Proceeding Downloader : 2
-INFO - CODE 200
 INFO - 向page表中插入 1 条数据
+INFO - Downloading   97
+INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - 向page表中插入 1 条数据
+INFO - Downloading   95
+INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 2
-Proceeding Downloader : 3
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   98
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 2
-Proceeding Downloader : 3
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   99
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 2
-Proceeding Downloader : 3
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   100
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 2
-Proceeding Downloader : 3
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
+INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   101
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
+INFO - 向page表中插入 1 条数据
 INFO - Downloading   102
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - CODE 200
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   103
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
+INFO - Total initial : 6
+Free Downloader : 5
 Proceeding Downloader : 1
 INFO - CODE 200
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   104
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
+INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   105
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
+INFO - Total initial : 6
+Free Downloader : 5
 Proceeding Downloader : 1
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   106
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
+INFO - Total initial : 6
+Free Downloader : 5
 Proceeding Downloader : 1
-INFO - CODE 200
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
-INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   107
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
+INFO - 向page表中插入 1 条数据
+INFO - Downloading   108
+INFO - ~~~~~~~~~~~Release~~~~~~~~~~
+INFO - CODE 200
+INFO - -----------Use Old Downloader!-------------
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
 INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   109
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
-INFO - 向page表中插入 1 条数据
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
+INFO - CODE 200
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   110
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - Downloading   108
-INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-ERROR - Interrupted! Bad Connection
-INFO - CODE 200
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 4
+INFO - Total initial : 6
+Free Downloader : 5
 Proceeding Downloader : 1
 INFO - CODE 200
+INFO - 向page表中插入 1 条数据
+INFO - Downloading   111
+INFO - ~~~~~~~~~~~Release~~~~~~~~~~
 INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 3
-Proceeding Downloader : 2
+INFO - Total initial : 6
+Free Downloader : 5
+Proceeding Downloader : 1
 INFO - CODE 200
-INFO - -----------Use Old Downloader!-------------
-INFO - Total initial : 5
-Free Downloader : 2
-Proceeding Downloader : 3
 INFO - 向page表中插入 1 条数据
 INFO - Downloading   112
 INFO - ~~~~~~~~~~~Release~~~~~~~~~~
-INFO - 向page表中插入 1 条数据

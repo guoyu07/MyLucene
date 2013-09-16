@@ -29,6 +29,7 @@ public class Crawler {
 	 */
 	public int crawl(Property property) {
 		logger.info("Crawler Start");
+		logger.info(property.toString());
 		this.deepth = property.deepth;
 		this.topN = property.topN;
 		ConnectionTest tester = new ConnectionTest(); //It's a tester of url 
@@ -74,12 +75,15 @@ public class Crawler {
 		docfile.delete();//delete the docfile directory 
 */		if(downloadmanager.isAlive()){
 				logger.info("Download have not been done.        Wait!");
+				int i = 0;
 				while (downloadmanager.isAlive()) {
 					try {
-						Thread.sleep(5000);
+						Thread.sleep(1000);
+						i++;
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
+					if(i > 30) break;  //downloader manager timeout,proceed ,exit the program forcibly
 				}
 		}
 		logger.info("Proceeding Downloader : "+downloadmanager.proceedingNum());

@@ -108,6 +108,12 @@ public class TestIO {
 		System.out.println(cr.read(0, "D://Test//merge//merge.txt"));
 	}
 	
+	@Test
+	public void test8(){
+		java.util.Properties p = System.getProperties();
+		//p.list(System.out);
+		System.out.println(p.getProperty("os.name"));
+	}
 }
 
 

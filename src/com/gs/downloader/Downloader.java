@@ -92,7 +92,7 @@ public class Downloader {
 	 */
 	private boolean make(String title, String content) throws IOException {
 		try {
-			File file = new File(path + "//" + title);
+			File file = new File(path + title);
 			FileWriter fw = new FileWriter(file);
 			fw.write(content);
 			fw.close();
