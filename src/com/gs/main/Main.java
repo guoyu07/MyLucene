@@ -17,6 +17,7 @@ import com.gs.crawler.Property;
  */
 public class Main {
 	private Logger logger = Logger.getLogger(this.getClass());
+
 	/**
 	 * @param args
 	 */

@@ -13,12 +13,16 @@ public class TimerHook {
 	private Thread target;
 	private int time;
 	private Logger logger = Logger.getLogger(this.getClass());
+
 	/**
-	 * @param target the thread which wanted to be time
-	 * @param closeWorker a worker to do some after the target thread interrupteed,must implements the CloseWorker Interface
+	 * @param target
+	 *            the thread which wanted to be time
+	 * @param closeWorker
+	 *            a worker to do some after the target thread interrupteed,must
+	 *            implements the CloseWorker Interface
 	 * @param time
 	 */
-	public TimerHook(Thread target,CloseWorker closeWorker,int time){
+	public TimerHook(Thread target, CloseWorker closeWorker, int time) {
 		try {
 			this.target = target;
 			this.time = time;
@@ -42,13 +46,14 @@ public class TimerHook {
 			logger.error(e.getMessage());
 		}
 	}
-	
+
 	/**
 	 * there will do nothing after timeout
+	 * 
 	 * @param target
 	 * @param time
 	 */
-	public TimerHook(Thread target,int time){
+	public TimerHook(Thread target, int time) {
 		try {
 			this.target = target;
 			this.time = time;
@@ -71,7 +76,5 @@ public class TimerHook {
 			logger.error(e.getMessage());
 		}
 	}
-	
-	
-	
+
 }

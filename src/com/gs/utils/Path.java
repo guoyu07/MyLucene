@@ -11,17 +11,17 @@ import java.io.File;
  */
 public class Path {
 	public static String path;
-	
-	public  static String adaptPath(String path){
+
+	public static String adaptPath(String path) {
 		String se = new File(new String()).pathSeparator;
 		if (System.getProperty("os.name").startsWith("Windows")) {
 			if (!path.endsWith("//"))
 				path.concat("//");
-		}else if(System.getProperty("os.name").startsWith("Linux")){
+		} else if (System.getProperty("os.name").startsWith("Linux")) {
 			if (!path.endsWith("/"))
 				path.concat("/");
 		}
 		return path;
 	}
-	
+
 }

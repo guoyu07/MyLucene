@@ -13,12 +13,15 @@ import com.gs.jdom.CrawlerConfReader;
  * @package com.gs.crawler
  */
 public class Property {
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		String re = "Deepth : "+deepth+"\nTopN : "+topN+"\nOS : "+os+"\nPath : "+path+"\nNeedsIndex : "+needsIndex;
+		String re = "Deepth : " + deepth + "\nTopN : " + topN + "\nOS : " + os
+				+ "\nPath : " + path + "\nNeedsIndex : " + needsIndex+"\nDBName : "+dbname+"\nDBPass : "+dbpass;
 		return re;
 	}
 
@@ -31,6 +34,8 @@ public class Property {
 	public String Indexfile;
 	public String docfile;
 	public String mergefile;
+	public String dbname;
+	public String dbpass;
 	public boolean needsIndex;
 	public String[] seeds;
 
@@ -110,7 +115,7 @@ public class Property {
 		} else if (os == OS.Linux) {
 			this.docfile = path + "/docs/";
 			this.Indexfile = path + "/index/";
-			this.mergefile = path+"/merge/";
+			this.mergefile = path + "/merge/";
 		}
 		File doc = new File(docfile);
 		File ind = new File(Indexfile);
@@ -149,7 +154,7 @@ public class Property {
 		this.os = os;
 		this.path = path;
 		this.needsIndex = needsIndex;
-		
+
 		if (os == OS.Windows) {
 			this.docfile = path + "//docs//";
 			this.Indexfile = path + "//index//";
@@ -177,6 +182,7 @@ public class Property {
 
 	/**
 	 * get urls from file
+	 * 
 	 * @param path
 	 * @return
 	 */
@@ -194,16 +200,17 @@ public class Property {
 		}
 		return seeds;
 	}
-	
-	public Property(String confXMLPath){
-		CrawlerConfReader reader  =new CrawlerConfReader(confXMLPath);
+
+	public Property(String confXMLPath) {
+		CrawlerConfReader reader = new CrawlerConfReader(confXMLPath);
 		Property p = reader.getProperty();
 		this.deepth = p.deepth;
 		this.topN = p.topN;
 		this.os = p.os;
 		this.path = p.path;
 		this.needsIndex = p.needsIndex;
-		
+		this.dbname = p.dbname;
+		this.dbpass = p.dbpass;
 		if (os == OS.Windows) {
 			this.docfile = path + "//docs//";
 			this.Indexfile = path + "//index//";
@@ -227,6 +234,50 @@ public class Property {
 		if (!mer.exists()) {
 			mer.mkdir();
 		}
-		
+
+	}
+
+	/**
+	 * @param deepth2
+	 * @param topN2
+	 * @param os2
+	 * @param path2
+	 * @param needsIndex2
+	 * @param databaseUsername
+	 * @param databasePassword
+	 */
+	public Property(int deepth, int topN, OS os, String path,
+			boolean needsIndex, String databaseUsername,
+			String databasePassword) {
+		this.deepth = deepth;
+		this.topN = topN;
+		this.os = os;
+		this.path = path;
+		this.needsIndex = needsIndex;
+		this.dbname = databaseUsername;
+		this.dbpass = databasePassword;
+		if (os == OS.Windows) {
+			this.docfile = path + "//docs//";
+			this.Indexfile = path + "//index//";
+			this.mergefile = path + "//merge//";
+			this.seeds = read(path + "//");
+		} else if (os == OS.Linux) {
+			this.docfile = path + "/docs/";
+			this.Indexfile = path + "/index/";
+			this.mergefile = path + "/merge/";
+			this.seeds = read(path + "/");
+		}
+		File doc = new File(docfile);
+		File ind = new File(Indexfile);
+		File mer = new File(mergefile);
+		if (!doc.exists()) {
+			doc.mkdir();
+		}
+		if (!ind.exists()) {
+			ind.mkdir();
+		}
+		if (!mer.exists()) {
+			mer.mkdir();
+		}
 	}
 }

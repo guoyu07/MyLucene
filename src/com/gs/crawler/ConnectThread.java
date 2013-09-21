@@ -4,8 +4,10 @@
 package com.gs.crawler;
 
 import java.io.IOException;
+import java.net.UnknownHostException;
 
 import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.log4j.Logger;
 
@@ -33,6 +35,12 @@ public class ConnectThread extends Thread {
 			if (code != 200)
 				error = true;
 			logger.info("CODE " + code);
+		}  catch(UnknownHostException e){
+			e.printStackTrace();
+			logger.error(e.getMessage());
+		} catch (HttpException e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
 		} catch (IOException e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());

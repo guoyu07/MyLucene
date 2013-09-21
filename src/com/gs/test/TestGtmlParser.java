@@ -100,35 +100,42 @@ public class TestGtmlParser {
 		Crawler c = new Crawler();
 		c.crawl(property);
 	}
-	
+
 	@Test
-	public void test1(){
+	public void test1() {
 		String s = null;
 		change(s);
 		System.out.println(s);
 	}
-	public void change(String s){
+
+	public void change(String s) {
 		s = "qwdwdqd";
 	}
-	
+
 	@Test
-	public void test2(){
+	public void test2() {
 		HttpClient hc = new HttpClient();
 		GetMethod get = new GetMethod("http://www.hebust.com.cn");
 		try {
 			int code = hc.executeMethod(get);
-			System.out.println("CODE "+code);
+			System.out.println("CODE " + code);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		get.releaseConnection();
-		
+
+	}
+
+	@Test
+	public void testConnectTest() {
+		ConnectionTest test = new ConnectionTest();
+		System.out.println(test.test("http://news.qq.com", 10000));
+
 	}
 	
 	@Test
-	public void testConnectTest(){
-		ConnectionTest test = new ConnectionTest();
-		System.out.println(test.test("http://news.qq.com",10000));
-		
+	public void test3(){
+		NewCrawler n = new NewCrawler();
+		n.c();
 	}
 }

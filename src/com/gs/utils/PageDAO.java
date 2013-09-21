@@ -18,7 +18,6 @@ public class PageDAO {
 
 	private HibernateTemplate hibernateTemplate;
 
-
 	public HibernateTemplate getHibernateTemplate() {
 		return hibernateTemplate;
 	}
@@ -32,20 +31,17 @@ public class PageDAO {
 		hibernateTemplate.save(p);
 	}
 
-
-	@Resource(name="hibernateTemplate")
+	@Resource(name = "hibernateTemplate")
 	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
 		this.hibernateTemplate = hibernateTemplate;
 	}
 
-
-
-	
 	/**
 	 * <strong>Very Dangerous!<strong>
 	 */
-	public void clear(){
-		hibernateTemplate.getSessionFactory().openSession().createSQLQuery("drop table page").executeUpdate();
+	public void clear() {
+		hibernateTemplate.getSessionFactory().openSession()
+				.createSQLQuery("drop table page").executeUpdate();
 	}
 
 }

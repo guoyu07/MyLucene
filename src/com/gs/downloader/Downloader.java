@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.gs.DAO.DAO;
+import com.gs.crawler.Property;
 import com.gs.extractor.ContentExtractor;
 import com.gs.io.ContentWriter;
 import com.gs.model.Page;
@@ -23,7 +24,7 @@ import com.gs.model.Page;
 public class Downloader {
 	private Logger logger = Logger.getLogger(this.getClass());
 	private ContentWriter cw;
-	private DAO dao = new DAO();
+	private DAO dao;
 	private Page p = new Page();
 	private String path;
 	private Status status; // the status of this downloader
@@ -32,19 +33,21 @@ public class Downloader {
 	/**
 	 * @param docpath
 	 * @param mergefile
-	 * @param factory a connect to factory
+	 * @param factory
+	 *            a connect to factory
 	 */
-	public Downloader(String docpath, String mergefile,DownloaderFactory factory) {
-		
+	public Downloader(Property property, DownloaderFactory factory) {
+		dao = new DAO(property);
 		cw = new ContentWriter();
 		this.factory = factory;
-		this.path = docpath;
+		this.path = property.docfile;
 	}
 
 	/**
 	 * @param pop
 	 * @param path
-	 * @param count given by factory
+	 * @param count
+	 *            given by factory
 	 */
 	public boolean down(String url, String path, int count) {
 		try {
@@ -53,24 +56,23 @@ public class Downloader {
 			this.status = Status.Proceeding;
 			String title = String.valueOf(count);
 			String content = ContentExtractor.extractor(url);
-			cw.write(content, path); //merge
+			cw.write(content, path); // merge
 			p.setEndoffset(cw.endoffset);
 			p.setId(count);
 			p.setStartoffset(cw.startoffset);
 			p.setUrl(url);
 			p.setPath(path);
 			dao.save(p);
-			if (make(title, content)) //make docs
+			if (make(title, content)) // make docs
 				logger.info("Downloading   " + title);
 		} catch (IOException e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
-		/*try {
-			Thread.sleep(10000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}*/ //TODO what is it!?
+		/*
+		 * try { Thread.sleep(10000); } catch (InterruptedException e) {
+		 * e.printStackTrace(); }
+		 */// TODO what is it!?
 		this.status = Status.Finished;
 		recycle();
 		return true;
@@ -85,6 +87,7 @@ public class Downloader {
 
 	/**
 	 * make docs
+	 * 
 	 * @param title
 	 * @param content
 	 * @return
@@ -114,18 +117,18 @@ public class Downloader {
 	private void setStatus(Status status) {
 		this.status = status;
 	}
-	
+
 	/**
 	 * tell the factory to move this downloader into freequeue
 	 */
-	private void recycle(){
+	public void recycle() {
 		factory.releaseDownloader(this);
 	}
 
 	/**
 	 * @param conf
 	 */
-	public void down(DownConf conf) { //for dwon thread
+	public void down(DownConf conf) { // for dwon thread
 		down(conf.url, conf.path, conf.count);
 	}
 

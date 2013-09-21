@@ -51,8 +51,8 @@ public class Searcher {
 		try {
 			ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
 					"beans.xml");
-			/*PageDAO pd = (PageDAO) ctx.getBean("pageDAO");*/
-			DAO pd;//TODO change
+			/* PageDAO pd = (PageDAO) ctx.getBean("pageDAO"); */
+			DAO pd;// TODO change
 			list = new LinkedList();
 			this.indexField = indexField;
 			File path = new File(indexField);
@@ -67,8 +67,10 @@ public class Searcher {
 			FileUtils fu = new FileUtils();
 			for (ScoreDoc sd : sds) {
 				Document d = seacher.doc(sd.doc);
-				/*list.add(pd.loadPage(Integer.parseInt(d.get("filename")))
-						.getUrl());*///TODO change to DAO
+				/*
+				 * list.add(pd.loadPage(Integer.parseInt(d.get("filename")))
+				 * .getUrl());
+				 */// TODO change to DAO
 			}
 
 		} catch (IOException e) {

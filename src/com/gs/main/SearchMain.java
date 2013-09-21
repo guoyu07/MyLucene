@@ -13,6 +13,7 @@ import com.gs.Lucene.Searcher;
  */
 public class SearchMain {
 	private Logger logger = Logger.getLogger(this.getClass());
+
 	/**
 	 * @param args
 	 */

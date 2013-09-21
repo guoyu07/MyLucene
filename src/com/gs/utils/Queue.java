@@ -19,8 +19,8 @@ public class Queue {
 	 * @return true-has not been crawl,false-has already been crawl
 	 */
 	public boolean push(Object obj) {
-			queue.addLast(obj);
-			return true;
+		queue.addLast(obj);
+		return true;
 	}
 
 	// ³ö¶ÓÁÐ
@@ -45,12 +45,12 @@ public class Queue {
 	public void empty() {
 		queue.clear();
 	}
-	
-	public void remove(Object obj){
+
+	public void remove(Object obj) {
 		queue.remove(obj);
 	}
-	
-	public int size(){
+
+	public int size() {
 		return queue.size();
 	}
 }

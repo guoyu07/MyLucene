@@ -8,12 +8,15 @@ import java.sql.Statement;
 
 import org.apache.log4j.Logger;
 
+import com.gs.crawler.Property;
 import com.gs.model.Page;
 
 public class DAO {
 	private Logger logger = Logger.getLogger(this.getClass());
+	private String dbname;
+	private String dbpass;
 	// 创建静态全局变量
-	static Connection conn;//TODO 复用commect
+	static Connection conn;// TODO 复用commect
 
 	static Statement st;
 
@@ -41,7 +44,6 @@ public class DAO {
 
 			logger.info("向page表中插入 " + count + " 条数据"); // 输出插入操作的处理结果
 
-
 		} catch (SQLException e) {
 			logger.error("插入数据失败" + e.getMessage());
 			logger.error(e.getMessage());
@@ -49,7 +51,7 @@ public class DAO {
 	}
 
 	/* 查询数据库，输出符合要求的记录的情况 */
-	public  void query() {
+	public void query() {
 
 		try {
 			String sql = "select * from staff"; // 查询数据的sql语句
@@ -81,13 +83,13 @@ public class DAO {
 	}
 
 	/* 获取数据库连接的函数 */
-	public  Connection getConnection() {
+	public Connection getConnection() {
 		Connection con = null; // 创建用于连接数据库的Connection对象
 		try {
 			Class.forName("com.mysql.jdbc.Driver");// 加载Mysql数据驱动
 
 			con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/page", "root", "940409");// 创建数据连接
+					"jdbc:mysql://localhost:3306/page", dbname, dbpass);// 创建数据连接
 
 		} catch (Exception e) {
 			logger.fatal("数据库连接失败" + e.getMessage());
@@ -98,32 +100,34 @@ public class DAO {
 	public void create() {
 		deleteTable();
 		try {
-				String create = "CREATE  TABLE `page`.`page` ( `id` INT NOT NULL ,  `endoffset` INT NULL ,  `startoffset` INT NULL ,  `path` VARCHAR(50) NULL ,  `url` VARCHAR(200) NULL ,  PRIMARY KEY (`id`) );";
-				st = (Statement) conn.createStatement(); // 创建用于执行静态sql语句的Statement对象
+			String create = "CREATE  TABLE `page`.`page` ( `id` INT NOT NULL ,  `endoffset` INT NULL ,  `startoffset` INT NULL ,  `path` VARCHAR(50) NULL ,  `url` VARCHAR(200) NULL ,  PRIMARY KEY (`id`) );";
+			st = (Statement) conn.createStatement(); // 创建用于执行静态sql语句的Statement对象
 
-				int count = st.executeUpdate(create); // 执行插入操作的sql语句，并返回插入数据的个数
-
+			int count = st.executeUpdate(create); // 执行插入操作的sql语句，并返回插入数据的个数
 
 		} catch (SQLException e) {
 			logger.fatal("建表失败" + e.getMessage());
 		}
 	}
-	
-	
+
 	/**
 	 * 
 	 */
-	public DAO() {
+	public DAO(Property p) {
+		
+		
+		this.dbname = p.dbname;
+		this.dbpass = p.dbpass;
 		conn = getConnection();
+		System.out.println(dbname+dbpass);
 	}
 
-	public void deleteTable(){
+	public void deleteTable() {
 		try {
-				String create = "drop table page.page;";
-				st = (Statement) conn.createStatement(); // 创建用于执行静态sql语句的Statement对象
+			String create = "drop table page.page;";
+			st = (Statement) conn.createStatement(); // 创建用于执行静态sql语句的Statement对象
 
-				int count = st.executeUpdate(create); // 执行插入操作的sql语句，并返回插入数据的个数
-
+			int count = st.executeUpdate(create); // 执行插入操作的sql语句，并返回插入数据的个数
 
 		} catch (SQLException e) {
 			logger.fatal("删除表失败" + e.getMessage());

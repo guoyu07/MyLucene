@@ -19,8 +19,9 @@ import com.gs.model.Page;
  */
 public class ContentReader {
 	private Logger logger = Logger.getLogger(this.getClass());
-	public String read(String path,long startoffset,long endoffset){
-		String content=null;
+
+	public String read(String path, long startoffset, long endoffset) {
+		String content = null;
 		File file = new File(path);
 		try {
 			FileInputStream fis = new FileInputStream(file);
@@ -43,17 +44,20 @@ public class ContentReader {
 		}
 		return content;
 	}
-	public String read(int id,String mergepath){//TODO change to DAO
+
+	public String read(int id, String mergepath) {// TODO change to DAO
 		String re = null;
-		/*ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
-				"beans.xml");
-		PageDAO dao = (PageDAO) ctx.getBean("pageDAO");
-		
-		Page p = dao.loadPage(id);*/
+		/*
+		 * ClassPathXmlApplicationContext ctx = new
+		 * ClassPathXmlApplicationContext( "beans.xml"); PageDAO dao = (PageDAO)
+		 * ctx.getBean("pageDAO");
+		 * 
+		 * Page p = dao.loadPage(id);
+		 */
 		Page p = null;
 		System.out.println(p);
-		re = read(mergepath,p.getStartoffset(),p.getEndoffset());
+		re = read(mergepath, p.getStartoffset(), p.getEndoffset());
 		return re;
-		
+
 	}
 }

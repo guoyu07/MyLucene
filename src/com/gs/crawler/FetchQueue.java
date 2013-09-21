@@ -10,7 +10,7 @@ import com.gs.utils.Queue;
  * @author GaoShen
  * @packageName com.gs.crawler
  */
-public class FetchQueue extends Queue{
+public class FetchQueue extends Queue {
 	private Logger logger = Logger.getLogger(this.getClass());
 	private BloomFilter filter = new BloomFilter(0.1, 99999);
 
@@ -22,7 +22,7 @@ public class FetchQueue extends Queue{
 	public boolean push(URL url) {
 		if (!filter.contains(url.url)) {
 			filter.add(url.url);
-			logger.debug("Already fetched! URL "+url.url);
+			logger.debug("Already fetched! URL " + url.url);
 			super.push(url);
 			return true;
 		} else {

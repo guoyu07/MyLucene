@@ -3,22 +3,27 @@
  */
 package com.gs.downloader;
 
+import java.util.NoSuchElementException;
+
 import org.apache.log4j.Logger;
 
 import com.gs.DAO.DAO;
+import com.gs.crawler.Property;
 
 /**
  * The main class of the download system
+ * 
  * @author GaoShen
  * @packageName com.gs.downloader
  */
 public class DownloadManager extends Thread {
 	private Logger logger = Logger.getLogger(this.getClass());
-	private DownQueue queue; //the urls to be downed
-	private Schedular schedular; //merge path schedular
+	private DownQueue queue; // the urls to be downed
+	private Schedular schedular; // merge path schedular
 	private DownloaderFactory downloadfactory;
 	private Downloader currentDownloader;
-	private boolean fetchAllDone = false; //a flag of crawl .no more url to be added
+	private boolean fetchAllDone = false; // a flag of crawl .no more url to be
+											// added
 
 	/**
 	 * @return the fetchAllDone
@@ -28,7 +33,8 @@ public class DownloadManager extends Thread {
 	}
 
 	/**
-	 * @param fetchAllDone the fetchAllDone to set
+	 * @param fetchAllDone
+	 *            the fetchAllDone to set
 	 */
 	public void setFetchAllDone(boolean fetchAllDone) {
 		this.fetchAllDone = fetchAllDone;
@@ -37,17 +43,18 @@ public class DownloadManager extends Thread {
 	/**
 	 * @param schedular
 	 */
-	public DownloadManager(String docpath, String mergefile) {
-		schedular = new Schedular(mergefile);
-		downloadfactory = new DownloaderFactory(docpath, mergefile);
+	public DownloadManager(Property property) {
+		schedular = new Schedular(property.mergefile);
+		downloadfactory = new DownloaderFactory(property);
 		queue = new DownQueue();
-		new DAO().create(); //create the table
+		new DAO(property).create(); // create the table
 	}
 
 	public static int count = 0;
 
 	/**
 	 * add url to the manager
+	 * 
 	 * @param u
 	 * @return
 	 */
@@ -59,39 +66,64 @@ public class DownloadManager extends Thread {
 	public void run() {
 		while (true) {
 			if (!queue.isQueueEmpty()) {
-				count++; //the title of docs
-				currentDownloader = downloadfactory.getDownloader();
-				DownConf conf = new DownConf(queue.pop(), schedular.getPath(), count,currentDownloader);
-				DownThread downThread = new DownThread();
-				downThread.setConf(conf);
-				downThread.start();
+				try {
+					if (downloadfactory.isDownloaderLimited()
+							&& downloadfactory.getFreeDownloaderNum() == 0) {
+						Thread.sleep(1000);
+					} else {
+						count++; // the title of docs
+						currentDownloader = downloadfactory.getDownloader();
+						DownConf conf = null;
+						try {
+							conf = new DownConf(queue.pop(),
+									schedular.getPath(), count,
+									currentDownloader);
+						} catch (NoSuchElementException e) {
+							currentDownloader.recycle();
+							conf = null;
+							e.printStackTrace();
+							logger.error(e.getMessage());
+							continue;
+						}
+						DownThread downThread = new DownThread();
+						downThread.setConf(conf);
+						downThread.start();
+					}
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+					logger.error(e.getMessage());
+				}
 			}
-			if(queue.isQueueEmpty()&&downloadfactory.isProceedingQueueEmpty()&&fetchAllDone){break;} //the condition to shutdown the manager
+			if (queue.isQueueEmpty()
+					&& downloadfactory.isProceedingQueueEmpty() && fetchAllDone) {
+				break;
+			} // the condition to shutdown the manager
 		}
-		logger.info("~~~~~!!!!!!!!!!!!!!Manager ShutDown!!!!!!!!!!~~~~~~~");
+		logger.info("~~~~~!!!!!!!!!!!!!!Downloader Manager ShutDown!!!!!!!!!!~~~~~~~");
 	}
-	
+
 	/**
 	 * @return
 	 */
-	public boolean isAllDownloaderFree(){
+	public boolean isAllDownloaderFree() {
 		return downloadfactory.isProceedingQueueEmpty();
 	}
-	
+
 	/**
 	 * is there any url to be download
+	 * 
 	 * @return
 	 */
-	public boolean isQueueEmpty(){
+	public boolean isQueueEmpty() {
 		return queue.isQueueEmpty();
 	}
-	
-	public int freeDownloaderNum(){
+
+	public int freeDownloaderNum() {
 		return downloadfactory.getFreeDownloaderNum();
 	}
-	
-	public int proceedingNum(){
+
+	public int proceedingNum() {
 		return downloadfactory.getProceedingNum();
 	}
-	
+
 }

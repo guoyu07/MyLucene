@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
  */
 public class ConnectionTest {
 	private Logger logger = Logger.getLogger(this.getClass());
+
 	/**
 	 * @param url
 	 *            the url to be tested
@@ -35,7 +36,8 @@ public class ConnectionTest {
 				if (thread.isError()) {
 					thread.stop();
 					logger.error("Not 200! Bad Connection");
-					thread.releaseConnection(); // release the connection
+					thread.releaseConnection(); 
+					thread.join();
 					return false;
 				}
 			}
@@ -43,9 +45,9 @@ public class ConnectionTest {
 									// and give the information
 				thread.stop();
 				logger.error("Interrupted! Bad Connection");
-				thread.releaseConnection(); // release the connection
 				return false;
 			}
+			thread.releaseConnection(); 
 			thread.join();
 
 		} catch (InterruptedException e) {

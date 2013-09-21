@@ -9,6 +9,7 @@ import com.gs.utils.Queue;
 
 /**
  * the url which to be down
+ * 
  * @author GaoShen
  * @packageName com.gs.downloader
  */

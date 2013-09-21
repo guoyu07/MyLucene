@@ -8,8 +8,8 @@ package com.gs.test;
  * @packageName com.gs.test
  */
 public class TestThread extends Thread {
-	public void run(){
-System.out.println("Doing!");
+	public void run() {
+		System.out.println("Doing!");
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {

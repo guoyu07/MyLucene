@@ -26,6 +26,7 @@ public class ConnectThread extends Thread {
 	 * @see java.lang.Thread#run()
 	 */
 	public void run() {
+		this.setName("Connect Test Thread");
 		HttpClient hc = new HttpClient();
 		get = new GetMethod(url);
 		try {

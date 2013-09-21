@@ -30,7 +30,8 @@ public class Page {
 	}
 
 	/**
-	 * @param path the path to set
+	 * @param path
+	 *            the path to set
 	 */
 	public void setPath(String path) {
 		this.path = path;
@@ -52,7 +53,6 @@ public class Page {
 	public void setId(int id) {
 		this.id = id;
 	}
-
 
 	/**
 	 * @return the startoffset
@@ -99,13 +99,15 @@ public class Page {
 		this.url = url;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "URL = "+url+" Start = "+startoffset+" End = "+endoffset+" Id = "+id;
+		return "URL = " + url + " Start = " + startoffset + " End = "
+				+ endoffset + " Id = " + id;
 	}
-	
-	
+
 }

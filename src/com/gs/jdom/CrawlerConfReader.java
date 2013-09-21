@@ -22,12 +22,14 @@ import com.gs.crawler.Property;
 public class CrawlerConfReader {
 	private Logger logger = Logger.getLogger(this.getClass());
 	private Property property;
+
 	/**
 	 * @return the property
 	 */
 	public Property getProperty() {
 		return property;
 	}
+
 	public CrawlerConfReader(String xmlpath) {
 		try {
 			SAXBuilder builder = new SAXBuilder();
@@ -35,13 +37,17 @@ public class CrawlerConfReader {
 			Element rootEl = doc.getRootElement();
 			int topN = Integer.valueOf(rootEl.getChildText("topN"));
 			int deepth = Integer.valueOf(rootEl.getChildText("deepth"));
-			boolean needsIndex = rootEl.getChildText("needsIndex").equals("false")?false:true;
+			boolean needsIndex = rootEl.getChildText("needsIndex").equals(
+					"false") ? false : true;
 			String path = rootEl.getChildText("path");
-			OS os = rootEl.getChildText("os").equals("Windwos")?OS.Windows:OS.Linux;
+			String databaseUsername = rootEl.getChildText("dbname");
+			String databasePassword = rootEl.getChildText("dbpass");
+			OS os = rootEl.getChildText("os").equals("Windows") ? OS.Windows
+					: OS.Linux;
 			String seeds = rootEl.getChildText("seeds");
-			property = new Property(deepth,topN,os,path,needsIndex);
+			property = new Property(deepth, topN, os, path, needsIndex,databaseUsername,databasePassword);
 			logger.info(property);
-			
+
 		} catch (JDOMException e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());

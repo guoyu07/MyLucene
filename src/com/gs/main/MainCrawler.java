@@ -17,26 +17,35 @@ import com.gs.crawler.Property;
 
 /**
  * @author GaoShen
- * @packageName 
+ * @packageName
  */
 public class MainCrawler {
 	private static Logger logger = Logger.getLogger(MainCrawler.class);
+
 	/**
 	 * args[0]=deepth args[1]=topN
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		long start = System.currentTimeMillis();
-		//Property p = new Property(Integer.valueOf(args[0]),Integer.valueOf(args[1]),OS.Linux,"/root/Test", true);
-		//Property p = new Property(5,60,OS.Windows,"D://Test",false);
-		Property p = new Property("D://Test//conf.xml");
+		// Property p = new
+		// Property(Integer.valueOf(args[0]),Integer.valueOf(args[1]),OS.Linux,"/root/Test",
+		// true);
+		// Property p = new Property(5,60,OS.Windows,"D://Test",false);
+		Property p = new Property("/root/Test/conf.xml");
 		Crawler c = new Crawler();
 		double count = c.crawl(p);
-		double use = (System.currentTimeMillis()-start)/1000;
-		double speed = count/use;
-		String report = "Start time is  "+new Date(start).toLocaleString()+"\nFinish time is  "+new Date(System.currentTimeMillis()).toLocaleString()+"\nTotal use  "+use+"s"+"\nSpeed  "+speed+" pages/s";
+		double use = (System.currentTimeMillis() - start) / 1000;
+		double speed = count / use;
+		String report = "Start time is  " + new Date(start).toLocaleString()
+				+ "\nFinish time is  "
+				+ new Date(System.currentTimeMillis()).toLocaleString()
+				+ "\nTotal use  " + use + "s" + "\nSpeed  " + speed
+				+ " pages/s";
 		try {
-			FileUtils.writeStringToFile(new File(p.path+"//report.txt"), report);
+			FileUtils.writeStringToFile(new File(p.path + "/report.txt"),
+					report);
 			logger.info(report);
 		} catch (IOException e) {
 			e.printStackTrace();

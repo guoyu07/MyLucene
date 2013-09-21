@@ -12,15 +12,15 @@ import org.apache.commons.httpclient.methods.GetMethod;
  * @author GaoShen
  * @packageName com.gs.test
  */
-public class ConnectThread extends Thread{
+public class ConnectThread extends Thread {
 	private String url;
-	
-	public void run(){
+
+	public void run() {
 		HttpClient hc = new HttpClient();
 		GetMethod get = new GetMethod(url);
 		try {
 			int code = hc.executeMethod(get);
-			System.out.println("CODE "+code);
+			System.out.println("CODE " + code);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -28,7 +28,8 @@ public class ConnectThread extends Thread{
 	}
 
 	/**
-	 * @param url the url to set
+	 * @param url
+	 *            the url to set
 	 */
 	public void setUrl(String url) {
 		this.url = url;

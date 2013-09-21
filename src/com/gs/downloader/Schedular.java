@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 
 /**
  * the merge schedular
+ * 
  * @author GaoShen
  * @packageName com.gs.crawler
  */

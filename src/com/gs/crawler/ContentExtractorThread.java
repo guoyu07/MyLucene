@@ -15,7 +15,8 @@ public class ContentExtractorThread extends Thread {
 	private Logger logger = Logger.getLogger(this.getClass());
 	private String url;
 	private String result = null;
-	public void run(){
+
+	public void run() {
 		boolean links;
 		StringExtractor se;
 		links = false;
@@ -29,23 +30,27 @@ public class ContentExtractorThread extends Thread {
 		}
 		result = re;
 	}
+
 	/**
 	 * @return the result
 	 */
 	public String getResult() {
 		return result;
 	}
+
 	/**
 	 * @return the url
 	 */
 	public String getUrl() {
 		return url;
 	}
+
 	/**
-	 * @param url the url to set
+	 * @param url
+	 *            the url to set
 	 */
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
+
 }

@@ -9,29 +9,36 @@ import com.gs.utils.Queue;
 
 /**
  * a queue fro downloader
+ * 
  * @author GaoShen
  * @packageName com.gs.downloader
  */
 public class DownloaderQueue extends Queue {
 	private Logger logger = Logger.getLogger(this.getClass());
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.gs.utils.Queue#push(java.lang.Object)
 	 */
 	@Override
 	public boolean push(Object downloader) {
-		return super.push((Downloader)downloader);
+		return super.push((Downloader) downloader);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.gs.utils.Queue#pop()
 	 */
 	@Override
 	public Downloader pop() {
-		return (Downloader)super.pop();
+		return (Downloader) super.pop();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.gs.utils.Queue#isQueueEmpty()
 	 */
 	@Override
@@ -39,7 +46,9 @@ public class DownloaderQueue extends Queue {
 		return super.isQueueEmpty();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.gs.utils.Queue#empty()
 	 */
 	@Override

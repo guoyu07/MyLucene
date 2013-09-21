@@ -9,7 +9,7 @@ import com.gs.utils.CloseWorker;
  * @author GaoShen
  * @packageName com.gs.test
  */
-public class Worker implements CloseWorker{
+public class Worker implements CloseWorker {
 
 	@Override
 	public boolean close() {
