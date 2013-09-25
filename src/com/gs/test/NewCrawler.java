@@ -99,9 +99,19 @@ public class NewCrawler {
 		}
 		m.setFinish(true);
 		int i = 0;
+		
+		while(!m.isQueueEmpty()&&!dm.isQueueEmpty()){
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+				logger.error(e.getMessage());
+			}
+		}
+		
 		while (m.isAlive()) {
 			try {
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				i++;
 				logger.error("Visitor Manager have not been done.       Please Wait!  "+i);
 				m.test();
@@ -109,7 +119,7 @@ public class NewCrawler {
 				e.printStackTrace();
 				logger.error(e.getMessage());
 			}
-			//if (i > 5)				break;
+			if (i > 10)				break;
 		}
 
 		if (dm.isAlive()) {
@@ -122,7 +132,7 @@ public class NewCrawler {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				//if (i1 > 10)	break; // downloader manager timeout,proceed ,exit the
+				if (i1 > 10)	break; // downloader manager timeout,proceed ,exit the
 							// program forcibly
 			}
 		}

@@ -53,7 +53,9 @@ public class VisitorManager extends Thread {
 														// Singleton.
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Thread#run()
 	 */
 	@Override
@@ -66,17 +68,38 @@ public class VisitorManager extends Thread {
 															// the number of
 															// visitor reach the
 															// limit line
-					Thread.yield(); 
+					Thread.yield();
 				} else {
 					count++; // the title of docs
 					currentVisitor = factory.getVisitor();
-					VisitConf conf = new VisitConf(queue.pop(), currentVisitor); //the configur of visitor
-					VisitThread visitThread = new VisitThread();//the thread to run the visitor
+					VisitConf conf = new VisitConf(queue.pop(), currentVisitor); // the
+																					// configur
+																					// of
+																					// visitor
+					VisitThread visitThread = new VisitThread();// the thread to
+																// run the
+																// visitor
 					visitThread.setConf(conf);
 					visitThread.start();
 				}
 			}
-			if (queue.size() == 0 && factory.getProceedingQueueSize() == 0 //there is nothing to visit ,don't have a proceeding visitor and the flag of finish is true
+			if (queue.size() == 0 && factory.getProceedingQueueSize() == 0 // there
+																			// is
+																			// nothing
+																			// to
+																			// visit
+																			// ,don't
+																			// have
+																			// a
+																			// proceeding
+																			// visitor
+																			// and
+																			// the
+																			// flag
+																			// of
+																			// finish
+																			// is
+																			// true
 					&& finish) {
 				System.out.println("Queue Size : " + queue.size()
 						+ "Proceeding Queue : "
@@ -85,7 +108,8 @@ public class VisitorManager extends Thread {
 			} // the condition to shutdown the manager
 		}
 		logger.debug("=======!!!!!!!!!!!!!!Visitor Manager ShutDown!!!!!!!!!!=========");
-		downloadManager.setFetchAllDone(true); //shutdown the downloader manager
+		downloadManager.setFetchAllDone(true); // shutdown the downloader
+												// manager
 
 	}
 
@@ -106,8 +130,18 @@ public class VisitorManager extends Thread {
 	}
 
 	public void test() {
-		logger.debug("Queue Size : " + queue.size()
-				+ "Proceeding Queue : " + factory.getProceedingQueueSize());
+		logger.debug("Queue Size : " + queue.size() + "Proceeding Queue : "
+				+ factory.getProceedingQueueSize());
+	}
+
+	/**
+	 * @return false-not empty true-empty
+	 */
+	public boolean isQueueEmpty() {
+		if (queue.size() != 0)
+			return false;
+		else
+			return true;
 	}
 
 }
