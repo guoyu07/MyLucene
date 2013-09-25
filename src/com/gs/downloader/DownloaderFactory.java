@@ -35,29 +35,29 @@ public class DownloaderFactory {
 	public Downloader getDownloader() {
 		Downloader current;
 		if (freequeue.isQueueEmpty()) { // there is a free one
-			logger.info("===========A new downloader is initialed!=============");
+			logger.debug("===========A new downloader is initialed!=============");
 			current = new Downloader(property, this);
 			countofinitial++;
 			proceedingqueue.push(current); // move it to proceeding queue
-			logger.info("Total initial : " + countofinitial
+			logger.debug("Total initial : " + countofinitial
 					+ "\nFree Downloader : " + freequeue.size()
 					+ "\nProceeding Downloader : " + proceedingqueue.size());
 		} else {
-			logger.info("-----------Use Old Downloader!-------------");
+			logger.debug("-----------Use Old Downloader!-------------");
 			try {
 				current = freequeue.pop(); // use a free one
 			} catch (NoSuchElementException e) {
 				current = new Downloader(property, this);
 				countofinitial++;
 				proceedingqueue.push(current); // move it to procedding queue
-				logger.info("Total initial : " + countofinitial
+				logger.debug("Total initial : " + countofinitial
 						+ "\nFree Downloader : " + freequeue.size()
 						+ "\nProceeding Downloader : " + proceedingqueue.size());
 				return current;
 			}
 			proceedingqueue.push(current);
 			freequeue.remove(current); // remove it from the freequeue
-			logger.info("Total initial : " + countofinitial
+			logger.debug("Total initial : " + countofinitial
 					+ "\nFree Downloader : " + freequeue.size()
 					+ "\nProceeding Downloader : " + proceedingqueue.size());
 		}
@@ -89,7 +89,7 @@ public class DownloaderFactory {
 	 */
 	public void releaseDownloader(Downloader downloader) {
 
-		logger.info("~~~~~~~~~~~Release Downloader~~~~~~~~~~");
+		logger.debug("~~~~~~~~~~~Release Downloader~~~~~~~~~~");
 		proceedingqueue.remove(downloader);
 		freequeue.push(downloader);
 	}

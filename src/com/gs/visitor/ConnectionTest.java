@@ -6,6 +6,7 @@ package com.gs.visitor;
 import org.apache.log4j.Logger;
 
 /**
+ * a tester of url
  * @author GaoShen
  * @packageName com.gs.test
  */
@@ -36,7 +37,7 @@ public class ConnectionTest {
 				if (thread.isError()) {
 					thread.stop();
 					logger.error("Not 200! Bad Connection");
-					thread.releaseConnection(); 
+					thread.releaseConnection(); // release the connect of httpclient
 					thread.join();
 					return false;
 				}
@@ -47,7 +48,7 @@ public class ConnectionTest {
 				logger.error("Interrupted! Bad Connection");
 				return false;
 			}
-			thread.releaseConnection(); 
+			thread.releaseConnection(); // release the connect of httpclient
 			thread.join();
 
 		} catch (InterruptedException e) {

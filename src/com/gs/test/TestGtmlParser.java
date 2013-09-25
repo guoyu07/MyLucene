@@ -133,9 +133,4 @@ public class TestGtmlParser {
 
 	}
 	
-	@Test
-	public void test3(){
-		NewCrawler n = new NewCrawler();
-		n.c();
-	}
 }

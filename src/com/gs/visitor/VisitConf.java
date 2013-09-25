@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import com.gs.crawler.URL;
 
 /**
+ * the configure of visitor thread
  * @author GaoShen
  * @packageName com.gs.visitor
  */
@@ -17,8 +18,8 @@ public class VisitConf {
 	public Visitor visitor;
 	public URL url;
 	/**
-	 * @param pop
-	 * @param currentVisitor
+	 * @param the url to visit
+	 * @param currentVisitor the visitor to visit
 	 */
 	public VisitConf(URL url, Visitor currentVisitor) {
 		this.url = url;

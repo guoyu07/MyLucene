@@ -33,7 +33,7 @@ public class ConnectThread extends Thread {
 			this.code = hc.executeMethod(get);
 			if (code != 200)
 				error = true;
-			logger.info("CODE " + code);
+			logger.debug("CODE " + code);
 		} catch (IOException e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());

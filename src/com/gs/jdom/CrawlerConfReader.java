@@ -4,6 +4,7 @@
 package com.gs.jdom;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
@@ -45,12 +46,16 @@ public class CrawlerConfReader {
 			OS os = rootEl.getChildText("os").equals("Windows") ? OS.Windows
 					: OS.Linux;
 			String seeds = rootEl.getChildText("seeds");
-			property = new Property(deepth, topN, os, path, needsIndex,databaseUsername,databasePassword);
+			property = new Property(deepth, topN, os, path, needsIndex,
+					databaseUsername, databasePassword);
 			logger.info(property);
 
 		} catch (JDOMException e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());
+		} catch (FileNotFoundException e) {
+			logger.error("The configure file can't found!");
+			System.exit(0);
 		} catch (IOException e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());

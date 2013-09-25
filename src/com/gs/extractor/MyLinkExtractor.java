@@ -49,8 +49,9 @@ public class MyLinkExtractor {
 				String lin = sub(list.elementAt(i).toHtml());
 				if (lin == ""
 						|| lin == null
-						|| !(lin.endsWith(".htm") || lin.endsWith(".html") || lin
-								.endsWith(".shtml")))
+						|| !(lin.endsWith(".htm") || lin.endsWith(".html")
+								|| lin.endsWith(".shtml") || lin
+									.endsWith(".jsp")||lin.endsWith(".php")))
 					continue;
 				churl.level = paurl.level + 1;
 				churl.url = lin;

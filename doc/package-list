@@ -1,0 +1,12 @@
+com.gs.DAO
+com.gs.Lucene
+com.gs.crawler
+com.gs.downloader
+com.gs.extractor
+com.gs.io
+com.gs.jdom
+com.gs.main
+com.gs.model
+com.gs.test
+com.gs.utils
+com.gs.visitor

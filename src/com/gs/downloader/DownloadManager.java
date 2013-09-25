@@ -99,7 +99,7 @@ public class DownloadManager extends Thread {
 				break;
 			} // the condition to shutdown the manager
 		}
-		logger.info("~~~~~!!!!!!!!!!!!!!Downloader Manager ShutDown!!!!!!!!!!~~~~~~~");
+		logger.debug("~~~~~!!!!!!!!!!!!!!Downloader Manager ShutDown!!!!!!!!!!~~~~~~~");
 	}
 
 	/**

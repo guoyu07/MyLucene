@@ -10,7 +10,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Scanner;
 
+import org.aspectj.util.FileUtil;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -81,6 +84,12 @@ public class TestIO {
 		File file = new File("D://test.txt");
 		long a = file.length();
 		System.out.println(a);
+	}
+
+	@Test
+	public void testInput() {
+		Scanner s = new Scanner(System.in);
+		System.out.println(s.nextLine());
 	}
 
 	/*

@@ -15,6 +15,10 @@ import com.gs.downloader.DownloadManager;
  * @author GaoShen
  * @packageName com.gs.visitor
  */
+/**
+ * @author GaoShen
+ * @packageName com.gs.visitor
+ */
 public class VisitorManager extends Thread {
 	private int topN;
 	private int deepth;
@@ -27,63 +31,62 @@ public class VisitorManager extends Thread {
 	private Logger logger = Logger.getLogger(this.getClass());
 	private boolean finish = false;
 	private DownloadManager downloadManager;
-	
 
 	/**
-	 * 
+	 * @param property
+	 * @param downloadManager
+	 *            give VisitorManger a downloader to add urls to the downloader
+	 *            manager
 	 */
-	public VisitorManager(Property property,DownloadManager downloadManager) {
+	public VisitorManager(Property property, DownloadManager downloadManager) {
 		this.property = property;
 		this.downloadManager = downloadManager;
-		downloadManager.start();
+		downloadManager.start(); // start the downloader manager
 		this.topN = property.topN;
 		this.deepth = property.deepth;
-		int i = 0;
 		for (String url : property.seeds) {
-			queue.push(new URL(url, 1));
-			i++;
+			queue.push(new URL(url, 1)); // push the initial urls to the unvisit
+											// queue
 		}
-		factory = new VisitorFactory(property, this);
+		factory = new VisitorFactory(property, this); // initial the visitor
+														// factory.It's a
+														// Singleton.
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/* (non-Javadoc)
 	 * @see java.lang.Thread#run()
 	 */
 	@Override
 	public void run() {
 		while (true) {
-			try {
-				if (!queue.isQueueEmpty()) {
-					if (factory.isFreeVisitorQueueEmpty()&&factory.isVisitorLimited()) {
-						Thread.sleep(1000);
-					}else{
-						count++; // the title of docs
-						currentVisitor = factory.getVisitor();
-						VisitConf conf = new VisitConf(queue.pop(), currentVisitor);
-						VisitThread visitThread = new VisitThread();
-						visitThread.setConf(conf);
-						visitThread.start();
-					}
+			if (!queue.isQueueEmpty()) {
+				if (factory.isFreeVisitorQueueEmpty()
+						&& factory.isVisitorLimited()) { // both the free
+															// visitor queue and
+															// the number of
+															// visitor reach the
+															// limit line
+					Thread.yield(); 
+				} else {
+					count++; // the title of docs
+					currentVisitor = factory.getVisitor();
+					VisitConf conf = new VisitConf(queue.pop(), currentVisitor); //the configur of visitor
+					VisitThread visitThread = new VisitThread();//the thread to run the visitor
+					visitThread.setConf(conf);
+					visitThread.start();
 				}
-				if (queue.size() == 0 && factory.getProceedingQueueSize() == 0
-						&& finish) {
-					System.out.println("Queue Size : " + queue.size()
-							+ "Proceeding Queue : "
-							+ factory.getProceedingQueueSize());
-					break;
-				} // the condition to shutdown the manager
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-				logger.error(e.getMessage());
 			}
+			if (queue.size() == 0 && factory.getProceedingQueueSize() == 0 //there is nothing to visit ,don't have a proceeding visitor and the flag of finish is true
+					&& finish) {
+				System.out.println("Queue Size : " + queue.size()
+						+ "Proceeding Queue : "
+						+ factory.getProceedingQueueSize());
+				break;
+			} // the condition to shutdown the manager
 		}
-		logger.info("=======!!!!!!!!!!!!!!Visitor Manager ShutDown!!!!!!!!!!=========");
-		downloadManager.setFetchAllDone(true);
-		
-		
-		
+		logger.debug("=======!!!!!!!!!!!!!!Visitor Manager ShutDown!!!!!!!!!!=========");
+		downloadManager.setFetchAllDone(true); //shutdown the downloader manager
+
 	}
 
 	/**
@@ -94,13 +97,16 @@ public class VisitorManager extends Thread {
 		this.finish = finish;
 	}
 
+	/**
+	 * @param url
+	 */
 	public void add(URL url) {
 		queue.push(url);
 		downloadManager.add(url.url);
 	}
 
 	public void test() {
-		System.out.println("Queue Size : " + queue.size()
+		logger.debug("Queue Size : " + queue.size()
 				+ "Proceeding Queue : " + factory.getProceedingQueueSize());
 	}
 

@@ -73,11 +73,5 @@ public class VisitorMangerTest {
 		assertNotNull(st);
 	}
 	
-	@Test
-	public void testNewC(){
-		NewCrawler c  =new NewCrawler();
-		c.c();
-	}
-	
 	
 }

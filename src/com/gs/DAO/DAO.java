@@ -37,12 +37,12 @@ public class DAO {
 					+ "','"
 					+ p.getUrl() + "')";
 			// 插入数据的sql语句
-			System.out.println(sql);
+			logger.debug(sql);
 			st = (Statement) conn.createStatement(); // 创建用于执行静态sql语句的Statement对象
 
 			int count = st.executeUpdate(sql); // 执行插入操作的sql语句，并返回插入数据的个数
 
-			logger.info("向page表中插入 " + count + " 条数据"); // 输出插入操作的处理结果
+			logger.debug("向page表中插入 " + count + " 条数据"); // 输出插入操作的处理结果
 
 		} catch (SQLException e) {
 			logger.error("插入数据失败" + e.getMessage());
@@ -114,12 +114,9 @@ public class DAO {
 	 * 
 	 */
 	public DAO(Property p) {
-		
-		
 		this.dbname = p.dbname;
 		this.dbpass = p.dbpass;
 		conn = getConnection();
-		System.out.println(dbname+dbpass);
 	}
 
 	public void deleteTable() {

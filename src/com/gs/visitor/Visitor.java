@@ -26,6 +26,11 @@ public class Visitor {
 	private VisitorManager manager;
 	private int deepth;
 
+	/**
+	 * @param property
+	 * @param factory
+	 * @param manager
+	 */
 	public Visitor(Property property, VisitorFactory factory,
 			VisitorManager manager) {
 		this.topN = property.topN;
@@ -34,6 +39,10 @@ public class Visitor {
 		this.manager = manager;
 	}
 
+	/**
+	 * @param url
+	 * @return a list of urls which the param page content
+	 */
 	public List<URL> visit(URL url) {
 		if (url.level < deepth) {
 			List<URL> list = null;
@@ -56,7 +65,10 @@ public class Visitor {
 		}
 	}
 
-	public void recycle() {
+	/**
+	 * recycle this visitor
+	 */
+	protected void recycle() {
 		factory.recycle(this);
 	}
 }
