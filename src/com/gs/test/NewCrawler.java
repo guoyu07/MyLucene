@@ -83,11 +83,8 @@ public class NewCrawler {
 	}
 	
 	public void c() {
-<<<<<<< HEAD
 		System.out.println("Please Input the path of conf.xml");
-=======
 		System.out.println("Please Input the path of conf.xml\n");
->>>>>>> 1b181f680c7db5e7509390af53ef61fc76c417ae
 		Scanner s = new Scanner(System.in);
 		String confXMLPath = s.nextLine();
 		long start = System.currentTimeMillis();
@@ -123,11 +120,8 @@ public class NewCrawler {
 				e.printStackTrace();
 				logger.error(e.getMessage());
 			}
-<<<<<<< HEAD
 			if (i > 10)				{m.interrupt();break;}
-=======
 			if (i > 10)				break;
->>>>>>> 1b181f680c7db5e7509390af53ef61fc76c417ae
 		}
 
 		if (dm.isAlive()) {
@@ -140,11 +134,8 @@ public class NewCrawler {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-<<<<<<< HEAD
 				if (i1 > 10)	{dm.interrupt();break;} // downloader manager timeout,proceed ,exit the
-=======
 				if (i1 > 10)	break; // downloader manager timeout,proceed ,exit the
->>>>>>> 1b181f680c7db5e7509390af53ef61fc76c417ae
 							// program forcibly
 			}
 		}
