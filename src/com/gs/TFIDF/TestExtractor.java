@@ -45,9 +45,9 @@ public class TestExtractor {
 	@Test
 	public void test2() {
 		TFIDF t = new TFIDF();
-		System.out.println(new Date(System.currentTimeMillis()).toLocaleString());
+		System.out.println("加载语料库"+new Date(System.currentTimeMillis()).toLocaleString());
 		Map<String, Double> map = new CorpusIDF().idfReader(new File("D://Test//map.txt"));
-		System.out.println(new Date(System.currentTimeMillis()).toLocaleString());
+		System.out.println("加载完毕"+new Date(System.currentTimeMillis()).toLocaleString());
 		t.count("大学生", new File(
 				"D://Lucene//docs//chineneDocs//“涉黑”局长文强涉3罪名 至少5名妇女遭其强奸.txt"),
 				map);
