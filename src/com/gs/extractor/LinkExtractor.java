@@ -3,13 +3,16 @@
  */
 package com.gs.extractor;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
+import com.gs.crawler.URL;
+
 /**
- * Extract the main text of an url
  * @author GaoShen
  * @packageName com.gs.extractor
  */
-public interface ContentExtractor {
-	public String extract(String url);
+public interface LinkExtractor {
+	public List<URL> extract(URL paurl, int topN);
 }

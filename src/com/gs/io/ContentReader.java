@@ -43,15 +43,8 @@ public class ContentReader {
 		return content;
 	}
 
-	public String read(int id, String mergepath) {// TODO change to DAO
+	public String read(int id, String mergepath) {
 		String re = null;
-		/*
-		 * ClassPathXmlApplicationContext ctx = new
-		 * ClassPathXmlApplicationContext( "beans.xml"); PageDAO dao = (PageDAO)
-		 * ctx.getBean("pageDAO");
-		 * 
-		 * Page p = dao.loadPage(id);
-		 */
 		Page p = null;
 		System.out.println(p);
 		re = read(mergepath, p.getStartoffset(), p.getEndoffset());

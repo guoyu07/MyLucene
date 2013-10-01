@@ -14,6 +14,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.gs.DAO.DAO;
 import com.gs.crawler.Property;
 import com.gs.extractor.ContentExtractor;
+import com.gs.extractor.TencentNewsContentExtractor;
 import com.gs.io.ContentWriter;
 import com.gs.model.Page;
 import com.gs.utils.Status;
@@ -40,7 +41,7 @@ public class Downloader {
 	 * @param factory
 	 *            a connect to factory
 	 */
-	public Downloader(Property property, DownloaderFactory factory,int id) {
+	public Downloader(Property property, DownloaderFactory factory, int id) {
 		dao = new DAO(property);
 		this.id = id;
 		cw = new ContentWriter();
@@ -57,17 +58,24 @@ public class Downloader {
 	 */
 	public boolean down(String url, int count) {
 		try {
-			// String title = TitleExtractor.extractor(u.url); //the extractor of title
+			// String title = TitleExtractor.extractor(u.url); //the extractor
+			// of title
 			this.status = Status.Proceeding;
 			this.startTime = System.currentTimeMillis();
 			String title = String.valueOf(count);
-			String content = ContentExtractor.extractor(url);
-			cw.write(content, property.mergefile+id); // merge
+			ContentExtractor tencentNewsContentExtractor = new TencentNewsContentExtractor();
+			String content = tencentNewsContentExtractor.extract(url);
+			if (content == null || content.equals("")) {
+				this.status = Status.Finished;
+				recycle();
+				return false;
+			}
+			cw.write(content, property.mergefile + id); // merge
 			p.setEndoffset(cw.endoffset);
 			p.setId(count);
 			p.setStartoffset(cw.startoffset);
 			p.setUrl(url);
-			p.setPath(property.mergefile+id);
+			p.setPath(property.mergefile + id);
 			dao.save(p);
 			if (make(title, content)) // make docs
 				logger.info("Downloading   " + title);
@@ -131,7 +139,7 @@ public class Downloader {
 	 * @param conf
 	 */
 	public void down(DownConf conf) { // for dwon thread
-		down(conf.url,conf.count);
+		down(conf.url, conf.count);
 	}
 
 	/**
@@ -140,12 +148,12 @@ public class Downloader {
 	public long getStartTime() {
 		return startTime;
 	}
-	
-	public void destory(){
-		if(this.factory.getProceedingQueue().contains(this)){
+
+	public void destory() {
+		if (this.factory.getProceedingQueue().contains(this)) {
 			this.factory.getProceedingQueue().remove(this);
 		}
-		if(this.factory.getFreequeue().contains(this)){
+		if (this.factory.getFreequeue().contains(this)) {
 			this.factory.getFreequeue().remove(this);
 		}
 		dao.destory();

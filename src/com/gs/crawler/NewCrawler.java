@@ -122,7 +122,7 @@ public class NewCrawler {
 				e.printStackTrace();
 				logger.error(e.getMessage());
 			}
-			// if (i > 10) {m.interrupt();break;}
+			 if (i > 10) {m.interrupt();break;}
 		}
 
 		if (dm.isAlive()) {
@@ -135,7 +135,7 @@ public class NewCrawler {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				// if (i1 > 10) {dm.interrupt();break;} // downloader manager
+				 if (i1 > 10) {dm.interrupt();break;} // downloader manager
 				// timeout,proceed ,exit the
 			}
 		}

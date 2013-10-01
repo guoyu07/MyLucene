@@ -22,6 +22,7 @@ public class DaemonThread extends Thread {
 			while(it.hasNext()){
 				Downloader d = (Downloader) it.next();
 				if((System.currentTimeMillis() - d.getStartTime()) > 10000){
+					logger.error("deatory downloader!");
 					d.destory();
 				}
 			}

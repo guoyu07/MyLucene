@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import com.gs.DAO.DAO;
 import com.gs.crawler.Property;
+import com.gs.io.ContentReader;
 import com.gs.model.Page;
 /**
  * @author GaoShen
@@ -21,11 +22,12 @@ public class TestSeacher {
 	public void test() {
 		Searcher s = new Searcher();
 		Property p = new Property("D://Test//conf.xml");
-		String q = "习近平";
+		String q = "栗子鸡";
 		Page[] pages = s.search(p, q);
 		if(pages.length ==0 ){System.out.println("没有找到"+q);return;}
+		ContentReader cr = new ContentReader();
 		for (int i = 0; i < pages.length; i++) {
-			System.out.println(pages[i].getUrl());
+			System.out.println(pages[i].getUrl()+cr.read(pages[i].getPath(), pages[i].getStartoffset(), pages[i].getEndoffset()));
 		}
 	}
 	

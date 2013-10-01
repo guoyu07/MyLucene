@@ -3,16 +3,15 @@
  */
 package com.gs.visitor;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.gs.crawler.ConnectionTest;
 import com.gs.crawler.Property;
 import com.gs.crawler.URL;
-import com.gs.extractor.MyLinkExtractor;
+import com.gs.extractor.LinkExtractor;
+import com.gs.extractor.TencentNewsLinkExtractor;
 import com.gs.utils.Status;
 
 /**
@@ -23,7 +22,6 @@ public class Visitor {
 	private Logger logger = Logger.getLogger(this.getClass());
 	private int topN;
 	private VisitorFactory factory;
-	private ConnectionTest tester = new ConnectionTest();
 	private VisitorManager manager;
 	private int deepth;
 	private Status status;
@@ -51,13 +49,13 @@ public class Visitor {
 		this.status = Status.Proceeding;
 		if (url.level < deepth) {
 			List<URL> list = null;
-			if (!tester.test(url.url, 5000)) { 
-				// In order to avoid bad links
+			//DefaultLinkExtractor e = new DefaultLinkExtractor();
+			LinkExtractor e = new TencentNewsLinkExtractor();
+			list = e.extract(url, topN);
+			if(list.size() == 0){
 				recycle();
-				return new LinkedList<URL>();
+				return list;
 			}
-			list = MyLinkExtractor.extractor(url, topN);
-			
 			for (URL nurl : list) {
 				manager.add(nurl);
 				logger.info("URL = " + nurl.url + "    Level = " + nurl.level);

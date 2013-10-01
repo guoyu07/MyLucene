@@ -22,7 +22,6 @@ public class VisitorQueue extends Queue {
 	 */
 	@Override
 	public boolean push(Object obj) {
-		// TODO Auto-generated method stub
 		return super.push(obj);
 	}
 
@@ -33,7 +32,6 @@ public class VisitorQueue extends Queue {
 	 */
 	@Override
 	public Visitor pop() {
-		// TODO Auto-generated method stub
 		return (Visitor) super.pop();
 	}
 
@@ -44,7 +42,6 @@ public class VisitorQueue extends Queue {
 	 */
 	@Override
 	public boolean isQueueEmpty() {
-		// TODO Auto-generated method stub
 		return super.isQueueEmpty();
 	}
 
@@ -55,7 +52,6 @@ public class VisitorQueue extends Queue {
 	 */
 	@Override
 	public void empty() {
-		// TODO Auto-generated method stub
 		super.empty();
 	}
 

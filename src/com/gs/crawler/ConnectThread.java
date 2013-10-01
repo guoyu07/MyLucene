@@ -65,7 +65,13 @@ public class ConnectThread extends Thread {
 	}
 
 	public void releaseConnection() {
-		get.releaseConnection();
+		try {
+			get.releaseConnection();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+		}
+		
 	}
 
 	/**

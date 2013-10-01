@@ -24,8 +24,8 @@ import com.gs.crawler.Crawler;
 import com.gs.crawler.OS;
 import com.gs.crawler.Property;
 import com.gs.crawler.URL;
-import com.gs.extractor.ContentExtractor;
-import com.gs.extractor.MyLinkExtractor;
+import com.gs.extractor.TencentNewsContentExtractor;
+import com.gs.extractor.DefaultLinkExtractor;
 import com.gs.extractor.TitleExtractor;
 
 /**
@@ -56,7 +56,7 @@ public class TestGtmlParser {
 
 	@Test
 	public void testAll() {
-		MyLinkExtractor linkEx = new MyLinkExtractor();
+		com.gs.extractor.LinkExtractor linkEx = new DefaultLinkExtractor();
 		TitleExtractor titleEx = new TitleExtractor();
 
 	}

@@ -15,6 +15,7 @@ import org.apache.log4j.Logger;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
+import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 import org.junit.Test;
 
@@ -74,6 +75,25 @@ public class TestDom4J {
 			e.printStackTrace();
 		} catch (DocumentException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void parser(){
+		try {
+			StringReader sr = new StringReader(FileUtils.readFileToString(new File("D://Test//newc.htm")));
+			SAXReader reader = new SAXReader();
+			Document document = reader.read(sr);
+			Iterator<Node> i = document.selectNodes("//a").iterator();
+			while(i.hasNext()){
+				System.out.println(i.next().getText());
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+		} catch (DocumentException e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 	}
 }

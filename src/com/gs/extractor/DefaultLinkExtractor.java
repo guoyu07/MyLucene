@@ -28,13 +28,13 @@ import com.gs.crawler.URL;
  * @author GaoShen
  * @packageName com.gs.extractor
  */
-public class MyLinkExtractor {
-	private static Logger logger = Logger.getLogger(MyLinkExtractor.class);
+public class DefaultLinkExtractor implements LinkExtractor {
+	private static Logger logger = Logger.getLogger(DefaultLinkExtractor.class);
 
 	String url;
-	static Parser parser;
-	static NodeFilter filter;
-	static NodeList list;
+	 Parser parser;
+	 NodeFilter filter;
+	 NodeList list;
 
 	/**
 	 * @param paurl
@@ -43,7 +43,7 @@ public class MyLinkExtractor {
 	 *            the max of link to the page
 	 * @return all the links of the webpage
 	 */
-	public static List<URL> extractor(URL paurl, int topN) {
+	public  List<URL> extract(URL paurl, int topN) {
 		LinkedList<URL> urls = new LinkedList();
 		filter = new NodeClassFilter(LinkTag.class);
 		try {
@@ -66,7 +66,7 @@ public class MyLinkExtractor {
 					if (churl.url == null
 							|| churl.url == ""
 							|| churl.url.startsWith("http://rss")
-							|| !(churl.url.endsWith(".htm")
+							|| !(churl.url.startsWith("http")||churl.url.endsWith(".htm")
 									|| churl.url.endsWith(".html")
 									|| churl.url.endsWith(".shtml")
 									|| churl.url.endsWith(".jsp") || churl.url

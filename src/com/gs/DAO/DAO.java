@@ -16,7 +16,7 @@ public class DAO {
 	private String dbname;
 	private String dbpass;
 	// 创建静态全局变量
-	static Connection conn;// TODO 复用commect
+	static Connection conn;
 
 	static Statement st;
 

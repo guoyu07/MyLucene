@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
 
 import com.gs.Lucene.Indexer;
 import com.gs.downloader.DownloadManager;
-import com.gs.extractor.MyLinkExtractor;
+import com.gs.extractor.DefaultLinkExtractor;
 
 /**
  * @author GaoShen
@@ -53,7 +53,7 @@ public class Crawler {
 					continue;
 				}
 				if (u.level < deepth) {
-					List<URL> list = MyLinkExtractor.extractor(u, topN);
+					List<URL> list = /*DefaultLinkExtractor.extractor(u, topN)*/null;
 					Iterator<URL> iterator = list.iterator();
 					while (iterator.hasNext()) {
 						if (u.url.length() > 220)
