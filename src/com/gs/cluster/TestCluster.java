@@ -21,4 +21,6 @@ public class TestCluster {
 		//System.out.println(c.cluster(new File("D://Lucene//docs//训练分类用文本//艺术//2177.txt"), new File("D://Lucene//docs//训练分类用文本//艺术//2173.txt")));
 		System.out.println(c.cluster(new File("D://Test//v1.txt"), new File("D://Test//v2.txt")));
 	}
+	
+	
 }

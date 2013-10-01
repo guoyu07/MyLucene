@@ -11,6 +11,7 @@ import java.util.Scanner;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 
+import com.gs.Lucene.Indexer;
 import com.gs.crawler.Property;
 import com.gs.downloader.DownloadManager;
 import com.gs.visitor.VisitorManager;
@@ -40,13 +41,14 @@ public class NewCrawler {
 			try {
 				Thread.sleep(5000);
 				i++;
-				logger.error("Visitor Manager have not been done.       Please Wait!  "+i);
+				logger.error("Visitor Manager have not been done.       Please Wait!  "
+						+ i);
 				m.test();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 				logger.error(e.getMessage());
 			}
-			//if (i > 5)				break;
+			// if (i > 5) break;
 		}
 
 		if (dm.isAlive()) {
@@ -59,8 +61,9 @@ public class NewCrawler {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				//if (i1 > 10)	break; // downloader manager timeout,proceed ,exit the
-							// program forcibly
+				// if (i1 > 10) break; // downloader manager timeout,proceed
+				// ,exit the
+				// program forcibly
 			}
 		}
 		double count = dm.count;
@@ -78,13 +81,12 @@ public class NewCrawler {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		//System.gc();
-		//System.exit(0);
+		// System.gc();
+		// System.exit(0);
 	}
-	
+
 	public void c() {
 		System.out.println("Please Input the path of conf.xml");
-		System.out.println("Please Input the path of conf.xml\n");
 		Scanner s = new Scanner(System.in);
 		String confXMLPath = s.nextLine();
 		long start = System.currentTimeMillis();
@@ -100,8 +102,7 @@ public class NewCrawler {
 		}
 		m.setFinish(true);
 		int i = 0;
-		
-		while(!m.isQueueEmpty()&&!dm.isQueueEmpty()){
+		while (!m.isQueueEmpty() && !dm.isQueueEmpty()) {
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
@@ -109,19 +110,19 @@ public class NewCrawler {
 				logger.error(e.getMessage());
 			}
 		}
-		
+
 		while (m.isAlive()) {
 			try {
 				Thread.sleep(1000);
 				i++;
-				logger.error("Visitor Manager have not been done.       Please Wait!  "+i);
+				logger.error("Visitor Manager have not been done.       Please Wait!  "
+						+ i);
 				m.test();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 				logger.error(e.getMessage());
 			}
-			if (i > 10)				{m.interrupt();break;}
-			if (i > 10)				break;
+			// if (i > 10) {m.interrupt();break;}
 		}
 
 		if (dm.isAlive()) {
@@ -134,18 +135,17 @@ public class NewCrawler {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				if (i1 > 10)	{dm.interrupt();break;} // downloader manager timeout,proceed ,exit the
-				if (i1 > 10)	break; // downloader manager timeout,proceed ,exit the
-							// program forcibly
+				// if (i1 > 10) {dm.interrupt();break;} // downloader manager
+				// timeout,proceed ,exit the
 			}
 		}
 		double count = dm.count;
 		double use = (System.currentTimeMillis() - start) / 1000;
 		double speed = count / use;
 		String report = "Start time is  " + new Date(start).toLocaleString()
-				+ "\nFinish time is  "
+				+ "\r\nFinish time is  "
 				+ new Date(System.currentTimeMillis()).toLocaleString()
-				+ "\nTotal use  " + use + "s" + "\nSpeed  " + speed
+				+ "\r\nTotal use  " + use + "s" + "\r\nSpeed  " + speed
 				+ " pages/s";
 		try {
 			FileUtils.writeStringToFile(new File(p.path + "/report.txt"),
@@ -154,8 +154,14 @@ public class NewCrawler {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		//System.gc();
-		//System.exit(0);
+
+		if (p.needsIndex) { // start index
+			Indexer indexer = new Indexer();
+			indexer.index(p.Indexfile, p.docfile);
+		}
+
+		// System.gc();
+		// System.exit(0);
 	}
 
 }

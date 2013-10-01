@@ -31,7 +31,8 @@ public class Schedular {
 	 * @return
 	 */
 	public String getPath() {
-		File merge = new File(path + "merge" + count + ".txt");
+		String re = path + count + ".txt";
+		File merge = new File(path + count + ".txt");
 		if (!merge.exists())
 			try {
 				merge.createNewFile();
@@ -40,7 +41,7 @@ public class Schedular {
 			}
 		if (merge.length() > limit)
 			count++;
-		return merge.getAbsolutePath();
+		return re;
 	}
 
 }

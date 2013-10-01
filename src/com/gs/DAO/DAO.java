@@ -130,4 +130,28 @@ public class DAO {
 			logger.fatal("É¾³ý±íÊ§°Ü" + e.getMessage());
 		}
 	}
+
+	public Page loadPage(int id) {
+		String sql = "select * from page where id = " + id;
+		Page p = null;
+		try {
+			st = (Statement) conn.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			p = new Page();
+			if (rs.next()) {
+				System.out.println(rs.getString("path"));
+			}
+			p.setPath(rs.getString("path"));
+			p.setId(id);
+			p.setEndoffset(rs.getLong("endoffset"));
+			p.setStartoffset(rs.getLong("startoffset"));
+			p.setUrl(rs.getString("url"));
+			st.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+		}
+		
+		return p;
+	}
 }

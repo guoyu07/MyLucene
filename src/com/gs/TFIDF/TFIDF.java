@@ -32,5 +32,16 @@ public class TFIDF {
 		System.out.println("TF-IDF = " + idf * tf);
 		return idf * tf;
 	}
+	
+	public double count(String key, String target, Map<String,Double> corpusIDF) {
+		KeyWordsExtractor e = new KeyWordsExtractor();
+		double idf = corpusIDF.get(key);
+		System.out.println("IDF = " + idf);
+		Map<String, Integer> m = e.extractString(target);
+		double tf = (double) m.get(key) / m.size();
+		System.out.println("TF = " + tf);
+		System.out.println("TF-IDF = " + idf * tf);
+		return idf * tf;
+	}
 
 }

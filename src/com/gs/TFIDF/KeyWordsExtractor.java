@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.StringReader;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -118,6 +119,55 @@ public class KeyWordsExtractor {
 		try {
 			d = new FileReader(current);
 			IKSegmenter ik = new IKSegmenter(d, true);
+			while (true) {
+				try {
+					String a = ik.next().getLexemeText();
+					if (!filter.contains(a) && a.length() > 1 && a.matches(".*[\u4e00-\u9faf].*")) {
+						list.add(a);
+					}
+				} catch (NullPointerException e) {
+					break;
+				} catch(ArrayIndexOutOfBoundsException e){
+					//System.out.println("he%%%%%%%%%%%%%%%%%%%%");
+				}
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+		} catch (IOException e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+		}
+		Map<String, Integer> m = new HashMap();
+		for (String word : list) {
+			int freq = (Integer) m.get(word) == null ? 0 : (Integer) m
+					.get(word);
+			m.put(word, freq == 0 ? 1 : freq + 1);
+		}
+		//sort
+		/*Set<String> keySet = m.keySet();
+		System.out.println(current.getName());
+		for (int i = 0; i < m.size(); i++) {
+			int a = 0;
+			String MaxKey=null;
+			for (String key : keySet) {
+				if (m.get(key)>a) {
+					a = m.get(key);
+					MaxKey = key;
+				}
+			}
+			System.out.println(MaxKey+"   "+((double)a/list.size())*100+"%");
+			m.remove(MaxKey);
+		}*/
+
+		return m;
+	}
+	
+	public Map<String, Integer> extractString(String page){
+		List<String> list = new LinkedList();// sped aritical
+		try {
+			StringReader r = new StringReader(page);
+			IKSegmenter ik = new IKSegmenter(r, true);
 			while (true) {
 				try {
 					String a = ik.next().getLexemeText();

@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -93,5 +94,17 @@ public class TestExtractor {
 	public void testIDF(){
 		CorpusIDF c = new CorpusIDF();
 		c.idf(new File("D://Lucene//docs"), new File("D://Test//map.txt"));
+	}
+	
+	@Test
+	public void testArray(){
+		int[][] a = {{2,2},{1,1},{6,6},{4,4}};
+		Arrays.sort(a[2]);
+		for (int i = 0; i < a.length; i++) {
+			for (int j = 0; j < 2; j++) {
+				System.out.print(a[i][j]+"  ");
+			}
+			System.out.println();
+		}
 	}
 }

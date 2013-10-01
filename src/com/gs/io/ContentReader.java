@@ -33,8 +33,6 @@ public class ContentReader {
 				b1[i] = b;
 			}
 			content = new String(b1);
-
-			System.out.println(content);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());
