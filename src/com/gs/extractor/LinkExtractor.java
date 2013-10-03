@@ -15,4 +15,5 @@ import com.gs.crawler.URL;
  */
 public interface LinkExtractor {
 	public List<URL> extract(URL paurl, int topN);
+	public String getHtml();
 }

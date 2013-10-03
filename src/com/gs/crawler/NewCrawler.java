@@ -11,9 +11,11 @@ import java.util.Scanner;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 
+import com.gs.DAO.DAO;
 import com.gs.Lucene.Indexer;
 import com.gs.crawler.Property;
 import com.gs.downloader.DownloadManager;
+import com.gs.extractor.IDFactory;
 import com.gs.visitor.VisitorManager;
 
 /**
@@ -26,8 +28,8 @@ public class NewCrawler {
 	public void c(String confXMLPath) {
 		long start = System.currentTimeMillis();
 		Property p = new Property(confXMLPath);
-		DownloadManager dm = new DownloadManager(p);
-		VisitorManager m = new VisitorManager(p, dm);
+		//DownloadManager dm = new DownloadManager(p);
+		VisitorManager m = new VisitorManager(p/*, dm*/);
 		m.start();
 		try {
 			Thread.sleep(5000);
@@ -50,7 +52,7 @@ public class NewCrawler {
 			}
 			// if (i > 5) break;
 		}
-
+/*
 		if (dm.isAlive()) {
 			logger.error("Download have not been done.        Please Wait!");
 			int i1 = 0;
@@ -65,8 +67,8 @@ public class NewCrawler {
 				// ,exit the
 				// program forcibly
 			}
-		}
-		double count = dm.count;
+		}*/
+		double count = Double.valueOf(IDFactory.getID());
 		double use = (System.currentTimeMillis() - start) / 1000;
 		double speed = count / use;
 		String report = "Start time is  " + new Date(start).toLocaleString()
@@ -86,12 +88,14 @@ public class NewCrawler {
 	}
 
 	public void c() {
+		
 		System.out.println("Please Input the path of conf.xml");
 		Scanner s = new Scanner(System.in);
 		String confXMLPath = s.nextLine();
 		Property p = new Property(confXMLPath);
-		DownloadManager dm = new DownloadManager(p);
-		VisitorManager m = new VisitorManager(p, dm);
+		new DAO(p).create();
+		//DownloadManager dm = new DownloadManager(p);
+		VisitorManager m = new VisitorManager(p/*, dm*/);
 		long start = System.currentTimeMillis();
 		m.start();
 		try {
@@ -102,7 +106,7 @@ public class NewCrawler {
 		}
 		m.setFinish(true);
 		int i = 0;
-		while (!m.isQueueEmpty() && !dm.isQueueEmpty()) {
+		while (!m.isQueueEmpty()/* && !dm.isQueueEmpty()*/) {
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
@@ -124,8 +128,10 @@ public class NewCrawler {
 			}
 			 if (i > 10) {m.interrupt();break;}
 		}
-
-		if (dm.isAlive()) {
+		//m.destoryAllVisitors();
+		m = null;
+		System.gc();
+		/*if (dm.isAlive()) {
 			logger.error("Download have not been done.        Please Wait!");
 			int i1 = 0;
 			while (dm.isAlive()) {
@@ -138,8 +144,8 @@ public class NewCrawler {
 				 if (i1 > 10) {dm.interrupt();break;} // downloader manager
 				// timeout,proceed ,exit the
 			}
-		}
-		double count = dm.count;
+		}*/
+		double count = Double.valueOf(IDFactory.getID());
 		double use = (System.currentTimeMillis() - start) / 1000;
 		double speed = count / use;
 		String report = "Start time is  " + new Date(start).toLocaleString()
@@ -160,7 +166,7 @@ public class NewCrawler {
 			indexer.index(p.Indexfile, p.docfile);
 		}
 
-		// System.gc();
+		 System.gc();
 		// System.exit(0);
 	}
 

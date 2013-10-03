@@ -38,4 +38,13 @@ public class DefaultContentExtractor implements ContentExtractor {
 		re = new String(c);
 		return re;
 	}
+
+	/* (non-Javadoc)
+	 * @see com.gs.extractor.ContentExtractor#extractFromHtml(java.lang.String)
+	 */
+	@Override
+	public String extractFromHtml(String Html) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

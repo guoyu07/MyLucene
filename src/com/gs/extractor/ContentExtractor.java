@@ -12,4 +12,6 @@ import org.apache.log4j.Logger;
  */
 public interface ContentExtractor {
 	public String extract(String url);
+	public String extractFromHtml(String Html);
+	
 }

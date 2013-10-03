@@ -4,6 +4,9 @@
 package com.gs.extractor;
 
 import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringBufferInputStream;
 import java.io.StringReader;
@@ -32,7 +35,10 @@ import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
 import org.jdom.input.SAXBuilder;
 
+import com.gs.DAO.DAO;
 import com.gs.crawler.URL;
+import com.gs.io.ContentWriter;
+import com.gs.model.Page;
 
 /**
  * @author GaoShen
@@ -44,6 +50,7 @@ public class TencentNewsLinkExtractor implements LinkExtractor {
 	Parser parser;
 	NodeFilter filter;
 	NodeList list;
+	private String html;
 
 	/*
 	 * Extract Tencent News Center's Link like "http://news.qq.com/....."
@@ -71,7 +78,6 @@ public class TencentNewsLinkExtractor implements LinkExtractor {
 				try {
 					document = reader.read(sr);
 				} catch (DocumentException e) {
-					// e.printStackTrace();
 					logger.error(e.getMessage());
 				}
 				if (document != null) {
@@ -119,6 +125,8 @@ public class TencentNewsLinkExtractor implements LinkExtractor {
 			get = new GetMethod(paurl.url);
 			hc.executeMethod(get);
 			s = (get.getResponseBodyAsString());
+			html = s;
+			
 			get.releaseConnection();
 		} catch (ConnectTimeoutException e) {
 			logger.error("Bad connection");
@@ -129,7 +137,9 @@ public class TencentNewsLinkExtractor implements LinkExtractor {
 			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
-
+		if(s == null || s.equals("")){
+			return urls;
+		}
 		String regex = "<a\\s.*?href=\"([^\"]+)\"[^>]*>(.*?)</a>";
 		Pattern pt = Pattern.compile(regex);
 		Matcher mt = pt.matcher(s);
@@ -144,4 +154,25 @@ public class TencentNewsLinkExtractor implements LinkExtractor {
 
 		return urls;
 	}
+	
+	
+	
+	private String extractContent(String html){
+		String re = null;
+		String regex = "<div id=\"Cnt-Main-Article-QQ\".*?>(.*?)</div>";
+		Pattern pt = Pattern.compile(regex);
+		Matcher mt = pt.matcher(html);
+		if (mt.find()) {
+			re = (mt.group(1).replaceAll("[a-zA-Z_/\"<>=.:]", ""));
+		}
+		return re;
+	}
+
+	/**
+	 * @return the html
+	 */
+	public String getHtml() {
+		return html;
+	}
+
 }

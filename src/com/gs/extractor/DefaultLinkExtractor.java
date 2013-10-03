@@ -91,4 +91,13 @@ public class DefaultLinkExtractor implements LinkExtractor {
 		return urls;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.gs.extractor.LinkExtractor#getHtml()
+	 */
+	@Override
+	public String getHtml() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }

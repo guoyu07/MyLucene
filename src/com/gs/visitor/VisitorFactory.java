@@ -3,6 +3,7 @@
  */
 package com.gs.visitor;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import org.apache.log4j.Logger;
@@ -42,7 +43,7 @@ public class VisitorFactory {
 		Visitor current;
 		if (freeVisitorQueue.isQueueEmpty()) { // there is a free one
 			logger.debug("===========A new Visitor is initialed!=============");
-			current = new Visitor(property, this, manager);
+			current = new Visitor(property, this, manager,countofinitial);
 			countofinitial++;
 			proceedingVisitorQueue.push(current); // move it to proceeding queue
 			logger.debug("Total initial : " + countofinitial
@@ -56,7 +57,7 @@ public class VisitorFactory {
 				current = freeVisitorQueue.pop();
 				// use a free one
 			} catch (NoSuchElementException e) {
-				current = new Visitor(property, this, manager);
+				current = new Visitor(property, this, manager,countofinitial);
 				countofinitial++;
 				proceedingVisitorQueue.push(current);// move it to procedding
 														// queue
@@ -130,6 +131,22 @@ public class VisitorFactory {
 	 */
 	public VisitorQueue getFreeVisitorQueue() {
 		return freeVisitorQueue;
+	}
+
+	/**
+	 * 
+	 */
+	public void destoryAllVisitors() {
+		Iterator<Object> pi = proceedingVisitorQueue.iterator();
+		while(pi.hasNext()){
+			Visitor v = (Visitor) pi.next();
+			v = null;
+		}
+		Iterator<Object> fi = freeVisitorQueue.iterator();
+		while(fi.hasNext()){
+			Visitor v = (Visitor) fi.next();
+			v = null;
+		}
 	}
 
 }

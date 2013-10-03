@@ -70,7 +70,7 @@ public class Downloader {
 				recycle();
 				return false;
 			}
-			cw.write(content, property.mergefile + id); // merge
+			cw.write(content, property.mergefile + id + ".txt"); // merge
 			p.setEndoffset(cw.endoffset);
 			p.setId(count);
 			p.setStartoffset(cw.startoffset);
@@ -105,7 +105,7 @@ public class Downloader {
 	 */
 	private boolean make(String title, String content) throws IOException {
 		try {
-			File file = new File(path + title);
+			File file = new File(path + title+".txt");
 			FileWriter fw = new FileWriter(file);
 			fw.write(content);
 			fw.close();

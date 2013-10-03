@@ -22,7 +22,7 @@ public class TestSeacher {
 	public void test() {
 		Searcher s = new Searcher();
 		Property p = new Property("D://Test//conf.xml");
-		String q = "栗子鸡";
+		String q = "手机";
 		Page[] pages = s.search(p, q);
 		if(pages.length ==0 ){System.out.println("没有找到"+q);return;}
 		ContentReader cr = new ContentReader();

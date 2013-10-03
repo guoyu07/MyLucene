@@ -32,6 +32,7 @@ import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
 import org.junit.Test;
 
+import com.gs.DAO.DAO;
 import com.gs.crawler.URL;
 
 /**
@@ -114,8 +115,9 @@ public class TestLinkExtractor {
 
 	@Test
 	public void testTencentLinkExt() {
+		new DAO("root","940409").create();
 		TencentNewsLinkExtractor e = new TencentNewsLinkExtractor();
-		List<URL> l = e.extract(new URL("http://news.qq.com", 1), 999);
+		List<URL> l = e.extract(new URL("http://news.qq.com/a/20131006/003054.htm", 1), 999);
 		for (URL u : l) {
 			System.out.println(u.url);
 		}

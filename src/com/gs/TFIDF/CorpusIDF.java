@@ -4,7 +4,12 @@
 package com.gs.TFIDF;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -29,9 +34,9 @@ public class CorpusIDF {
 	 * @param mapOutputFile 
 	 * @return
 	 */
-	public Map<String, Integer> idf(File corpusDirectory, File mapOutputFile) {
+	public Map<String, Double> idf(File corpusDirectory, String mapOutputFile) {
 		Map<String, Integer> map = null;
-		try {
+		Map<String,Double> idfmap = new HashMap<String,Double>();
 			KeyWordsExtractor e = new KeyWordsExtractor();
 			String[] extensions = { "txt" };
 			map = new HashMap<String, Integer>();
@@ -47,18 +52,22 @@ public class CorpusIDF {
 					map.put(key, freq == 0 ? 1 : freq + 1);
 				}
 			}
-			if (!mapOutputFile.exists()) {
-				mapOutputFile.createNewFile();
-			}
 			for (String key : map.keySet()) {
-				FileUtils.writeStringToFile(mapOutputFile,
-						key + "   " + Math.log10((double)countofFiles/(double)map.get(key)) + "\r\n", true);//three space
+				idfmap.put(key, Math.log10((double)countofFiles/(double)map.get(key)));
+				
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
-			logger.error(e.getMessage());
-		}
-		return map;
+			try {
+				FileOutputStream os = new FileOutputStream(mapOutputFile); 
+				ObjectOutputStream oos = new ObjectOutputStream(os);
+				oos.writeObject(idfmap);
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+				logger.error(e1.getMessage());
+			} catch (IOException e1) {
+				e1.printStackTrace();
+				logger.error(e1.getMessage());
+			}
+		return idfmap;
 	}
 	@Deprecated
 	public Map<String, Integer> idf(File corpusDirectory) {
@@ -84,14 +93,18 @@ public class CorpusIDF {
 	 * @param idfFile
 	 * @return
 	 */
-	public Map<String,Double> idfReader(File idfFile){
+	public Map<String,Double> idfReader(String idfFile){
 		Map<String,Double> map = new HashMap<String,Double>();
 		try {
-			List<String> list = FileUtils.readLines(idfFile);
-			for (int j = 0; j < list.size(); j++) {
-				String s = list.get(j);
-				map.put(s.split("   ")[0], Double.valueOf(s.split("   ")[1]));
-			}
+			FileInputStream is = new FileInputStream(idfFile); 
+			ObjectInputStream ois = new ObjectInputStream(is);
+			map = (Map<String, Double>) ois.readObject();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
 		} catch (IOException e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());

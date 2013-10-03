@@ -106,5 +106,23 @@ public class TencentNewsContentExtractor implements ContentExtractor {
 		}
 		return re;
 	}
+
+	/**
+	 * @param html
+	 * @return
+	 */
+	public String extractFromHtml(String html) {
+		String re = null;
+		if(html == null){
+			return re ;
+		}
+		String regex = "<div id=\"Cnt-Main-Article-QQ\".*?>(.*?)</div>";
+		Pattern pt = Pattern.compile(regex);
+		Matcher mt = pt.matcher(html);
+		if (mt.find()) {
+			re = (mt.group(1).replaceAll("[a-zA-Z_/\"<>=.:]", ""));
+		}
+		return re;
+	}
 }
  

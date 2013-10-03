@@ -118,6 +118,12 @@ public class DAO {
 		this.dbpass = p.dbpass;
 		conn = getConnection();
 	}
+	
+	public DAO(String dbname,String dbpass){
+		this.dbname = dbname;
+		this.dbpass = dbpass;
+		conn = getConnection();
+	}
 
 	public void deleteTable() {
 		try {
@@ -137,10 +143,10 @@ public class DAO {
 		try {
 			st = (Statement) conn.createStatement();
 			ResultSet rs = st.executeQuery(sql);
-			p = new Page();
 			if (rs.next()) {
-				System.out.println(rs.getString("path"));
+				logger.debug(rs.getString("path"));
 			}
+			p = new Page();
 			p.setPath(rs.getString("path"));
 			p.setId(id);
 			p.setEndoffset(rs.getLong("endoffset"));

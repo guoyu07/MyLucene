@@ -45,6 +45,9 @@ public class Cluster {
 	}
 
 	public double getAngle(int[] v1, int[] v2) {
+		if(v1.length != v2.length){
+			  throw new IllegalArgumentException("the vectors' length are not same");
+		}
 		double fenzi = 0;
 		double fenmu1 = 0, fenmu2 = 0;
 		for (int i = 0; i < v1.length; i++) {

@@ -3,6 +3,8 @@
  */
 package com.gs.visitor;
 
+import java.util.NoSuchElementException;
+
 import org.apache.log4j.Logger;
 
 import com.gs.crawler.Property;
@@ -30,7 +32,7 @@ public class VisitorManager extends Thread {
 	private Visitor currentVisitor;
 	private Logger logger = Logger.getLogger(this.getClass());
 	private boolean finish = false;
-	private DownloadManager downloadManager;
+	//private DownloadManager downloadManager;
 
 	/**
 	 * @param property
@@ -38,10 +40,10 @@ public class VisitorManager extends Thread {
 	 *            give VisitorManger a downloader to add urls to the downloader
 	 *            manager
 	 */
-	public VisitorManager(Property property, DownloadManager downloadManager) {
+	public VisitorManager(Property property/*, DownloadManager downloadManager*/) {
 		this.property = property;
-		this.downloadManager = downloadManager;
-		downloadManager.start(); // start the downloader manager
+		//this.downloadManager = downloadManager;
+		//downloadManager.start(); // start the downloader manager
 		this.topN = property.topN;
 		this.deepth = property.deepth;
 		for (String url : property.seeds) {
@@ -75,10 +77,14 @@ public class VisitorManager extends Thread {
 				} else {
 					count++; // the title of docs
 					currentVisitor = factory.getVisitor();
-					VisitConf conf = new VisitConf(queue.pop(), currentVisitor); // the
-																					// configur
-																					// of
-																					// visitor
+					VisitConf conf = null;
+					try {
+						conf = new VisitConf(queue.pop(), currentVisitor);
+					} catch (NoSuchElementException e) {
+						currentVisitor.recycle();
+						logger.error(e.getMessage());
+						continue;
+					}
 					VisitThread visitThread = new VisitThread();// the thread to
 																// run the
 																// visitor
@@ -112,7 +118,7 @@ public class VisitorManager extends Thread {
 		}
 		
 		logger.debug("=======!!!!!!!!!!!!!!Visitor Manager ShutDown!!!!!!!!!!=========");
-		downloadManager.setFetchAllDone(true); // shutdown the downloader
+		//downloadManager.setFetchAllDone(true); // shutdown the downloader
 												// manager
 
 	}
@@ -130,7 +136,7 @@ public class VisitorManager extends Thread {
 	 */
 	public void add(URL url) {
 		queue.push(url);
-		downloadManager.add(url.url);
+		//downloadManager.add(url.url);
 	}
 
 	public void test() {
@@ -154,6 +160,9 @@ public class VisitorManager extends Thread {
 	public VisitorQueue getProceedingQueue() {
 		return this.factory.getProceedingQueue();
 	}
-	
+
+	public void destoryAllVisitors(){
+		this.factory.destoryAllVisitors();
+	}
 
 }

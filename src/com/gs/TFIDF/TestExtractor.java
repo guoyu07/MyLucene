@@ -47,7 +47,7 @@ public class TestExtractor {
 	public void test2() {
 		TFIDF t = new TFIDF();
 		System.out.println("加载语料库"+new Date(System.currentTimeMillis()).toLocaleString());
-		Map<String, Double> map = new CorpusIDF().idfReader(new File("D://Test//map.txt"));
+		Map<String, Double> map = new CorpusIDF().idfReader("D://Test//map.txt");
 		System.out.println("加载完毕"+new Date(System.currentTimeMillis()).toLocaleString());
 		t.count("大学生", new File(
 				"D://Lucene//docs//chineneDocs//“涉黑”局长文强涉3罪名 至少5名妇女遭其强奸.txt"),
@@ -87,13 +87,13 @@ public class TestExtractor {
 	@Test
 	public void testIDFReader(){
 		CorpusIDF c = new CorpusIDF();
-		c.idfReader(new File("D://Test//map.txt"));
+		c.idfReader("D://Test//map.txt");
 	}
 	
 	@Test
 	public void testIDF(){
 		CorpusIDF c = new CorpusIDF();
-		c.idf(new File("D://Lucene//docs"), new File("D://Test//map.txt"));
+		c.idf(new File("D://Lucene//docs"), "D://Test//docs//map.txt");
 	}
 	
 	@Test
@@ -118,5 +118,37 @@ public class TestExtractor {
 			}
 		}
 		System.out.println(new String(c));
+	}
+	
+	@Test
+	public void test5(){
+		CorpusIDF c = new CorpusIDF();
+		//Map<String,Double> idfmap = c.idf(new File("D://Test//docs"), "D://Test//docs//IDF.txt");
+		Map<String,Double> idfmap = c.idfReader("D://Test//docs//IDF.txt");
+		TFIDF t = new TFIDF();
+		Map<String,Double> tfmap = t.getTF(new File("D://Test//docs//193.txt"));
+		Map<String,Double> tfidfmap = new HashMap<String,Double>();
+		for (String key : tfmap.keySet()) {
+			tfidfmap.put(key, tfmap.get(key)*idfmap.get(key));
+		}
+		int i = 0;
+		System.out.println("-----------");
+		while (i<6) {
+			String mainkey = null;
+			double maxtfidf = 0;
+			for (String key : tfidfmap.keySet()) {
+				double tfidf = tfidfmap.get(key);
+				if (tfidf > maxtfidf) {
+					mainkey = key;
+					maxtfidf = tfidf;
+				}
+			}
+			tfidfmap.remove(mainkey);
+			System.out.println(mainkey);
+			i++;
+		}
+		System.out.println("-----------------");
+		KeyWordsExtractor k = new KeyWordsExtractor();
+		k.extractSingle(new File("D://Test//docs//193.txt"),true);
 	}
 }

@@ -17,7 +17,6 @@ public class VisitThread extends Thread {
 	private Logger logger = Logger.getLogger(this.getClass());
 	private VisitConf conf;
 	private Visitor visitor;
-	private List<URL> list;
 
 	/**
 	 * @param conf
@@ -29,6 +28,6 @@ public class VisitThread extends Thread {
 	public void run() {
 		this.setName("Visitor Thread");
 		visitor = conf.visitor;
-		list = visitor.visit(conf.url);
+		visitor.visit(conf.url);
 	}
 }

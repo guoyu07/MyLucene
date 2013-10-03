@@ -65,7 +65,7 @@ public class Searcher {
 			ScoreDoc[] sds = td.scoreDocs;
 			TFIDF t = new TFIDF();
 			CorpusIDF c = new CorpusIDF();
-			Map<String, Double> map = c.idfReader(new File("D://Test//map.txt"));
+			Map<String, Double> map = c.idfReader("D://Test//docs//map.txt");
 			Page p;
 			ContentReader cr = new ContentReader();
 			for (ScoreDoc sd : sds) {
