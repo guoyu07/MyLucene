@@ -46,8 +46,9 @@ public class CrawlerConfReader {
 			OS os = rootEl.getChildText("os").equals("Windows") ? OS.Windows
 					: OS.Linux;
 			String seeds = rootEl.getChildText("seeds");
+			String map = rootEl.getChildText("map");
 			property = new Property(deepth, topN, os, path, needsIndex,
-					databaseUsername, databasePassword);
+					databaseUsername, databasePassword,map);
 			logger.info(property);
 
 		} catch (JDOMException e) {

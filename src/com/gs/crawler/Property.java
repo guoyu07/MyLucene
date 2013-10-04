@@ -12,6 +12,10 @@ import com.gs.jdom.CrawlerConfReader;
  * @author gaoshen
  * @package com.gs.crawler
  */
+/**
+ * @author GaoShen
+ * @packageName com.gs.crawler
+ */
 public class Property {
 	/*
 	 * (non-Javadoc)
@@ -38,6 +42,7 @@ public class Property {
 	public String dbpass;
 	public boolean needsIndex;
 	public String[] seeds;
+	public String map;
 
 	/**
 	 * crawl only one url
@@ -100,6 +105,7 @@ public class Property {
 	 *            false - it will NOT index the docs after crawl
 	 * 
 	 */
+	@Deprecated
 	public Property(String[] urls, int deepth, int topN, OS os, String path,
 			boolean needsIndex) {
 		this.seeds = urls;
@@ -148,6 +154,7 @@ public class Property {
 	 *            false - it will NOT index the docs after crawl
 	 * 
 	 */
+	@Deprecated
 	public Property(int deepth, int topN, OS os, String path, boolean needsIndex) {
 		this.deepth = deepth;
 		this.topN = topN;
@@ -201,6 +208,10 @@ public class Property {
 		return seeds;
 	}
 
+	/**
+	 * read configure from xml file
+	 * @param confXMLPath
+	 */
 	public Property(String confXMLPath) {
 		CrawlerConfReader reader = new CrawlerConfReader(confXMLPath);
 		Property p = reader.getProperty();
@@ -211,6 +222,7 @@ public class Property {
 		this.needsIndex = p.needsIndex;
 		this.dbname = p.dbname;
 		this.dbpass = p.dbpass;
+		this.map = p.map;
 		if (os == OS.Windows) {
 			this.docfile = path + "//docs//";
 			this.Indexfile = path + "//index//";
@@ -248,7 +260,7 @@ public class Property {
 	 */
 	public Property(int deepth, int topN, OS os, String path,
 			boolean needsIndex, String databaseUsername,
-			String databasePassword) {
+			String databasePassword,String map) {
 		this.deepth = deepth;
 		this.topN = topN;
 		this.os = os;
@@ -256,6 +268,7 @@ public class Property {
 		this.needsIndex = needsIndex;
 		this.dbname = databaseUsername;
 		this.dbpass = databasePassword;
+		this.map = map;
 		if (os == OS.Windows) {
 			this.docfile = path + "//docs//";
 			this.Indexfile = path + "//index//";

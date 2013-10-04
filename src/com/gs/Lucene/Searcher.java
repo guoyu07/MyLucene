@@ -49,7 +49,7 @@ public class Searcher {
 	 *            the queryString
 	 * @return list a list of url
 	 */
-	public Page[] search(Property property, String queryString) {
+	public Hit[] search(Property property, String queryString) {
 		try {
 			DAO pd = new DAO(property);
 			list = new LinkedList<Hit>();
@@ -65,7 +65,7 @@ public class Searcher {
 			ScoreDoc[] sds = td.scoreDocs;
 			TFIDF t = new TFIDF();
 			CorpusIDF c = new CorpusIDF();
-			Map<String, Double> map = c.idfReader("D://Test//docs//map.txt");
+			Map<String, Double> map = c.idfReader(property.map);
 			Page p;
 			ContentReader cr = new ContentReader();
 			for (ScoreDoc sd : sds) {
@@ -73,7 +73,8 @@ public class Searcher {
 				p = pd.loadPage(Integer.parseInt(d.get("filename")));
 				Hit h;
 				try {
-					h = new Hit(t.count(queryString, cr.read(p.getPath(), p.getStartoffset(), p.getEndoffset()), map),p);
+					String content = cr.read(p.getPath(), p.getStartoffset(), p.getEndoffset());
+					h = new Hit(t.count(queryString, content, map),p,content);
 				} catch (NullPointerException e) {
 					continue;
 				}
@@ -86,8 +87,9 @@ public class Searcher {
 		}
 		
 		//sort the list by TF-IDF
-		Page[] re = new Page[list.size()];
-		int i=0;
+		//TODO:optimize the sort method
+		Hit[] re = new Hit[list.size()];
+		int i=list.size()-1;
 		while (!list.isEmpty()) {
 			double max=-1;
 			Hit maxScoreHit = null;
@@ -96,18 +98,11 @@ public class Searcher {
 					maxScoreHit = h;
 			}
 			list.remove(maxScoreHit);
-			re[i] = maxScoreHit.page;
-			i++;
+			re[i] = maxScoreHit;
+			i--;
 		}
 		return re;
 	}
-	class Hit{
-		public Hit(double score, Page page) {
-			this.score = score;
-			this.page = page;
-		}
-		double score;
-		Page page;
-	}
+	
 
 }

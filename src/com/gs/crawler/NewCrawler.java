@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 
 import com.gs.DAO.DAO;
 import com.gs.Lucene.Indexer;
+import com.gs.TFIDF.CorpusIDF;
 import com.gs.crawler.Property;
 import com.gs.downloader.DownloadManager;
 import com.gs.extractor.IDFactory;
@@ -165,6 +166,10 @@ public class NewCrawler {
 			Indexer indexer = new Indexer();
 			indexer.index(p.Indexfile, p.docfile);
 		}
+		
+		CorpusIDF c = new CorpusIDF();
+		c.idf(new File(p.docfile), p.map);
+		logger.info("Build map finished!");
 
 		 System.gc();
 		// System.exit(0);

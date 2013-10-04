@@ -22,12 +22,12 @@ public class TestSeacher {
 	public void test() {
 		Searcher s = new Searcher();
 		Property p = new Property("D://Test//conf.xml");
-		String q = "手机";
-		Page[] pages = s.search(p, q);
-		if(pages.length ==0 ){System.out.println("没有找到"+q);return;}
+		String q = "习近平";
+		Hit[] hits = s.search(p, q);
+		if(hits.length ==0 ){System.out.println("没有找到"+q);return;}
 		ContentReader cr = new ContentReader();
-		for (int i = 0; i < pages.length; i++) {
-			System.out.println(pages[i].getUrl()+cr.read(pages[i].getPath(), pages[i].getStartoffset(), pages[i].getEndoffset()));
+		for (int i = 0; i < hits.length; i++) {
+			System.out.println(hits[i].page.getUrl()+hits[i].content);
 		}
 	}
 	
