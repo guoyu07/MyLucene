@@ -10,7 +10,6 @@ import org.junit.Test;
 
 import com.gs.crawler.Property;
 import com.gs.downloader.DownloadManager;
-import com.gs.test.NewCrawler;
 
 /**
  * @author GaoShen

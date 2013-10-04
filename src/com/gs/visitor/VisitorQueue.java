@@ -66,7 +66,6 @@ public class VisitorQueue extends Queue {
 	 */
 	@Override
 	public void remove(Object obj) {
-		// TODO Auto-generated method stub
 		super.remove(obj);
 	}
 
@@ -77,7 +76,10 @@ public class VisitorQueue extends Queue {
 	 */
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
 		return super.size();
+	}
+	
+	public boolean contains(Visitor v){
+		return super.contains(v);
 	}
 }

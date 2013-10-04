@@ -107,4 +107,16 @@ public class TestExtractor {
 			System.out.println();
 		}
 	}
+	
+	@Test
+	public void test4(){
+		String s = "dskbfkAAADDCjsbfjabd3409209+_+>:';'南方水泥粉in斯蒂芬森年底开始fnsnls[][;;.";
+		char[] c = s.toCharArray();
+		for(int i=0;i<c.length;i++){
+			if((c[i]>='A'&&c[i]<='Z')||(c[i]>='a'&&c[i]<='z')||(c[i]>=33&&c[i]<=47)||(c[i]>=58&&c[i]<=64)||(c[i]>=123&&c[i]<=126)||(c[i]>=91&&c[i]<=96)){
+				c[i] = ' ';
+			}
+		}
+		System.out.println(new String(c));
+	}
 }

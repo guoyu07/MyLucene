@@ -19,7 +19,6 @@ import com.gs.crawler.Property;
 public class DownloadManager extends Thread {
 	private Logger logger = Logger.getLogger(this.getClass());
 	private DownQueue queue; // the urls to be downed
-	private Schedular schedular; // merge path schedular
 	private DownloaderFactory downloadfactory;
 	private Downloader currentDownloader;
 	private boolean fetchAllDone = false; // a flag of crawl .no more url to be
@@ -44,7 +43,6 @@ public class DownloadManager extends Thread {
 	 * @param schedular
 	 */
 	public DownloadManager(Property property) {
-		schedular = new Schedular(property.mergefile);
 		downloadfactory = new DownloaderFactory(property);
 		queue = new DownQueue();
 		new DAO(property).create(); // create the table
@@ -64,6 +62,9 @@ public class DownloadManager extends Thread {
 	}
 
 	public void run() {
+		DaemonThread daemon = new DaemonThread();
+		daemon.setManager(this);
+		daemon.start();
 		while (true) {
 			if (!queue.isQueueEmpty()) {
 				try {
@@ -76,13 +77,11 @@ public class DownloadManager extends Thread {
 						DownConf conf = null;
 						try {
 							conf = new DownConf(queue.pop(),
-									schedular.getPath(), count,
+									count,
 									currentDownloader);
 						} catch (NoSuchElementException e) {
-							currentDownloader.recycle();
+							currentDownloader.destory();
 							conf = null;
-							e.printStackTrace();
-							logger.error(e.getMessage());
 							continue;
 						}
 						DownThread downThread = new DownThread();
@@ -124,6 +123,13 @@ public class DownloadManager extends Thread {
 
 	public int proceedingNum() {
 		return downloadfactory.getProceedingNum();
+	}
+
+	/**
+	 * @return
+	 */
+	public DownloaderQueue getProceedingQueue() {
+		return downloadfactory.getProceedingQueue();
 	}
 
 }

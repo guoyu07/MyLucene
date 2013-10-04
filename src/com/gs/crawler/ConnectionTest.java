@@ -34,7 +34,9 @@ public class ConnectionTest {
 					break;
 				} // if the connect is good then stop the timer
 				if (thread.isError()) {
-					thread.stop();
+					if (thread.isAlive()) {
+						thread.interrupt();
+					}
 					logger.error("Not 200! Bad Connection");
 					thread.releaseConnection(); // release the connection
 					return false;
@@ -42,7 +44,7 @@ public class ConnectionTest {
 			}
 			if (thread.isAlive()) {// if the connect is timeout stop the thread
 									// and give the information
-				thread.stop();
+				thread.interrupt();
 				logger.error("Interrupted! Bad Connection");
 				thread.releaseConnection(); // release the connection
 				return false;

@@ -1,7 +1,7 @@
 /**
  * GS
  */
-package com.gs.downloader;
+package com.gs.utils;
 
 /**
  * the status of the downloader

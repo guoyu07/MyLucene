@@ -35,20 +35,22 @@ public class ConnectionTest {
 					break;
 				} // if the connect is good then stop the timer
 				if (thread.isError()) {
-					thread.stop();
+					if (thread.isAlive()) {
+						thread.interrupt();
+					}
 					logger.error("Not 200! Bad Connection");
-					thread.releaseConnection(); // release the connect of httpclient
+					//thread.releaseConnection(); // release the connect of httpclient
 					thread.join();
 					return false;
 				}
 			}
 			if (thread.isAlive()) {// if the connect is timeout stop the thread
 									// and give the information
-				thread.stop();
+				thread.interrupt();
 				logger.error("Interrupted! Bad Connection");
 				return false;
 			}
-			thread.releaseConnection(); // release the connect of httpclient
+			//thread.releaseConnection(); // release the connect of httpclient
 			thread.join();
 
 		} catch (InterruptedException e) {

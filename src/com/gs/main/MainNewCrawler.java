@@ -4,7 +4,8 @@
 package com.gs.main;
 import org.apache.log4j.Logger;
 
-import com.gs.test.NewCrawler;
+import com.gs.crawler.NewCrawler;
+
 /**
  * @author GaoShen
  * @packageName com.gs.main

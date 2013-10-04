@@ -60,6 +60,9 @@ public class VisitorManager extends Thread {
 	 */
 	@Override
 	public void run() {
+		DaemonThread daemon = new DaemonThread();
+		daemon.setVisitorManager(this);
+		daemon.start();
 		while (true) {
 			if (!queue.isQueueEmpty()) {
 				if (factory.isFreeVisitorQueueEmpty()
@@ -101,12 +104,13 @@ public class VisitorManager extends Thread {
 																			// is
 																			// true
 					&& finish) {
-				System.out.println("Queue Size : " + queue.size()
+				logger.debug("Queue Size : " + queue.size()
 						+ "Proceeding Queue : "
 						+ factory.getProceedingQueueSize());
 				break;
 			} // the condition to shutdown the manager
 		}
+		
 		logger.debug("=======!!!!!!!!!!!!!!Visitor Manager ShutDown!!!!!!!!!!=========");
 		downloadManager.setFetchAllDone(true); // shutdown the downloader
 												// manager
@@ -143,5 +147,13 @@ public class VisitorManager extends Thread {
 		else
 			return true;
 	}
+
+	/**
+	 * @return
+	 */
+	public VisitorQueue getProceedingQueue() {
+		return this.factory.getProceedingQueue();
+	}
+	
 
 }

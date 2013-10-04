@@ -118,4 +118,18 @@ public class VisitorFactory {
 			return false;
 	}
 
+	/**
+	 * @return
+	 */
+	public VisitorQueue getProceedingQueue() {
+		return proceedingVisitorQueue;
+	}
+
+	/**
+	 * 
+	 */
+	public VisitorQueue getFreeVisitorQueue() {
+		return freeVisitorQueue;
+	}
+
 }

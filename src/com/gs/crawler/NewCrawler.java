@@ -1,7 +1,7 @@
 /**
  * GS
  */
-package com.gs.test;
+package com.gs.crawler;
 
 import java.io.File;
 import java.io.IOException;
@@ -89,10 +89,10 @@ public class NewCrawler {
 		System.out.println("Please Input the path of conf.xml");
 		Scanner s = new Scanner(System.in);
 		String confXMLPath = s.nextLine();
-		long start = System.currentTimeMillis();
 		Property p = new Property(confXMLPath);
 		DownloadManager dm = new DownloadManager(p);
 		VisitorManager m = new VisitorManager(p, dm);
+		long start = System.currentTimeMillis();
 		m.start();
 		try {
 			Thread.sleep(5000);

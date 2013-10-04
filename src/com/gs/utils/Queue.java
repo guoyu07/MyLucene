@@ -1,5 +1,6 @@
 package com.gs.utils;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 import org.apache.log4j.Logger;
@@ -52,5 +53,12 @@ public class Queue {
 
 	public int size() {
 		return queue.size();
+	}
+	public Iterator<Object> iterator(){
+		return queue.iterator();
+	}
+	
+	public boolean contains(Object obj){
+		return queue.contains(obj);
 	}
 }

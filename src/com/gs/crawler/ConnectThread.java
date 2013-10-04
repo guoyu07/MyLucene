@@ -45,7 +45,12 @@ public class ConnectThread extends Thread {
 			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
-		get.releaseConnection();
+		try {
+			get.releaseConnection();
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+		}
 	}
 
 	/**

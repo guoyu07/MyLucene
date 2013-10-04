@@ -3,6 +3,8 @@
  */
 package com.gs.downloader;
 
+import java.util.Iterator;
+
 import org.apache.log4j.Logger;
 
 import com.gs.utils.Queue;
@@ -14,6 +16,11 @@ import com.gs.utils.Queue;
  * @packageName com.gs.downloader
  */
 public class DownloaderQueue extends Queue {
+
+	public boolean contains(Downloader obj) {
+		return super.contains(obj);
+	}
+
 	private Logger logger = Logger.getLogger(this.getClass());
 
 	/*
@@ -54,6 +61,10 @@ public class DownloaderQueue extends Queue {
 	@Override
 	public void empty() {
 		super.empty();
+	}
+	
+	public Iterator<Object> itertor(){
+		return super.iterator();
 	}
 
 }

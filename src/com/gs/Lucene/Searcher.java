@@ -71,7 +71,12 @@ public class Searcher {
 			for (ScoreDoc sd : sds) {
 				Document d = seacher.doc(sd.doc);
 				p = pd.loadPage(Integer.parseInt(d.get("filename")));
-				Hit h = new Hit(t.count(queryString, cr.read(p.getPath(), p.getStartoffset(), p.getEndoffset()), map),p);
+				Hit h;
+				try {
+					h = new Hit(t.count(queryString, cr.read(p.getPath(), p.getStartoffset(), p.getEndoffset()), map),p);
+				} catch (NullPointerException e) {
+					continue;
+				}
 				list.add(h);
 			}
 		} catch (IOException e) {
@@ -84,7 +89,7 @@ public class Searcher {
 		Page[] re = new Page[list.size()];
 		int i=0;
 		while (!list.isEmpty()) {
-			double max=0;
+			double max=-1;
 			Hit maxScoreHit = null;
 			for(Hit h : list){
 				if(h.score>max)

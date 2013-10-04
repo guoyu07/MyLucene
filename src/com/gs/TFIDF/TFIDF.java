@@ -35,7 +35,12 @@ public class TFIDF {
 	
 	public double count(String key, String target, Map<String,Double> corpusIDF) {
 		KeyWordsExtractor e = new KeyWordsExtractor();
-		double idf = corpusIDF.get(key);
+		double idf;
+		try {
+			idf = corpusIDF.get(key);
+		} catch (NullPointerException e1) {
+			return 0;
+		}
 		System.out.println("IDF = " + idf);
 		Map<String, Integer> m = e.extractString(target);
 		double tf = (double) m.get(key) / m.size();

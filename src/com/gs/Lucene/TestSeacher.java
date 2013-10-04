@@ -9,7 +9,6 @@ import org.junit.Test;
 
 import com.gs.DAO.DAO;
 import com.gs.crawler.Property;
-import com.gs.downloader.Schedular;
 import com.gs.model.Page;
 /**
  * @author GaoShen
@@ -22,7 +21,9 @@ public class TestSeacher {
 	public void test() {
 		Searcher s = new Searcher();
 		Property p = new Property("D://Test//conf.xml");
-		Page[] pages = s.search(p, "美国");
+		String q = "习近平";
+		Page[] pages = s.search(p, q);
+		if(pages.length ==0 ){System.out.println("没有找到"+q);return;}
 		for (int i = 0; i < pages.length; i++) {
 			System.out.println(pages[i].getUrl());
 		}
@@ -53,8 +54,4 @@ public class TestSeacher {
 		System.out.println(p.mergefile);
 	}
 	
-	@Test
-	public void testSchedular(){
-		Schedular s = new Schedular("D://Test//merge");System.out.println(s.getPath());
-	}
 }

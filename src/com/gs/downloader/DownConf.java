@@ -20,15 +20,13 @@ public class DownConf {
 	 * @param path
 	 * @param count
 	 */
-	public DownConf(String url, String path, int count, Downloader downloader) {
+	public DownConf(String url,int count, Downloader downloader) {
 		this.url = url;
-		this.path = path;
 		this.count = count;
 		this.downloader = downloader;
 	}
 
 	public String url;
-	public String path;
 	public int count;
 
 }

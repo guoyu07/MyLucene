@@ -16,6 +16,7 @@ import com.gs.crawler.Property;
 import com.gs.extractor.ContentExtractor;
 import com.gs.io.ContentWriter;
 import com.gs.model.Page;
+import com.gs.utils.Status;
 
 /**
  * @author GaoShen
@@ -29,6 +30,9 @@ public class Downloader {
 	private String path;
 	private Status status; // the status of this downloader
 	private DownloaderFactory factory;
+	private long startTime;
+	private int id;
+	private Property property;
 
 	/**
 	 * @param docpath
@@ -36,11 +40,13 @@ public class Downloader {
 	 * @param factory
 	 *            a connect to factory
 	 */
-	public Downloader(Property property, DownloaderFactory factory) {
+	public Downloader(Property property, DownloaderFactory factory,int id) {
 		dao = new DAO(property);
+		this.id = id;
 		cw = new ContentWriter();
 		this.factory = factory;
 		this.path = property.docfile;
+		this.property = property;
 	}
 
 	/**
@@ -49,19 +55,19 @@ public class Downloader {
 	 * @param count
 	 *            given by factory
 	 */
-	public boolean down(String url, String path, int count) {
+	public boolean down(String url, int count) {
 		try {
-			// String title = TitleExtractor.extractor(u.url); //the extractor
-			// of title
+			// String title = TitleExtractor.extractor(u.url); //the extractor of title
 			this.status = Status.Proceeding;
+			this.startTime = System.currentTimeMillis();
 			String title = String.valueOf(count);
 			String content = ContentExtractor.extractor(url);
-			cw.write(content, path); // merge
+			cw.write(content, property.mergefile+id); // merge
 			p.setEndoffset(cw.endoffset);
 			p.setId(count);
 			p.setStartoffset(cw.startoffset);
 			p.setUrl(url);
-			p.setPath(path);
+			p.setPath(property.mergefile+id);
 			dao.save(p);
 			if (make(title, content)) // make docs
 				logger.info("Downloading   " + title);
@@ -69,10 +75,6 @@ public class Downloader {
 			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
-		/*
-		 * try { Thread.sleep(10000); } catch (InterruptedException e) {
-		 * e.printStackTrace(); }
-		 */// TODO what is it!?
 		this.status = Status.Finished;
 		recycle();
 		return true;
@@ -114,7 +116,7 @@ public class Downloader {
 	/**
 	 * @param proceeding
 	 */
-	private void setStatus(Status status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 
@@ -129,7 +131,25 @@ public class Downloader {
 	 * @param conf
 	 */
 	public void down(DownConf conf) { // for dwon thread
-		down(conf.url, conf.path, conf.count);
+		down(conf.url,conf.count);
+	}
+
+	/**
+	 * @return
+	 */
+	public long getStartTime() {
+		return startTime;
+	}
+	
+	public void destory(){
+		if(this.factory.getProceedingQueue().contains(this)){
+			this.factory.getProceedingQueue().remove(this);
+		}
+		if(this.factory.getFreequeue().contains(this)){
+			this.factory.getFreequeue().remove(this);
+		}
+		dao.destory();
+		cw = null;
 	}
 
 }

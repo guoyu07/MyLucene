@@ -154,4 +154,13 @@ public class DAO {
 		
 		return p;
 	}
+	
+	public void destory(){
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+		}
+	}
 }
