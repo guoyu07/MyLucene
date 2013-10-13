@@ -1,6 +1,10 @@
 com.gs.DAO
+com.gs.Lib.Annotation
 com.gs.Lucene
+com.gs.TFIDF
+com.gs.cluster
 com.gs.crawler
+com.gs.dom4j
 com.gs.downloader
 com.gs.extractor
 com.gs.io

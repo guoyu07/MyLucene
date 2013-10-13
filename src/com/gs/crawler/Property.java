@@ -293,4 +293,56 @@ public class Property {
 			mer.mkdir();
 		}
 	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public int getDeepth() {
+		return deepth;
+	}
+
+	public int getTopN() {
+		return topN;
+	}
+
+	public OS getOs() {
+		return os;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public String getIndexfile() {
+		return Indexfile;
+	}
+
+	public String getDocfile() {
+		return docfile;
+	}
+
+	public String getMergefile() {
+		return mergefile;
+	}
+
+	public String getDbname() {
+		return dbname;
+	}
+
+	public String getDbpass() {
+		return dbpass;
+	}
+
+	public boolean isNeedsIndex() {
+		return needsIndex;
+	}
+
+	public String[] getSeeds() {
+		return seeds;
+	}
+
+	public String getMap() {
+		return map;
+	}
 }

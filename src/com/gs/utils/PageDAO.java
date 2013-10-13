@@ -1,4 +1,4 @@
-package com.gs.utils;
+/*package com.gs.utils;
 
 import java.util.List;
 
@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 
 import com.gs.model.Page;
 
-/**
+*//**
  * @author GaoShen
  * @packageName com.gs.DAO
- */
+ *//*
 @Component("pageDAO")
 public class PageDAO {
 
@@ -36,12 +36,13 @@ public class PageDAO {
 		this.hibernateTemplate = hibernateTemplate;
 	}
 
-	/**
+	*//**
 	 * <strong>Very Dangerous!<strong>
-	 */
+	 *//*
 	public void clear() {
 		hibernateTemplate.getSessionFactory().openSession()
 				.createSQLQuery("drop table page").executeUpdate();
 	}
 
 }
+*/

@@ -9,7 +9,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.gs.DAO.DAO;
 import com.gs.crawler.Property;

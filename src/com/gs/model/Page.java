@@ -3,19 +3,38 @@
  */
 package com.gs.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.gs.DAO.Entity;
+import com.gs.DAO.PK;
+
 
 /**
  * @author GaoShen
  * @packageName com.gs.model
  */
 @Entity
-@Table(name = "page")
-@org.hibernate.annotations.Proxy(lazy = false)
 public class Page {
+	/**
+	 * 
+	 */
+	public Page() {
+	}
+
+	/**
+	 * @param startoffset
+	 * @param endoffset
+	 * @param url
+	 * @param id
+	 * @param path
+	 */
+	public Page(long startoffset, long endoffset, String url, int id,
+			String path) {
+		this.startoffset = startoffset;
+		this.endoffset = endoffset;
+		this.url = url;
+		this.id = id;
+		this.path = path;
+	}
+
 	private long startoffset;
 	private long endoffset;
 	private String url;
@@ -40,7 +59,7 @@ public class Page {
 	/**
 	 * @return the id
 	 */
-	@Id
+	@PK
 	public int getId() {
 		return id;
 	}
