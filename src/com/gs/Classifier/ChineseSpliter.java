@@ -1,4 +1,4 @@
-package com.gs.Lib.NaviveBayesClassify;
+package com.gs.Classifier;
 
 import java.io.IOException;  	
 import java.io.StringReader;
@@ -20,16 +20,6 @@ public class ChineseSpliter
 	public static String split(String text,String splitToken)
 	{
 		String result = "";
-		/*MMAnalyzer analyzer = new MMAnalyzer();  	
-		try  	
-        {
-			result = analyzer.segment(text, splitToken);	
-		}  	
-        catch (IOException e)  	
-        { 	
-        	e.printStackTrace(); 	
-        } 	*/
-		
 		IKSegmenter ik = new IKSegmenter(new StringReader(text), true);
 		while (true) {
 			try {

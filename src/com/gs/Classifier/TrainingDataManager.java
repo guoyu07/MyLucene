@@ -1,4 +1,4 @@
-package com.gs.Lib.NaviveBayesClassify;
+package com.gs.Classifier;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -8,13 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import org.apache.commons.io.FileUtils;
 
 /**
 * 训练集管理器
@@ -24,10 +18,15 @@ public class TrainingDataManager
 {
 	private String[] traningFileClassifications;//训练语料分类集合
 	private File traningTextDir;//训练语料存放目录
-	private static String defaultPath = "D:\\Lucene\\docs\\训练分类用文本\\";
+	//private static String defaultPath = "D:\\Lucene\\docs\\训练分类用文本\\";
 	//private static String defaultPath = "D:\\Lucene\\ClassFile\\";
+	//private static String defaultPath = "D:\\Lucene\\分类训练与测试语料库\\DRAP提供的测试训练语料\\TanCorpMinTrain\\";
+	//private static String defaultPath = "D:\\Lucene\\分类训练与测试语料库\\复旦李荣陆提供的语料库\\";
+	private static String defaultPath = "D:\\Lucene\\Corpus\\";
+	//private static String defaultPath = "D:\\Lucene\\分类训练与测试语料库\\DRAP提供的测试训练语料\\Corpus\\";
 	private Map<String,Map<String,Double>> classMap = new HashMap<String,Map<String,Double>>();
 	private static TrainingDataManager ini = new TrainingDataManager();
+	@SuppressWarnings("unchecked")
 	private TrainingDataManager() 
 	{
 		traningTextDir = new File(defaultPath);

@@ -1,4 +1,4 @@
-package com.gs.Lib.NaviveBayesClassify;
+package com.gs.Classifier;
 
 /**
 * 分类结果

@@ -1,4 +1,4 @@
-package com.gs.Lib.NaviveBayesClassify;
+package com.gs.Classifier;
 
 import java.io.File;
 import java.io.IOException;
