@@ -63,10 +63,13 @@ public class TestIO {
 	
 	@Test
 	public void test2(){
-		File f = new File("D://Lucene");
+		File f = new File("D:\\Lucene\\Corpus");
 		String s[] = f.list();
-		for (int i = 0; i < s.length; i++) {
-			System.out.println(s[i]);
+	
+		for (File ff : f.listFiles()) {
+			TFIDF t = new TFIDF();
+			t.getTFFromDirectory(ff);
+			System.out.println(ff.getName());
 		}
 	}
 }

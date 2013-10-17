@@ -91,6 +91,7 @@ public class TFIDF {
 		}
 		
 		try {
+			if(new File(Directory+"//map").exists())new File(Directory+"//map").delete();
 			FileOutputStream os = new FileOutputStream(Directory+"//map");
 			ObjectOutputStream oos = new ObjectOutputStream(os);
 			oos.writeObject(map);

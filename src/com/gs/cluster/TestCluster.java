@@ -22,7 +22,7 @@ public class TestCluster {
 
 	@Test
 	public void testAbgle() {
-		Cluster c = new Cluster();
+		TFIDFCluster c = new TFIDFCluster();
 		//System.out.println(c.cluster(new File("D://Lucene//docs//训练分类用文本//艺术//2177.txt"), new File("D://Lucene//docs//训练分类用文本//艺术//2173.txt")));
 		System.out.println(c.cluster(new File("D://Test//v1.txt"), new File("D://Test//v2.txt")));
 	}
@@ -34,7 +34,7 @@ public class TestCluster {
 		Map<String, Double> v1 = c.getVector(new TFIDF().getTFFromDirectory(new File("D://Lucene//docs//训练分类用文本//经济")));
 		Map<String, Double> v2 = c.getVector(new TFIDF().getTFFromDirectory(new File("D://Lucene//docs//训练分类用文本//军事")));
 		Map<String, Double> v = c.getVector(new TFIDF().getTF(new File("D://Lucene//docs//训练分类用文本//军事//8203.TXT")));
-		Cluster cl = new Cluster();
+		TFIDFCluster cl = new TFIDFCluster();
 		System.out.println(cl.getAngle(v, v1)>cl.getAngle(v, v2)?"经济":"军事");
 		System.out.println(v1+"\n"+v2+"\n"+v);
 	}
