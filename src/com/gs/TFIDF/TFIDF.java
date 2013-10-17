@@ -4,6 +4,10 @@
 package com.gs.TFIDF;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -85,6 +89,19 @@ public class TFIDF {
 				map.put(key, freq == 0 ? 1 : freq + 1);
 			}
 		}
+		
+		try {
+			FileOutputStream os = new FileOutputStream(Directory+"//map");
+			ObjectOutputStream oos = new ObjectOutputStream(os);
+			oos.writeObject(map);
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+			logger.error(e1.getMessage());
+		} catch (IOException e1) {
+			e1.printStackTrace();
+			logger.error(e1.getMessage());
+		}
+		//logger.info(map);
 		return map;
 	}
 

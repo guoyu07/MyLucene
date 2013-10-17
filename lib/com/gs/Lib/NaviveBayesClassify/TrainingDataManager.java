@@ -6,9 +6,15 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.apache.commons.io.FileUtils;
 
 /**
 * 训练集管理器
@@ -18,9 +24,11 @@ public class TrainingDataManager
 {
 	private String[] traningFileClassifications;//训练语料分类集合
 	private File traningTextDir;//训练语料存放目录
-	private static String defaultPath = "D:\\Lucene\\docs\\训练分类用文本";
-	
-	public TrainingDataManager() 
+	private static String defaultPath = "D:\\Lucene\\docs\\训练分类用文本\\";
+	//private static String defaultPath = "D:\\Lucene\\ClassFile\\";
+	private Map<String,Map<String,Double>> classMap = new HashMap<String,Map<String,Double>>();
+	private static TrainingDataManager ini = new TrainingDataManager();
+	private TrainingDataManager() 
 	{
 		traningTextDir = new File(defaultPath);
 		if (!traningTextDir.isDirectory()) 
@@ -28,6 +36,28 @@ public class TrainingDataManager
 			throw new IllegalArgumentException("训练语料库搜索失败！ [" +defaultPath + "]");
 		}
 		this.traningFileClassifications = traningTextDir.list();
+		//加载所有Map
+		String ss[] = traningTextDir.list();
+		for(int i= 0;i<ss.length;i++){
+			Map<String, Double> map = new HashMap<String, Double>();
+			try {
+				FileInputStream is = new FileInputStream(defaultPath+ss[i]+"\\map");
+				ObjectInputStream ois = new ObjectInputStream(is);
+				map = (Map<String, Double>) ois.readObject();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			classMap.put(ss[i], map);
+			map = null;
+		}
+	}
+	
+	public static TrainingDataManager getInstance(){
+		return ini;
 	}
 	/**
 	* 返回训练文本类别，这个类别就是目录名
@@ -111,7 +141,8 @@ public class TrainingDataManager
 	public int getCountContainKeyOfClassification(String classification,String key) 
 	{
 		int ret = 0;
-		try 
+		ret = (int) (classMap.get(classification).containsKey(key) ? classMap.get(classification).get(key):0);
+		/*try 
 		{
 			String[] filePath = getFilesPath(classification);
 			for (int j = 0; j < filePath.length; j++) 
@@ -132,7 +163,7 @@ public class TrainingDataManager
 		{
 			Logger.getLogger(TrainingDataManager.class.getName()).log(Level.SEVERE, null,ex);
 	
-		}
+		}*/
 		return ret;
 	}
 }

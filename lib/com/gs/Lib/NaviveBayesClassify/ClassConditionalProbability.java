@@ -19,8 +19,8 @@ package com.gs.Lib.NaviveBayesClassify;
 
 public class ClassConditionalProbability 
 {
-	private static TrainingDataManager tdm = new TrainingDataManager();
-	private static final float M = 0F;
+	private final TrainingDataManager tdm = TrainingDataManager.getInstance();
+	private final float M = 0F;
 	
 	/**
 	* 计算类条件概率
@@ -28,7 +28,7 @@ public class ClassConditionalProbability
 	* @param c 给定的分类
 	* @return 给定条件下的类条件概率
 	*/
-	public static float calculatePxc(String x, String c) 
+	public float calculatePxc(String x, String c) 
 	{
 		float ret = 0F;
 		float Nxc = tdm.getCountContainKeyOfClassification(c, x);

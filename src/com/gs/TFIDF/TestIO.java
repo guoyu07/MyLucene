@@ -48,4 +48,25 @@ public class TestIO {
 				logger.error(e.getMessage());
 			}
 	}
+	
+	@Test
+	public void test1(){
+		TFIDF t = new TFIDF();
+		t.getTFFromDirectory(new File("D://Lucene//docs//训练分类用文本//交通"));
+		t.getTFFromDirectory(new File("D://Lucene//docs//训练分类用文本//教育"));
+		t.getTFFromDirectory(new File("D://Lucene//docs//训练分类用文本//艺术"));
+		t.getTFFromDirectory(new File("D://Lucene//docs//训练分类用文本//政治"));
+		t.getTFFromDirectory(new File("D://Lucene//docs//训练分类用文本//体育"));
+		t.getTFFromDirectory(new File("D://Lucene//docs//训练分类用文本//经济"));
+		t.getTFFromDirectory(new File("D://Lucene//docs//训练分类用文本//军事"));
+	}
+	
+	@Test
+	public void test2(){
+		File f = new File("D://Lucene");
+		String s[] = f.list();
+		for (int i = 0; i < s.length; i++) {
+			System.out.println(s[i]);
+		}
+	}
 }
