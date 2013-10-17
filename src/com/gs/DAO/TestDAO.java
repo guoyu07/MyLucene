@@ -24,7 +24,12 @@ public class TestDAO {
 	public void test() {
 		Session<Page> s = new Session<Page>("jdbc:mysql://localhost:3306/page", "root", "940409");
 		//s.createTable(Page.class);
-		s.save(new Page(100,200,"htpp://ds.com",13,"D://dnja//sa.txt"));
+		s.save(new Page(100,200,"htpp://ds.com",17,"D://dnja//sa.txt"));
+	}
+	@Test
+	public void test6(){
+		DAO d = new DAO("root","940409");
+		d.save(new Page(100,200,"htpp://ds.com",16,"D://dnja//sa.txt"));
 	}
 	
 	@Test
@@ -68,4 +73,5 @@ public class TestDAO {
 	public void test5(){
 		System.out.println(Page.class.getMethods()[3].getName()+"   "+Page.class.getMethods()[3].getGenericParameterTypes()[0].getClass());
 	}
+	
 }

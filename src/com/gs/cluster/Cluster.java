@@ -4,6 +4,7 @@
 package com.gs.cluster;
 
 import java.io.File;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
@@ -16,6 +17,7 @@ import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
 
 /**
  * @author GaoShen
+ * @param <T>
  * @packageName com.gs.cluster
  */
 public class Cluster {
@@ -59,4 +61,29 @@ public class Cluster {
 		double result = (Math.acos(cos)/Math.PI)*180;
 		return result;
 	}
+	
+	public double getAngle(Map<String,Double> m1, Map<String,Double> m2) {
+		double[] v1= new double[m1.size()],v2 = new double[m2.size()];
+		int i = 0;
+		for(String key : m1.keySet()){
+			v1[i] = m1.get(key);
+			v2[i] = m2.get(key);
+			i++;
+		}
+		
+		if(v1.length != v2.length){
+			  throw new IllegalArgumentException("the vectors' length are not same");
+		}
+		double fenzi = 0;
+		double fenmu1 = 0, fenmu2 = 0;
+		for (int j = 0; j < v1.length; j++) {
+			fenzi += (double) v1[j] * (double) v2[j];
+			fenmu1 += (double) v1[j] * (double) v1[j];
+			fenmu2 += (double) v2[j] * (double) v2[j];
+		}
+		double cos = fenzi/(Math.sqrt(fenmu1)*Math.sqrt(fenmu2));
+		double result = (Math.acos(cos)/Math.PI)*180;
+		return result;
+	}
+
 }

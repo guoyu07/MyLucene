@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -50,14 +51,16 @@ public class KeyWordsExtractor {
 	/**
 	 * extract the words from a direactory
 	 * @param directory
+	 * @return 
 	 */
-	public void extractDirectory(File directory){
+	public Set<String> extractDirectory(File directory){
 		String[] extensions = {"txt"};
 		Iterator<File> iterateFiles = FileUtils.iterateFiles(directory, extensions, true);
+		Set<String> list = null;
 		while (iterateFiles.hasNext()) {
 			File current = iterateFiles.next();
 			FileReader d = null;
-			List<String> list = new LinkedList<String>();// sped aritical
+			list = new HashSet<String>();// sped aritical
 			try {
 				d = new FileReader(current);
 				IKSegmenter ik = new IKSegmenter(d, true);
@@ -87,7 +90,7 @@ public class KeyWordsExtractor {
 				m.put(word, freq == 0 ? 1 : freq + 1);
 			}
 			//sort
-			Set<String> keySet = m.keySet();
+			/*Set<String> keySet = m.keySet();
 			System.out.println(current.getName());
 			for (int i = 0; i < 10; i++) {
 				int a = 0;
@@ -102,9 +105,11 @@ public class KeyWordsExtractor {
 				m.remove(MaxKey);
 			}
 			
-			System.out.println("-------------------");
+			System.out.println("-------------------");*/
+			
 		}
 		
+		return list;
 		
 		
 	}

@@ -366,7 +366,9 @@ public class Session<T extends Object> {
 				}
 			}
 		}
+		
 		String sql = "INSERT INTO " + dbname + " ( ";
+		
 		for (int i = 0; i < items.size(); i++) {
 			sql += items.get(i).k;
 			if (i != (items.size() - 1)) {
@@ -374,7 +376,9 @@ public class Session<T extends Object> {
 			}
 
 		}
+		
 		sql += " ) VALUES ( ";
+		
 		for (int i = 0; i < items.size(); i++) {
 			boolean stringFlag = false;
 			if (items.get(i).v instanceof String) {
@@ -390,8 +394,10 @@ public class Session<T extends Object> {
 			}
 
 		}
+		
 		sql += " ) ;";
 		int count = 0;
+		
 		try {
 			Statement st;
 			st = (Statement) conn.createStatement(); // 创建用于执行静态sql语句的Statement对象
@@ -401,6 +407,7 @@ public class Session<T extends Object> {
 			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
+		
 		logger.debug("向" + dbname + "表中插入 " + count + " 条数据");
 		logger.debug(sql);
 

@@ -67,5 +67,25 @@ public class TFIDF {
 		return tfmap;
 		
 	}
+	
+	public Map<String,Double> getTFFromDirectory(File Directory){
+		Map<String, Double> map = null;
+		KeyWordsExtractor e = new KeyWordsExtractor();
+		String[] extensions = { "txt","TXT" };
+		map = new HashMap<String, Double>();
+		int countofFiles = 0;
+		Iterator<File> iterateFiles = FileUtils.iterateFiles(Directory,
+				extensions, true);
+		while (iterateFiles.hasNext()) {
+			File current = iterateFiles.next();
+			countofFiles++;
+			for (String key : e.extractSingle(current).keySet()) {
+				double freq = (double) (map.get(key) == null ? 0 : (double) map
+						.get(key));
+				map.put(key, freq == 0 ? 1 : freq + 1);
+			}
+		}
+		return map;
+	}
 
 }
