@@ -19,8 +19,16 @@ public class Hit {
 		this.page = page;
 		this.content = content;
 	}
+	
+	public Hit(double score, Page page,String content,String clazz) {
+		this.score = score;
+		this.page = page;
+		this.content = content;
+		this.clazz = clazz;
+	}
 
 	public double score;
 	public Page page;
 	public String content;
+	public String clazz;
 }
