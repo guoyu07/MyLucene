@@ -10,7 +10,7 @@ package com.gs.Lib.NaviveBayesClassify;
 
 public class PriorProbability 
 {
-	private static TrainingDataManager tdm =new TrainingDataManager();
+	private static TrainingDataManager tdm =TrainingDataManager.getInstance();
 
 	/**
 	* ÏÈÑé¸ÅÂÊ

@@ -131,10 +131,11 @@ public class BayesClassifier
 	@Test
 	public void test(){
 		BayesClassifier classifier = new BayesClassifier();;
-		String text = "韩国《朝鲜日报》16日报道称，韩国国防部改变说法是考虑到加入MD系统的争议。SM-3导弹可以在发生紧急情况时，对中国发射的远程导弹进入太空阶段在东海和西海上实施拦截，因此会刺激中国。也有人称，萨德系统的核心设备AN/TPY-2地面X-band雷达可能会严重刺激中国。这种雷达的探测距离达1000公里以上，如果部署在韩国，尤其是西海地区，就能提早探测到中国用于威慑美国的战略武器——洲际弹道导弹和潜射弹道导弹的发射动向。据悉，美国去年曾通过非正式渠道建议韩国政府在白翎岛部署X-band雷达，但韩国政府担心中国抗议予以拒绝。";
-		System.out.println(System.currentTimeMillis());
+		long start = System.currentTimeMillis();
+		String text = "沈丹阳说，受到直接刺激政策退出、高端和集团消费回落等因素的影响，今年以来消费市场虽然面临收入增长放缓境况，但是今年的消费也面临许多有利因素，全年总的形势前低后高，稳中有升。目前的消费增速应该说是比较正常，也比较健康。";
 		String result = classifier.classify(text);//进行分类
-		System.out.println(System.currentTimeMillis());
+		long use = System.currentTimeMillis() - start;
+		System.out.println("use"+use+"ms");
 		System.out.println("此项属于["+result+"]");
 	}
 }
