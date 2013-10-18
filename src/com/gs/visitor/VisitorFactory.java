@@ -41,7 +41,7 @@ public class VisitorFactory {
 	 */
 	public Visitor getVisitor() {
 		Visitor current;
-		if (freeVisitorQueue.isQueueEmpty()) { // there is a free one
+		if (freeVisitorQueue.isQueueEmpty()&&countofinitial<limitVisitor) { // there is a free one
 			logger.debug("===========A new Visitor is initialed!=============");
 			current = new Visitor(property, this, manager,countofinitial);
 			countofinitial++;
