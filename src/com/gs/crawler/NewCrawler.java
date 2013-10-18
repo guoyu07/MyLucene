@@ -27,10 +27,12 @@ public class NewCrawler {
 	private Logger logger = Logger.getLogger(this.getClass());
 
 	public void c(String confXMLPath) {
-		long start = System.currentTimeMillis();
+		System.out.println("Please Input the path of conf.xml");
 		Property p = new Property(confXMLPath);
+		new DAO(p).create();
 		//DownloadManager dm = new DownloadManager(p);
 		VisitorManager m = new VisitorManager(p/*, dm*/);
+		long start = System.currentTimeMillis();
 		m.start();
 		try {
 			Thread.sleep(5000);
@@ -40,9 +42,18 @@ public class NewCrawler {
 		}
 		m.setFinish(true);
 		int i = 0;
+		while (!m.isQueueEmpty()/* && !dm.isQueueEmpty()*/) {
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+				logger.error(e.getMessage());
+			}
+		}
+
 		while (m.isAlive()) {
 			try {
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				i++;
 				logger.error("Visitor Manager have not been done.       Please Wait!  "
 						+ i);
@@ -51,10 +62,12 @@ public class NewCrawler {
 				e.printStackTrace();
 				logger.error(e.getMessage());
 			}
-			// if (i > 5) break;
+			 if (i > 10) {m.interrupt();break;}
 		}
-/*
-		if (dm.isAlive()) {
+		//m.destoryAllVisitors();
+		m = null;
+		System.gc();
+		/*if (dm.isAlive()) {
 			logger.error("Download have not been done.        Please Wait!");
 			int i1 = 0;
 			while (dm.isAlive()) {
@@ -64,18 +77,17 @@ public class NewCrawler {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				// if (i1 > 10) break; // downloader manager timeout,proceed
-				// ,exit the
-				// program forcibly
+				 if (i1 > 10) {dm.interrupt();break;} // downloader manager
+				// timeout,proceed ,exit the
 			}
 		}*/
 		double count = Double.valueOf(IDFactory.getID());
 		double use = (System.currentTimeMillis() - start) / 1000;
 		double speed = count / use;
 		String report = "Start time is  " + new Date(start).toLocaleString()
-				+ "\nFinish time is  "
+				+ "\r\nFinish time is  "
 				+ new Date(System.currentTimeMillis()).toLocaleString()
-				+ "\nTotal use  " + use + "s" + "\nSpeed  " + speed
+				+ "\r\nTotal use  " + use + "s" + "\r\nSpeed  " + speed
 				+ " pages/s";
 		try {
 			FileUtils.writeStringToFile(new File(p.path + "/report.txt"),
@@ -84,7 +96,17 @@ public class NewCrawler {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		// System.gc();
+
+		if (p.needsIndex) { // start index
+			Indexer indexer = new Indexer();
+			indexer.index(p.Indexfile, p.docfile);
+		}
+		
+		CorpusIDF c = new CorpusIDF();
+		c.idf(new File(p.docfile), p.map);
+		logger.info("Build map finished!");
+
+		 System.gc();
 		// System.exit(0);
 	}
 

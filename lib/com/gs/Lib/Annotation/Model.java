@@ -3,14 +3,13 @@
  */
 package com.gs.Lib.Annotation;
 
-import org.apache.log4j.Logger;
 /**
  * @author GaoShen
  * @packageName com.gs.Annotation
  */
 @Entity
 public class Model {
-	private Logger logger = Logger.getLogger(this.getClass());
+	//private Logger logger = Logger.getLogger(this.getClass());
 	private int id;
 	private String name;
 	

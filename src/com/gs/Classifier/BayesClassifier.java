@@ -21,7 +21,7 @@ public class BayesClassifier
 {
 	private static TrainingDataManager tdm;//训练集管理器
 	private String trainnigDataPath;//训练集路径
-	private static double zoomFactor = 80.0f;
+	private static double zoomFactor = 65.0f;
 	private static BayesClassifier bayesClassifier = new BayesClassifier();
 	/**
 	* 默认的构造器，初始化训练集
