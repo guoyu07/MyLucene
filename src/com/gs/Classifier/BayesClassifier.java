@@ -5,13 +5,13 @@ import com.gs.Classifier.ClassConditionalProbability;
 import com.gs.Classifier.PriorProbability;
 import com.gs.Classifier.TrainingDataManager;
 import com.gs.Classifier.StopWordsHandler;
-import com.gs.cluster.Classifier;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Vector;
 
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
 /**
@@ -19,8 +19,9 @@ import org.junit.Test;
 */
 public class BayesClassifier 
 {
+	private Logger logger = Logger.getLogger(this.getClass());
 	private static TrainingDataManager tdm;//训练集管理器
-	private String trainnigDataPath;//训练集路径
+	//private String trainnigDataPath;//训练集路径
 	private static double zoomFactor = 65.0f;
 	private static BayesClassifier bayesClassifier = new BayesClassifier();
 	/**
@@ -42,12 +43,11 @@ public class BayesClassifier
 	{
 		float ret = 1.0F;
 		// 类条件概率连乘
-		ClassConditionalProbability ccp = new ClassConditionalProbability();
 		for (int i = 0; i <X.length; i++)
 		{
 			String Xi = X[i];
 			//因为结果过小，因此在连乘之前放大10倍，这对最终结果并无影响，因为我们只是比较概率大小而已
-			ret *=ccp.calculatePxc(Xi, Cj)*zoomFactor;
+			ret *=ClassConditionalProbability.calculatePxc(Xi, Cj)*zoomFactor;
 		}
 		// 再乘以先验概率
 		ret *= PriorProbability.calculatePc(Cj);
@@ -77,7 +77,6 @@ public class BayesClassifier
 	* @param text 给定的文本
 	* @return 分类结果
 	*/
-	@SuppressWarnings("unchecked")
 	public String classify(String text) 
 	{
 		String[] terms = null;
@@ -87,6 +86,7 @@ public class BayesClassifier
 		String[] Classes = tdm.getTraningClassifications();//分类
 		float probility = 0.0F;
 		List<ClassifyResult> crs = new ArrayList<ClassifyResult>();//分类结果
+		logger.info("classifying"+text.substring(0, 50));
 		for (int i = 0; i <Classes.length; i++) 
 		{
 			String Ci = Classes[i];//第i个分类
@@ -96,13 +96,13 @@ public class BayesClassifier
 			cr.classification = Ci;//分类
 			cr.probility = probility;//关键字在分类的条件概率
 			//System.out.println("In process....");
-			System.out.println(Ci + "：" + probility);
+			logger.debug(Ci + "：" + probility);
 			crs.add(cr);
 		}
 		//对最后概率结果进行排序
-		java.util.Collections.sort(crs,new Comparator() 
+		java.util.Collections.sort(crs,new Comparator<ClassifyResult>() 
 		{
-			public int compare(final Object o1,final Object o2) 
+			public int compare(final ClassifyResult o1,final ClassifyResult o2) 
 			{
 				final ClassifyResult m1 = (ClassifyResult) o1;
 				final ClassifyResult m2 = (ClassifyResult) o2;
@@ -129,16 +129,6 @@ public class BayesClassifier
 		System.out.println("此项属于["+result+"]");
 	}
 	
-	@Test
-	public void test(){
-		BayesClassifier classifier = new BayesClassifier();;
-		long start = System.currentTimeMillis();
-		String text = "沈丹阳说，受到直接刺激政策退出、高端和集团消费回落等因素的影响，今年以来消费市场虽然面临收入增长放缓境况，但是今年的消费也面临许多有利因素，全年总的形势前低后高，稳中有升。目前的消费增速应该说是比较正常，也比较健康。";
-		String result = classifier.classify(text);//进行分类
-		long use = System.currentTimeMillis() - start;
-		System.out.println("use"+use+"ms");
-		System.out.println("此项属于["+result+"]");
-	}
 
 	/**
 	 * @return

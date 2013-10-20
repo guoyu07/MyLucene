@@ -2,16 +2,13 @@
  * GS
  */
 package com.gs.Classifier;
-import static org.junit.Assert.*;
 
-import org.apache.log4j.Logger;
 import org.junit.Test;
 /**
  * @author GaoShen
  * @packageName com.gs.Classifier
  */
 public class ClassifierTest {
-	private Logger logger = Logger.getLogger(this.getClass());
 
 	@Test
 	public void test() {

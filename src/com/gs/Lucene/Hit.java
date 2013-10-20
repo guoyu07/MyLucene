@@ -12,6 +12,15 @@ import com.gs.model.Page;
  * @packageName com.gs.Lucene
  */
 public class Hit {
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Hit [score=" + score + ", page=" + page + ", content="
+				+ content + ", clazz=" + clazz + "]";
+	}
+
 	private Logger logger = Logger.getLogger(this.getClass());
 
 	public Hit(double score, Page page,String content) {

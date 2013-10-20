@@ -154,7 +154,7 @@ public class DAO {
 			p.setUrl(rs.getString("url"));
 			st.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			logger.error(e.getMessage());
 		}
 		

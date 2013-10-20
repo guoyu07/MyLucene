@@ -162,11 +162,10 @@ public class Searcher {
 		//Classify
 		BayesClassifier cl = BayesClassifier.getInstance();
 		int i=0;
-		System.out.println(cl.classify("丁俊晖本赛季一开始表现欠佳，不过在上海大师赛击败墨菲、罗伯逊等名将，并在决赛中国德比轻取肖国栋(微博) 夺冠，赢得职业生涯第七个排名赛冠军，打破主场排名赛八年无冠的魔咒。其后的球员巡回赛EPTC5又杀进决赛，可惜不敌马克-艾伦屈居亚军。此番印度赛，丁俊晖首轮4-3淘汰平奇斯，次轮4-3击败乔伊斯。丁俊晖和希金斯近5次交手赢了4次，但今年世界公开赛0-5惨败。"));
 		for (Hit h : list) {
 			h.clazz = cl.classify(h.content);
-			System.out.println("==============="+h.clazz);
-			logger.debug(h.content);
+			logger.info("==============="+h.clazz);
+			logger.info(h.content);
 			re[i] = h;
 			i++;
 		}
