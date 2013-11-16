@@ -23,6 +23,7 @@ public class TrainingDataManager
 	//private static String defaultPath = "D:\\Lucene\\分类训练与测试语料库\\DRAP提供的测试训练语料\\TanCorpMinTrain\\";
 	//private static String defaultPath = "D:\\Lucene\\分类训练与测试语料库\\复旦李荣陆提供的语料库\\";
 	private static String defaultPath = "D:\\Lucene\\Corpus\\";
+	//private static String defaultPath = "/opt/Test/Corpus";
 	//private static String defaultPath = "D:\\Lucene\\分类训练与测试语料库\\DRAP提供的测试训练语料\\Corpus\\";
 	private Map<String,Map<String,Double>> classMap = new HashMap<String,Map<String,Double>>();
 	private static TrainingDataManager ini = new TrainingDataManager();
