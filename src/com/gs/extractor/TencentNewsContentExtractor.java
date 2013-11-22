@@ -120,7 +120,7 @@ public class TencentNewsContentExtractor implements ContentExtractor {
 		Pattern pt = Pattern.compile(regex);
 		Matcher mt = pt.matcher(html);
 		if (mt.find()) {
-			re = (mt.group(1).replaceAll("[a-zA-Z_/\"<>=.:]", ""));
+			re = (mt.group(1).replaceAll("<.*?>", ""));
 		}
 		return re;
 	}
